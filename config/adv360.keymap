@@ -36,7 +36,7 @@
 
         default_layer {
             bindings = <
-    &kp EQUAL        &none   &hm TILDE CARET   &hm NUBS GRAVE    &hm PRCNT HASH         &none                  &none                                                                                                         &none         &none           &none          &none           &none           &none          &none
+    &kp EQUAL        &none   &hm TILDE CARET   &hm NUBS GRAVE    &hm PRCNT HASH         &none         &macro_kinesis                                                                                                         &none         &none           &none          &none           &none           &none          &none
       &kp ESC  &hm LS(Q) Q       &hm LS(W) W      &hm LS(E) E       &hm LS(R) R   &hm LS(T) T            &macro_redo                                                                                                   &macro_next   &hm LS(Y) Y     &hm LS(U) U    &hm LS(I) I     &hm LS(O) O     &hm LS(P) P       &kp BSLH
     &kp LCTRL  &hm LS(A) A       &hm LS(S) S      &hm LS(D) D       &hm LS(F) F   &hm LS(G) G            &macro_undo  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP                   &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &macro_back   &hm LS(H) H     &hm LS(J) J    &hm LS(K) K     &hm LS(L) L  &hm COLON SEMI    &hm DQT SQT
    &sk LSHIFT  &hm LS(Z) Z       &hm LS(X) X      &hm LS(C) C       &hm LS(V) V   &hm LS(B) B                  &none              &none       &kp C_MUTE   &none   &none  &kp C_BRIGHTNESS_AUTO                 &none        &none   &hm LS(N) N     &hm LS(M) M  &hm COMMA DOT  &hm QMARK EXCL  &hm PLUS MINUS      &kp RSHFT

@@ -46,11 +46,11 @@
 
         layer_arrow {
             bindings = <
- &trans  &trans                &trans  &trans  &trans  &trans            &trans                                                  &trans     &none           &none           &none            &none  &none  &none
- &trans  &trans    &kp C_AC_SCROLL_UP  &trans  &trans  &trans            &trans                                                  &trans     &none           &none    &kp UP_ARROW            &none  &none  &none
- &trans  &trans  &kp C_AC_SCROLL_DOWN  &trans  &trans  &trans            &trans  &trans  &trans                  &trans  &trans  &trans     &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none  &none
- &trans  &trans                &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME     &kp PAGE_UP   &kp PAGE_DOWN          &kp END  &none  &none
- &trans  &trans                &trans  &trans  &trans                    &trans  &trans  &trans                  &trans  &trans  &trans                     &none           &none            &none  &none  &none
+ &trans           &trans           &trans            &trans             &trans  &trans            &trans                                                  &trans     &none           &none           &none            &none  &none  &none
+ &trans           &trans    &kp C_MENU_UP            &trans             &trans  &trans            &trans                                                  &trans     &none           &none    &kp UP_ARROW            &none  &none  &none
+ &trans  &kp C_MENU_LEFT  &kp C_MENU_DOWN  &kp C_MENU_RIGHT    &C_AC_SCROLL_UP  &trans            &trans  &trans  &trans                  &trans  &trans  &trans     &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none  &none
+ &trans           &trans           &trans            &trans  &C_AC_SCROLL_DOWN  &trans            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME     &kp PAGE_UP   &kp PAGE_DOWN          &kp END  &none  &none
+ &trans           &trans           &trans            &trans             &trans                    &trans  &trans  &trans                  &trans  &trans  &trans                     &none           &none            &none  &none  &none
             >;
         };
 

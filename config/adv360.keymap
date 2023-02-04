@@ -36,7 +36,7 @@
 
         default_layer {
             bindings = <
-    &kp EQUAL  &lt 3 A   &none   &none   &none   &none               &none                                                                                                      &none   &none   &none      &none    &none     &none      &none
+    &kp EQUAL  &lt 3 A   &hm A B &none   &none   &none               &none                                                                                                      &none   &none   &none      &none    &none     &none      &none
       &kp ESC    &kp Q   &kp W   &kp E   &kp R   &kp T               &none                                                                                                      &none   &kp Y   &kp U      &kp I    &kp O     &kp P   &kp BSLH
     &kp LCTRL    &kp A   &kp S   &kp D   &kp F   &kp G               &none  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP                   &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC     &none   &kp H   &kp J      &kp K    &kp L  &kp SEMI    &kp SQT
    &sk LSHIFT    &kp Z   &kp X   &kp C   &kp V   &kp B               &none              &none       &kp C_MUTE   &none   &none  &kp C_BRIGHTNESS_AUTO                 &none     &none   &kp N   &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT

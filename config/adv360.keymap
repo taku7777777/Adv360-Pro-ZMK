@@ -26,7 +26,7 @@
         tapping-term-ms = <200>;
         quick_tap_ms = <175>;
         flavor = "tap-preferred";
-        bindings = <&kp>, <&kp LSHFT>;
+        bindings = <&kp>, <&kp>;
     };
 
     hm: homerow_mods {

@@ -66,11 +66,11 @@
 
         layer_bootloader {
             bindings = <
- &trans  &trans  &trans  &trans  &trans  &trans       &bootloader                                                  &bootloader  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans            &trans                                                       &trans  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans                  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
- &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans                  &trans  &trans       &trans          &trans  &trans  &trans  &trans  &trans
+ &trans  &bt BT_SEL 0  &trans  &trans  &trans  &trans       &bootloader                                                  &bootloader  &trans  &trans  &trans  &trans  &trans  &trans
+ &trans        &trans  &trans  &trans  &trans  &trans            &trans                                                       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+ &trans        &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans                  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+ &trans        &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+ &trans        &trans  &trans  &trans  &trans                    &trans  &trans  &trans                  &trans  &trans       &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
 

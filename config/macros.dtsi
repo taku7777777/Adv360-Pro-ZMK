@@ -40,9 +40,9 @@ macro_quotes: macro_quotes {
   #binding-cells = <0>;
   bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>;
 };
-macro_kana_ku: macro_kana_ku {
+macro_ku: macro_ku {
   compatible = "zmk,behavior-macro";
-  label = "macro_kana_ku";
+  label = "macro_ku";
   #binding-cells = <0>;
   bindings = <&kp K>, <&kp U>;
 };

@@ -38,7 +38,7 @@
 
         default_layer {
             bindings = <
-              &none       &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                 &none         &none           &hm DLLR PRCNT  &none           &none             &none           &lt 3 TAB
+              &none       &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                 &none         &none           &hm DLLR PRCNT  &none           &none             &none           &lt 4 TAB
               &none       &hm LS(Q) Q     &hm LS(W) W     &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &none                                                                                 &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I     &hm LS(O) O       &hm LS(P) P     &none
               &kp LCTRL   &hm LS(A) A     &hm LS(S) S     &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &none         &kp C_VOL_DN  &kp C_VOL_UP                  &kp C_BRI_DN  &kp C_BRI_UP  &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K     &hm LS(L) L       &hm COLON SEMI  &hm DQT SQT
               &kp LSHIFT  &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(B) B   &none         &none         &kp C_MUTE    &none   &none   &none         &none         &none         &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT   &hm GRAVE EQUAL   &hm GT LT       &hm AT UNDER
@@ -48,24 +48,23 @@
 
         number_layer {
             bindings = <
-              &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bootloader                                                   &bootloader   &none   &none         &kp SLASH     &kp ASTERISK  &none       &none
-              &trans  &trans        &trans        &trans        &trans        &trans        &trans                                                        &none         &none   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS   &none
-              &trans  &trans        &trans        &trans        &trans        &trans        &trans        &trans  &trans                  &trans  &trans  &none         &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS    &none
-              &trans  &trans        &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &none         &none   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL   &none
-              &trans  &trans        &trans        &trans        &trans                      &trans        &trans  &trans                  &trans  &trans  &none                 &kp NUMBER_0  &kp DOT       &none         &none       &none
+              &none   &none   &none   &none   &none   &none   &none                                                   &none   &none   &none         &kp SLASH     &kp ASTERISK  &none       &none
+              &none   &none   &none   &none   &none   &none   &none                                                   &none   &none   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS   &none
+              &none   &none   &none   &none   &none   &none   &none   &none   &none                   &none   &none   &none   &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS    &none
+              &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL   &none
+              &none   &none   &none   &none   &none           &none   &none   &none                   &none   &none   &none           &kp NUMBER_0  &kp DOT       &none         &none       &none
             >;
         };
 
         arrow_layer {
             bindings = <
-              &trans           &trans           &trans            &trans             &trans  &trans            &trans                                                  &trans     &none           &none           &none            &none  &none  &none
-              &trans           &trans    &kp C_MENU_UP            &trans             &trans  &trans            &trans                                                  &trans     &none           &none    &kp UP_ARROW            &none  &none  &none
-              &trans  &kp C_MENU_LEFT  &kp C_MENU_DOWN  &kp C_MENU_RIGHT    &kp C_AC_SCROLL_UP  &trans            &trans  &trans  &trans                  &trans  &trans  &trans     &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none  &none
-              &trans           &trans           &trans            &trans  &kp C_AC_SCROLL_DOWN  &trans            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME     &kp PAGE_UP   &kp PAGE_DOWN          &kp END  &none  &none
-              &trans           &trans           &trans            &trans             &trans                    &trans  &trans  &trans                  &trans  &trans  &trans                     &none           &none            &none  &none  &none
+              &none   &none   &none   &none   &none   &none   &none                                                  &none   &none      &none     &none     &none       &none  &none
+              &none   &none   &none   &none   &none   &none   &none                                                  &none   &kp PG_UP  &kp HOME  &kp UP    &kp END     &none  &none
+              &none   &none   &none   &none   &none   &none   &none   &none   &none                   &none   &none  &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT   &none  &none
+              &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none  &none   &none      &none     &none     &none       &none  &none
+              &none   &none   &none   &none   &none           &none   &none   &none                   &none   &none  &none              &none     &none     &none       &none  &none
             >;
         };
-
 
         layer_bootloader {
             bindings = <

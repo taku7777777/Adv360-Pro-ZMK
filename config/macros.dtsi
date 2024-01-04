@@ -56,7 +56,7 @@ macro_switch_english: macro_switch_english {
   compatible = "zmk,behavior-macro";
   label = "macro_switch_english";
   #binding-cells = <0>;
-  bindings = <&tog 1>, <&kp INT5>;
+  bindings = <&tog 5>, <&kp INT5>;
 };
 macro_dquotes: macro_dquotes{
 compatible = "zmk,behavior-macro";

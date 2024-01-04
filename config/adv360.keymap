@@ -1,4 +1,4 @@
-  /*
+/*
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
@@ -23,7 +23,7 @@
 
     hm: homerow_mods {
         compatible = "zmk,behavior-hold-tap";
-        label = "HOMEROW_MODS";
+        label = "HOMEROW_MODS"; 
         #binding-cells = <2>;
         tapping-term-ms = <160>;
         quick_tap_ms = <135>;
@@ -48,20 +48,20 @@
 
         number_layer {
             bindings = <
-              &none   &none   &none   &none   &none   &none   &none                                           &none   &none   &none         &kp KP_SLASH  &kp KP_ASTERISK  &none         &none
-              &none   &none   &none   &none   &none   &none   &none                                           &none   &none   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9     &kp KP_MINUS  &none
-              &kp LCTRL    &none   &none   &none   &none   &none   &none           &none   &none   &none           &none   &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6     &kp KP_PLUS   &none
-              &kp LSHIFT   &none   &none   &none   &none   &none                           &none   &none   &none           &none   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3     &kp KP_EQUAL  &none
-              &kp LALT     &none   &none   &none   &none                   &kp LGUI   &trans  &none   &none   &none                   &kp NUMBER_0  &kp KP_DOT    &kp KP_COMMA     &none         &none
+              &none        &none   &none   &none   &none   &none   &none                                                          &none   &none   &none         &kp KP_SLASH  &kp KP_ASTERISK  &none         &none
+              &none        &none   &none   &none   &none   &none   &none                                                          &none   &none   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9     &kp KP_MINUS  &none
+              &kp LCTRL    &none   &none   &none   &none   &none   &none              &none   &none   &none       &none           &none   &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6     &kp KP_PLUS   &none
+              &kp LSHIFT   &none   &none   &none   &none   &none                              &none   &none                               &none   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3     &kp KP_EQUAL  &none
+              &kp LALT     &none   &none   &none   &none                   &kp LGUI   &trans  &none   &kp RCTRL   &none   &none                   &kp NUMBER_0  &kp KP_DOT    &kp KP_COMMA     &none         &none
             >;
         };
 
         arrow_layer {
             bindings = <
-              &none   &none   &none   &none   &none   &none   &none                                                   &none   &none      &none     &none     &none       &none  &none
-              &none   &none   &none   &none   &none   &none   &none                                                   &none   &kp PG_UP  &kp HOME  &kp UP    &kp END     &none  &none
-              &kp LCTRL  &none   &none   &none   &none   &none   &none           &none   &none   &none   &none           &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT   &none  &none
-              &kp LSHIFT &none   &none   &none   &none   &none                           &none   &none                           &none      &none     &none     &none       &none  &none
+              &none      &none   &none   &none   &none   &none   &none                                                      &none   &none      &none     &none     &none       &none  &none
+              &none      &none   &none   &none   &none   &none   &none                                                      &none   &kp PG_UP  &kp HOME  &kp UP    &kp END     &none  &none
+              &kp LCTRL  &none   &none   &none   &none   &none   &none              &none   &none   &none   &none           &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT   &none  &none
+              &kp LSHIFT &none   &none   &none   &none   &none                              &none   &none                           &none      &none     &none     &none       &none  &none
               &kp LALT   &none   &none   &none   &none                   &kp LGUI   &none   &none   &none   &trans  &none                      &none     &none     &none       &none  &none
             >;
         };
@@ -88,11 +88,11 @@
 
         japanese_layer {
             bindings = <
-              &none      &tog 5 &macro_switch_english  &none  &none  &none     &none                                                      &none   &none      &none   &none   &none   &none   &none
-              &none      &kp INT1   &kp INT2    &kp INT3   &kp INT4  &kp INT5  &none                                                      &none   &none      &none   &none   &none   &none   &none
-              &kp LCTRL  &kp LANG3  &kp LANG4   &kp LANG5  &none     &none     &none              &none   &none   &none   &none           &none   &macro_ku  &none   &none   &none   &none   &none
-              &kp LSHIFT &none      &none       &none      &none     &none                                &none   &none                           &none      &none   &none   &none   &none   &none
-              &kp LALT   &none      &none       &none      &none                       &kp LGUI   &none   &none   &none   &trans  &none                      &none   &none   &none   &none   &none
+              &none      &tog 5 &macro_switch_english  &none  &none   &none       &none                                                                                 &none   &none      &none   &none   &none   &none   &none
+              &none      &kp INT1   &kp INT2    &kp INT3   &kp INT4   &kp INT5    &none                                                                                 &none   &none      &none   &none   &none   &none   &none
+              &kp LCTRL  &kp LANG1  &kp LANG2   &kp LANG3  &kp LANG4  &kp LANG5   &kp LANG6                       &none   &none    &none      &none                     &none   &macro_ku  &none   &none   &none   &none   &none
+              &kp LSHIFT &none      &none       &none      &none      &none                                               &none    &none                                        &none      &none   &none   &none   &none   &none
+              &kp LALT   &none      &none       &none      &none                              &hm LGUI TAB  &lt 1 SPACE   &kp ESC  &kp RCTRL  &lt 2 ENTER   &lt 3 BSPC                     &none   &none   &none   &none   &none
             >;
         };
 

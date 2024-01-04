@@ -38,15 +38,25 @@
 
         default_layer {
             bindings = <
-              &none         &none         &hm TILDE CARET   &hm NUBS GRAVE  &hm PRCNT HASH  &none         &none                                                                                                             &none         &none           &none           &none           &none           &none         &lt 3 TAB
-              &kp ESC       &hm LS(Q) Q   &hm LS(W) W       &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &macro_redo                                                                                                       &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I     &hm LS(O) O     &hm LS(P) P     &none
-              &kp LCTRL     &hm LS(A) A   &hm LS(S) S       &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &macro_undo   &kp C_VOLUME_DOWN   &kp C_VOLUME_UP                   &kp C_BRIGHTNESS_DEC    &kp C_BRIGHTNESS_INC  &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K     &hm LS(L) L     &hm COLON SEMI  &hm DQT SQT
-              &sk LSHIFT    &hm LS(Z) Z   &hm LS(X) X       &hm LS(C) C     &hm LS(V) V     &hm LS(B) B   &none         &none               &kp C_MUTE        &none   &none   &kp C_BRIGHTNESS_AUTO   &none                 &none         &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT   &hm QMARK EXCL  &hm PLUS MINUS  &kp RSHFT
-              &kp LEFT_ALT  &hm DLLR AT   &hm PIPE AMPS     &hm STAR FSLH   &hm UNDER EQUAL               &kp LGUI      &kp SPACE           &lt 2 TAB                         &lt 2 TAB               &lt 1 ENTER           &kp BSPC                      &hm RPAR LPAR   &hm RBRC LBRC   &hm GT LT       &hm RBKT LBKT   &kp RIGHT_ALT
+              &none       &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                 &none         &none           &hm DLLR PRCNT           &none           &none             &none           &lt 3 TAB
+              &none       &hm LS(Q) Q     &hm LS(W) W     &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &none                                                                                 &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I     &hm LS(O) O       &hm LS(P) P     &none
+              &kp LCTRL   &hm LS(A) A     &hm LS(S) S     &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &none         &kp C_VOL_DN  &kp C_VOL_UP                  &kp C_BRI_DN  &kp C_BRI_UP  &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K     &hm LS(L) L       &hm COLON SEMI  &hm DQT SQT
+              &sk LSHIFT  &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(B) B   &none         &none         &kp C_MUTE    &none   &none   &none         &none         &none         &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT   &hm GRAVE EQUAL   &hm GT LT       &hm AT UNDER
+              &kp LALT    &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                &hm LGUI TAB  &lt 1 SPACE   &lt ESC                       &kp RCTRL     &lt 2 ENTER   &lt 3 BSPC                    &hm RPAR LPAR   &hm RBRC LBRC   &hm RBKT LBKT     &hm RIGHT_ALT   &none
             >;
         };
 
-        layer_arrow {
+        number_layer {
+            bindings = <
+              &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bootloader                                                   &bootloader   &none   &none         &kp SLASH     &kp ASTERISK  &none       &none
+              &trans  &trans        &trans        &trans        &trans        &trans        &trans                                                        &none         &none   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS   &none
+              &trans  &trans        &trans        &trans        &trans        &trans        &trans        &trans  &trans                  &trans  &trans  &none         &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS    &none
+              &trans  &trans        &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &trans  &trans  &none         &none   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL   &none
+              &trans  &trans        &trans        &trans        &trans                      &trans        &trans  &trans                  &trans  &trans  &none                 &kp NUMBER_0  &kp DOT       &none         &none       &none
+            >;
+        };
+
+        arrow_layer {
             bindings = <
               &trans           &trans           &trans            &trans             &trans  &trans            &trans                                                  &trans     &none           &none           &none            &none  &none  &none
               &trans           &trans    &kp C_MENU_UP            &trans             &trans  &trans            &trans                                                  &trans     &none           &none    &kp UP_ARROW            &none  &none  &none
@@ -56,15 +66,6 @@
             >;
         };
 
-        layer_number {
-            bindings = <
-              &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4       &bootloader                                                  &bootloader  &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &trans
-              &trans        &trans        &kp F9       &kp F10       &kp F11       &kp F12            &trans                                                       &trans        &trans  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9     &kp SLASH  &trans
-              &trans        &trans        &kp F5        &kp F6        &kp F7        &kp F8            &trans  &trans  &trans                  &trans  &trans       &trans        &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK  &trans
-              &trans        &trans        &kp F1        &kp F2        &kp F3        &kp F4            &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3     &kp MINUS  &trans
-              &trans        &trans        &trans        &trans        &trans                          &trans  &trans  &trans                  &trans  &trans       &trans                &kp NUMBER_0       &kp DOT     &kp EQUAL      &kp PLUS  &trans
-            >;
-        };
 
         layer_bootloader {
             bindings = <

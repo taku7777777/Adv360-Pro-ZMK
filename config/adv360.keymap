@@ -20,10 +20,10 @@
 #define DEFAULT  0
 #define KANA     1
 #define QWERTY   2
-#define NUMBER   3
-#define ARROW    2
+#define NUMBER   2
+#define ARROW    3
 #define FUNCTION 4
-#define FIRMWARE 6
+#define FIRMWARE 5
 
 / {
   behaviors {

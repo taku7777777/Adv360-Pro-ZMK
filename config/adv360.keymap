@@ -20,9 +20,9 @@
 #define DEFAULT  0
 #define KANA     1
 #define QWERTY   2
-#define ARROW    3
-#define NUMBER   4
-#define FUNCTION 5
+#define NUMBER   3
+#define ARROW    2
+#define FUNCTION 4
 #define FIRMWARE 6
 
 / {
@@ -46,11 +46,21 @@
 
         default_layer {
             bindings = <
-              &lt 4 TAB   &tog 5          &none           &hm TILDE HASH  &none           &none         &none                                                                                           &none         &none           &hm DLLR PRCNT  &none           &none             &none           &lt 4 TAB
-              &none       &hm LS(Q) Q     &hm LS(W) W     &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &macro_hyper                                                                                    &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I     &hm LS(O) O       &hm LS(P) P     &none
-              &kp LCTRL   &hm LS(A) A     &hm LS(S) S     &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &macro_meh                  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP              &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K     &hm LS(L) L       &hm COLON SEMI  &hm DQT SQT
-              &kp LSHIFT  &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(B) B                                             &kp C_MUTE    &none                                                 &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT   &hm GRAVE EQUAL   &hm GT LT       &hm AT UNDER
-              &kp LALT    &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt 1 SPACE   &kp ESC       &kp RCTRL     &lt 2 ENTER   &lt 3 BSPC                                &hm RPAR LPAR   &hm RBRC LBRC   &hm RBKT LBKT     &hm RIGHT_ALT   &none
+              &lt FIRMWARE TAB  &tog KANA       &none           &hm TILDE HASH  &none           &none         &none                                                                                                           &none         &none           &hm DLLR PRCNT  &none           &none             &none           &lt FIRMWARE TAB
+              &none             &hm LS(Q) Q     &hm LS(W) W     &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &macro_hyper                                                                                                    &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I     &hm LS(O) O       &hm LS(P) P     &none
+              &kp LCTRL         &hm LS(A) A     &hm LS(S) S     &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &macro_meh                  &kp C_VOL_DN       &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP                         &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K     &hm LS(L) L       &hm COLON SEMI  &hm DQT SQT
+              &kp LSHIFT        &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(B) B                                                  &kp C_MUTE    &none                                                            &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT   &hm GRAVE EQUAL   &hm GT LT       &hm AT UNDER
+              &kp LALT          &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt NUMBER SPACE   &kp ESC       &kp RCTRL     &lt ARROW ENTER   &lt FUNCTION BSPC                                &hm RPAR LPAR   &hm RBRC LBRC   &hm RBKT LBKT     &hm RIGHT_ALT   &none
+            >;
+        };
+
+        kana_layer {
+            bindings = <
+              &none      &tog KANA  &none       &none      &none      &none       &none                                                                                                 &none   &none      &none   &none   &none   &none   &none
+              &none      &kp INT1   &kp INT2    &kp INT3   &kp INT4   &kp INT5    &none                                                                                                 &none   &none      &none   &none   &none   &none   &none
+              &kp LCTRL  &kp LANG1  &kp LANG2   &kp LANG3  &kp LANG4  &kp LANG5   &kp LANG6                 &none              &none    &none      &none                                &none   &macro_ku  &none   &none   &none   &none   &none
+              &kp LSHIFT &none      &none       &none      &none      &none                                                    &none    &none                                                   &none      &none   &none   &none   &none   &none
+              &kp LALT   &none      &none       &none      &none                              &hm LGUI TAB  &lt NUMBER SPACE   &kp ESC  &kp RCTRL  &lt  ARROW ENTER   &lt FUNCTION BSPC                    &none   &none   &none   &none   &none
             >;
         };
 
@@ -76,11 +86,11 @@
 
         function_layer {
             bindings = <
-              &none      &none   &none   &none   &none   &none   &none                                                      &none   &none    &none   &none   &none   &none  &none
-              &none      &none   &none   &none   &to 5   &none   &none                                                      &none   &kp F12  &kp F7  &kp F8  &kp F9  &none  &none
-              &kp LCTRL  &none   &none   &none   &tog 5  &none   &none              &none   &none   &none   &none           &none   &kp F11  &kp F4  &kp F5  &kp F6  &none  &none
-              &kp LSHIFT &none   &none   &none   &to 0   &none                              &none   &none                           &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
-              &kp LALT   &none   &none   &none   &none                   &kp LGUI   &none   &none   &none   &none   &trans                   &none   &none   &none   &none  &none
+              &none      &none   &none   &none   &none        &none   &none                                                      &none   &none    &none   &none   &none   &none  &none
+              &none      &none   &none   &none   &to KANA     &none   &none                                                      &none   &kp F12  &kp F7  &kp F8  &kp F9  &none  &none
+              &kp LCTRL  &none   &none   &none   &tog KANA    &none   &none              &none   &none   &none   &none           &none   &kp F11  &kp F4  &kp F5  &kp F6  &none  &none
+              &kp LSHIFT &none   &none   &none   &to DEFAULT  &none                              &none   &none                           &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
+              &kp LALT   &none   &none   &none   &none                        &kp LGUI   &none   &none   &none   &none   &trans                   &none   &none   &none   &none  &none
             >;
         };
 
@@ -94,14 +104,23 @@
             >;
         };
 
-
-        kana_layer {
+        qwerty_layer {
             bindings = <
-              &none      &tog 5 &macro_switch_english  &none  &none   &none       &none                                                                                 &none   &none      &none   &none   &none   &none   &none
-              &none      &kp INT1   &kp INT2    &kp INT3   &kp INT4   &kp INT5    &none                                                                                 &none   &none      &none   &none   &none   &none   &none
-              &kp LCTRL  &kp LANG1  &kp LANG2   &kp LANG3  &kp LANG4  &kp LANG5   &kp LANG6                       &none   &none    &none      &none                     &none   &macro_ku  &none   &none   &none   &none   &none
-              &kp LSHIFT &none      &none       &none      &none      &none                                               &none    &none                                        &none      &none   &none   &none   &none   &none
-              &kp LALT   &none      &none       &none      &none                              &hm LGUI TAB  &lt 1 SPACE   &kp ESC  &kp RCTRL  &lt 2 ENTER   &lt 3 BSPC                     &none   &none   &none   &none   &none
+              &lt 4 TAB   &tog 5          &none           &hm TILDE HASH  &none           &none         &none                                                                                           &none         &none           &hm DLLR PRCNT  &none           &none             &none           &lt 4 TAB
+              &none       &hm LS(Q) Q     &hm LS(W) W     &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &macro_hyper                                                                                    &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I     &hm LS(O) O       &hm LS(P) P     &none
+              &kp LCTRL   &hm LS(A) A     &hm LS(S) S     &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &macro_meh                  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP              &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K     &hm LS(L) L       &hm COLON SEMI  &hm DQT SQT
+              &kp LSHIFT  &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(B) B                                             &kp C_MUTE    &none                                                 &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT   &hm GRAVE EQUAL   &hm GT LT       &hm AT UNDER
+              &kp LALT    &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt 1 SPACE   &kp ESC       &kp RCTRL     &lt 2 ENTER   &lt 3 BSPC                                &hm RPAR LPAR   &hm RBRC LBRC   &hm RBKT LBKT     &hm RIGHT_ALT   &none
+            >;
+        };
+
+        qgmlwy_layer {
+            bindings = <
+              &none       &none          &none           &hm TILDE HASH  &none           &none         &none                                                                                           &none         &none           &hm DLLR PRCNT  &none           &none             &none           &lt 4 TAB
+              &none       &hm LS(Q) Q     &hm LS(W) W     &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &macro_hyper                                                                                    &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I     &hm LS(O) O       &hm LS(P) P     &none
+              &kp LCTRL   &hm LS(A) A     &hm LS(S) S     &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &macro_meh                  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP              &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K     &hm LS(L) L       &hm COLON SEMI  &hm DQT SQT
+              &kp LSHIFT  &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(B) B                                             &kp C_MUTE    &none                                                 &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT   &hm GRAVE EQUAL   &hm GT LT       &hm AT UNDER
+              &kp LALT    &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt 1 SPACE   &kp ESC       &kp RCTRL     &lt 2 ENTER   &lt 3 BSPC                                &hm RPAR LPAR   &hm RBRC LBRC   &hm RBKT LBKT     &hm RIGHT_ALT   &none
             >;
         };
     };

@@ -88,7 +88,7 @@
 
         japanese_layer {
             bindings = <
-              &none   &tog 1 &macro_switch_english  &none  &none  &none     &none                                                   &none   &none      &none   &none   &none   &none   &none
+              &none   &tog 5 &macro_switch_english  &none  &none  &none     &none                                                   &none   &none      &none   &none   &none   &none   &none
               &none   &kp INT1   &kp INT2    &kp INT3   &kp INT4  &kp INT5  &none                                                   &none   &none      &none   &none   &none   &none   &none
               &none   &kp LANG3  &kp LANG4   &kp LANG5  &none     &none     &none           &none   &none   &none   &none           &none   &macro_ku  &none   &none   &none   &none   &none
               &none   &none      &none       &none      &none     &none                             &none   &none                           &none      &none   &none   &none   &none   &none

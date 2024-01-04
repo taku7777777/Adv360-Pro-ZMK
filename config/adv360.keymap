@@ -1,4 +1,4 @@
-/*
+  /*
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
@@ -50,9 +50,9 @@
             bindings = <
               &none   &none   &none   &none   &none   &none   &none                                           &none   &none   &none         &kp KP_SLASH  &kp KP_ASTERISK  &none         &none
               &none   &none   &none   &none   &none   &none   &none                                           &none   &none   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9     &kp KP_MINUS  &none
-              &none   &none   &none   &none   &none   &none   &none           &none   &none   &none           &none   &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6     &kp KP_PLUS   &none
-              &none   &none   &none   &none   &none   &none                           &none   &none   &none           &none   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3     &kp KP_EQUAL  &none
-              &none   &none   &none   &none   &none                   &none   &trans  &none   &none   &none                   &kp NUMBER_0  &kp KP_DOT    &kp KP_COMMA     &none         &none
+              &kp LCTRL    &none   &none   &none   &none   &none   &none           &none   &none   &none           &none   &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6     &kp KP_PLUS   &none
+              &kp LSHIFT   &none   &none   &none   &none   &none                           &none   &none   &none           &none   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3     &kp KP_EQUAL  &none
+              &kp LALT     &none   &none   &none   &none                   &kp LGUI   &trans  &none   &none   &none                   &kp NUMBER_0  &kp KP_DOT    &kp KP_COMMA     &none         &none
             >;
         };
 
@@ -60,9 +60,9 @@
             bindings = <
               &none   &none   &none   &none   &none   &none   &none                                                   &none   &none      &none     &none     &none       &none  &none
               &none   &none   &none   &none   &none   &none   &none                                                   &none   &kp PG_UP  &kp HOME  &kp UP    &kp END     &none  &none
-              &none   &none   &none   &none   &none   &none   &none           &none   &none   &none   &none           &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT   &none  &none
-              &none   &none   &none   &none   &none   &none                           &none   &none                           &none      &none     &none     &none       &none  &none
-              &none   &none   &none   &none   &none                   &none   &none   &none   &none   &trans  &none                      &none     &none     &none       &none  &none
+              &kp LCTRL  &none   &none   &none   &none   &none   &none           &none   &none   &none   &none           &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT   &none  &none
+              &kp LSHIFT &none   &none   &none   &none   &none                           &none   &none                           &none      &none     &none     &none       &none  &none
+              &kp LALT   &none   &none   &none   &none                   &kp LGUI   &none   &none   &none   &trans  &none                      &none     &none     &none       &none  &none
             >;
         };
 
@@ -70,9 +70,9 @@
             bindings = <
               &none   &none   &none   &none   &none   &none   &none                                                   &none   &none    &none   &none   &none   &none  &none
               &none   &none   &none   &none   &none   &none   &none                                                   &none   &kp F12  &kp F7  &kp F8  &kp F9  &none  &none
-              &none   &none   &none   &none   &none   &none   &none           &none   &none   &none   &none           &none   &kp F11  &kp F4  &kp F5  &kp F6  &none  &none
-              &none   &none   &none   &none   &none   &none                           &none   &none                           &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
-              &none   &none   &none   &none   &none                   &none   &none   &none   &none   &none   &trans                   &none   &none   &none   &none  &none
+              &kp LCTRL  &none   &none   &none   &none   &none   &none           &none   &none   &none   &none           &none   &kp F11  &kp F4  &kp F5  &kp F6  &none  &none
+              &kp LSHIFT &none   &none   &none   &none   &none                           &none   &none                           &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
+              &kp LALT   &none   &none   &none   &none                   &kp LGUI   &none   &none   &none   &none   &trans                   &none   &none   &none   &none  &none
             >;
         };
 
@@ -84,15 +84,15 @@
               &none   &none        &none        &none        &none        &none                                                &bt BT_CLR &bt BT_CLR                                         &none         &none         &none         &none         &none         &none
               &none   &none        &none        &bl BL_INC   &bl BL_DEC                             &rgb_ug RGB_TOG &bl BL_TOG &none      &none      &bl BL_TOG &rgb_ug RGB_TOG                            &bl BL_INC    &bl BL_DEC    &none         &none         &none
             >;
-        };
+        };  
 
         japanese_layer {
             bindings = <
-              &none   &tog 5 &macro_switch_english  &none  &none  &none     &none                                                   &none   &none      &none   &none   &none   &none   &none
-              &none   &kp INT1   &kp INT2    &kp INT3   &kp INT4  &kp INT5  &none                                                   &none   &none      &none   &none   &none   &none   &none
-              &none   &kp LANG3  &kp LANG4   &kp LANG5  &none     &none     &none           &none   &none   &none   &none           &none   &macro_ku  &none   &none   &none   &none   &none
-              &none   &none      &none       &none      &none     &none                             &none   &none                           &none      &none   &none   &none   &none   &none
-              &none   &none      &none       &none      &none                       &none   &none   &none   &none   &trans  &none                      &none   &none   &none   &none   &none
+              &none      &tog 5 &macro_switch_english  &none  &none  &none     &none                                                      &none   &none      &none   &none   &none   &none   &none
+              &none      &kp INT1   &kp INT2    &kp INT3   &kp INT4  &kp INT5  &none                                                      &none   &none      &none   &none   &none   &none   &none
+              &kp LCTRL  &kp LANG3  &kp LANG4   &kp LANG5  &none     &none     &none              &none   &none   &none   &none           &none   &macro_ku  &none   &none   &none   &none   &none
+              &kp LSHIFT &none      &none       &none      &none     &none                                &none   &none                           &none      &none   &none   &none   &none   &none
+              &kp LALT   &none      &none       &none      &none                       &kp LGUI   &none   &none   &none   &trans  &none                      &none   &none   &none   &none   &none
             >;
         };
 

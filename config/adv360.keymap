@@ -38,7 +38,7 @@
 
         default_layer {
             bindings = <
-              &none       &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                 &none         &none           &hm DLLR PRCNT  &none           &none             &none           &lt 4 TAB
+              &lt 4 TAB   &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                 &none         &none           &hm DLLR PRCNT  &none           &none             &none           &lt 4 TAB
               &none       &hm LS(Q) Q     &hm LS(W) W     &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &none                                                                                 &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I     &hm LS(O) O       &hm LS(P) P     &none
               &kp LCTRL   &hm LS(A) A     &hm LS(S) S     &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &none         &kp C_VOL_DN  &kp C_VOL_UP                  &kp C_BRI_DN  &kp C_BRI_UP  &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K     &hm LS(L) L       &hm COLON SEMI  &hm DQT SQT
               &kp LSHIFT  &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(B) B   &none         &none         &kp C_MUTE    &none   &none   &none         &none         &none         &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT   &hm GRAVE EQUAL   &hm GT LT       &hm AT UNDER
@@ -68,21 +68,21 @@
 
         function_layer {
             bindings = <
-              &none   &none   &none   &none   &none   &none   &none                                                   &none   &none      &none     &none     &none       &none  &none
-              &none   &none   &none   &none   &none   &none   &none                                                   &none   &kp PG_UP  &kp HOME  &kp UP    &kp END     &none  &none
-              &none   &none   &none   &none   &none   &none   &none   &none   &none                   &none   &none   &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT   &none  &none
-              &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none      &none     &none     &none       &none  &none
-              &none   &none   &none   &none   &none           &none   &none   &none                   &none   &none   &trans             &none     &none     &none       &none  &none
+              &none   &none   &none   &none   &none   &none   &none                                                   &none   &none    &none   &none   &none   &none  &none
+              &none   &none   &none   &none   &none   &none   &none                                                   &none   &kp F12  &kp F7  &kp F8  &kp F9  &none  &none
+              &none   &none   &none   &none   &none   &none   &none   &none   &none                   &none   &none   &none   &kp F11  &kp F4  &kp F5  &kp F6  &none  &none
+              &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &none   &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
+              &none   &none   &none   &none   &none           &none   &none   &none                   &none   &none   &trans           &none   &none   &none   &none  &none
             >;
         };
 
-        layer_bootloader {
+        bootloader_layer {
             bindings = <
-              &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                    &none       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none
-              &none &none        &none        &none        &none        &none        &bootloader                                                                              &bootloader &none         &none         &none         &none         &none         &none
-              &none &none        &none        &none        &none        &none        &none           &none      &none                  &none      &none      &none            &none       &none         &none         &none         &none         &none         &none
-              &none &none        &none        &none        &none        &none        &none           &bt BT_CLR &bt BT_CLR &none &none &bt BT_CLR &bt BT_CLR                  &none       &none         &none         &none         &none         &none         &none
-              &none &none        &none        &bl BL_INC   &bl BL_DEC                &rgb_ug RGB_TOG &bl BL_TOG &none                  &none      &bl BL_TOG &rgb_ug RGB_TOG              &bl BL_INC    &bl BL_DEC    &none         &none         &none         &none
+              &trans  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                    &none       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
+              &none   &none        &none        &none        &none        &none        &bootloader                                                                              &bootloader &none         &none         &none         &none         &none         &none
+              &none   &none        &none        &none        &none        &none        &none           &none      &none                  &none      &none      &none            &none       &none         &none         &none         &none         &none         &none
+              &none   &none        &none        &none        &none        &none        &none           &bt BT_CLR &bt BT_CLR &none &none &bt BT_CLR &bt BT_CLR                  &none       &none         &none         &none         &none         &none         &none
+              &none   &none        &none        &bl BL_INC   &bl BL_DEC                &rgb_ug RGB_TOG &bl BL_TOG &none                  &none      &bl BL_TOG &rgb_ug RGB_TOG              &bl BL_INC    &bl BL_DEC    &none         &none         &none         &none
             >;
         };
 

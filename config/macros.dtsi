@@ -44,7 +44,7 @@ macro_quotes: macro_quotes {
 m_kana: m_kana {
   compatible = "zmk,behavior-macro-two-param";
   label = "m_kana";
-  #binding-cells = <2>; // Must be 2
+  #binding-cells = <2>;
   bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
 };
 

@@ -1,4 +1,4 @@
-  macro_redo: macro_redo {
+macro_redo: macro_redo {
   compatible = "zmk,behavior-macro";
   label = "macro_redo";
   #binding-cells = <0>;
@@ -44,8 +44,8 @@ macro_quotes: macro_quotes {
 m_kana: m_kana {
   compatible = "zmk,behavior-macro-two-param";
   label = "m_kana";
-  #binding-cells = <2>;
-  bindings = <&kp>, <&kp>;
+  #binding-cells = <2>; // Must be 2
+  bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
 };
 
 macro_ku: macro_ku {

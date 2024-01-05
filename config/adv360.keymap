@@ -57,10 +57,10 @@
     */
   combos {
     compatible = "zmk,combos";
-    combo_kana_se_sample1 {
-      timeout-ms = <10000>;
-      key-positions = <0 1>;
-      bindings = <&m_kana S E>;
+    combo_kana_bo {
+      timeout-ms = <2000>;
+      key-positions = <47 68>;
+      bindings = <&kp B &kp O>;
       layers = <KANA>;
     };
   };

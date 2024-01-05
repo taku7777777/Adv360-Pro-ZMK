@@ -63,8 +63,8 @@
             bindings = <
               &tog KANA  &none          &none           &none           &none           &none       &none                                                                                                   &none   &none      &none          &none          &none          &none           &none
               &none      &kp INT1       &kp INT2        &kp INT3        &kp INT4        &kp INT5    &none                                                                                                   &none   &none      &none          &none          &none          &none           &none
-              &kp LCTRL  &kp LANG1      &kp LANG2       &kp LANG3       &kp LANG4       &kp LANG5   &kp LANG6                 &none              &none    &none      &none                                  &none   &macro_ku  &none          &none          &none          &none           &none
-              &kp LSHIFT &none          &none           &none           &none           &none                                                    &none    &none                                                     &none      &none          &none          &none          &none           &none
+              &kp LCTRL  &kp UNDER      &kp LANG2       &kp LANG3       &kp LANG4       &kp LANG5   &kp LANG6                 &none              &none    &none      &none                                  &none   &macro_ku  &none          &none          &none          &none           &none
+              &kp LSHIFT &kp MINUS      &none           &none           &none           &none                                                    &none    &none                                                     &m_kana k u      &none          &none          &none          &none           &none
               &kp LALT   &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                          &hm LGUI TAB  &lt NUMBER SPACE   &kp ESC  &kp RCTRL  &lt  ARROW ENTER   &lt FUNCTION BSPC                      &hm RPAR LPAR  &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
             >;
         };

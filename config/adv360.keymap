@@ -17,6 +17,8 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/backlight.h>
 
+#include "macros.dtsi"
+
 #define DEFAULT   0
 #define KANA      1
 #define KANA_2    2
@@ -34,7 +36,6 @@
 
 / {
   behaviors {
-    #include "macros.dtsi"
 
     hm: homerow_mods {
         compatible = "zmk,behavior-hold-tap";
@@ -62,7 +63,7 @@
         tapping-term-ms = <160>;
         quick_tap_ms = <135>;
         flavor = "hold-preferred";
-        bindings = <&mo>, <&macro_kana>;
+        bindings = <&mo>, <&macro_kana_ka>;
     };
     mh_ma: ma_mo_on_hold {
         compatible = "zmk,behavior-hold-tap";
@@ -71,7 +72,7 @@
         tapping-term-ms = <160>;
         quick_tap_ms = <135>;
         flavor = "hold-preferred";
-        bindings = <&mo KANA_3>, <&m_kana M A>;
+        bindings = <&mo>, <&macro_kana_ma>;
     };
     mh_mo: mo_mo_on_hold {
         compatible = "zmk,behavior-hold-tap";
@@ -80,7 +81,7 @@
         tapping-term-ms = <160>;
         quick_tap_ms = <135>;
         flavor = "hold-preferred";
-        bindings = <&mo KANA_3>, <&m_kana M O>;
+        bindings = <&mo>, <&macro_kana_mo>;
     };
   };
 
@@ -127,18 +128,18 @@
             bindings = <
               &none       &none          &none           &none          &none        &none         &none                                                                                                            &none   &none        &none          &none          &none          &none           &none
               &none       &none          &m_kana K I     &m_kana T E    &m_kana S I  &none         &none                                                                                                            &none   &none        &none          &m_kana R U    &m_kana S U    &m_kana H E     &none
-              &kp LCTRL   &m_kana R O    &m_kana K E     &m_kana T O    &mh_ka KANA_3 K   &m_small_tsu  &none                   &none              &none           &none            &none                                &none   &m_kana K U  &mh KANA_3 A   &kp I          &kp U          &kp KP_MINUS    &none
+              &kp LCTRL   &m_kana R O    &m_kana K E     &m_kana T O    &mh_ka KANA_4 K   &m_small_tsu  &none                   &none              &none           &none            &none                           &none   &m_kana K U  &mh KANA_3 A   &kp I          &kp U          &kp KP_MINUS    &none
               &kp LSHIFT  &m_kana H O    &m_kana H I     &m_kana H A    &m_kana K O  &m_kana S O                                              &none           &none                                                         &m_kana T A  &m_kana N A    &m_kana N N    &m_kana R A    &m_kana R A     &none
               &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                 &m_def_cmd   &lt NUMBER SPACE   &lt KANA_2 ESC  &lt KANA_2 RCTRL  &lt ARROW ENTER  &lt FUNCTION BSPC                       &hm RPAR LPAR  &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
             >;
         };
         kana_layer_2 {
             bindings = <
-              &tog KANA   &none          &none           &none          &none        &none         &none                                                                                          &none   &none        &none          &none          &none          &none           &none
-              &none       &none          &m_kana N U     &m_kana R I    &m_kana N E  &none         &none                                                                                          &none   &none        &m_kana S A    &m_kana Y O    &kp E          &m_kana Y U     &none
-              &kp LCTRL   &m_kana S E    &m_kana M E     &m_kana N I    &mh_ma M A   &m_kana T I   &none                   &none              &none   &none   &none                               &none   &m_kana Y A  &m_kana N O    &mh_mo M O    &m_kana T U    &m_kana H U     &none
-              &kp LSHIFT  &trans         &trans          &m_kana W O    &kp COMMA    &m_kana P I                                              &none   &none                                               &kp O        &kp PERIOD     &m_kana M U    &m_kana W A    &trans          &none
-              &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                 &m_def_cmd   &lt NUMBER SPACE   &trans  &trans  &lt ARROW ENTER  &lt FUNCTION BSPC                       &hm RPAR LPAR  &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
+              &tog KANA   &none          &none           &none          &none        &none         &none                                                                                          &none   &none        &none          &none              &none          &none           &none
+              &none       &none          &m_kana N U     &m_kana R I    &m_kana N E  &none         &none                                                                                          &none   &none        &m_kana S A    &m_kana Y O        &kp E          &m_kana Y U     &none
+              &kp LCTRL   &m_kana S E    &m_kana M E     &m_kana N I    &mh_ma KANA_4 M   &m_kana T I   &none                   &none              &none   &none   &none                          &none   &m_kana Y A  &m_kana N O    &mh_mo KANA_4 M    &m_kana T U    &m_kana H U     &none
+              &kp LSHIFT  &trans         &trans          &m_kana W O    &kp COMMA    &m_kana P I                                              &none   &none                                               &kp O        &kp PERIOD     &m_kana M U        &m_kana W A    &trans          &none
+              &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                 &m_def_cmd   &lt NUMBER SPACE   &trans  &trans  &lt ARROW ENTER  &lt FUNCTION BSPC                       &hm RPAR LPAR  &hm RBRC LBRC      &hm RBKT LBKT  &hm BSLH CARET  &none
             >;
         };
 

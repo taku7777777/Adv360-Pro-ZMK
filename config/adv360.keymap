@@ -1,142 +1,99 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
+macro_redo: macro_redo {
+  compatible = "zmk,behavior-macro";
+  label = "macro_redo";
+  #binding-cells = <0>;
+  bindings = <&macro_press &kp LEFT_COMMAND>, <&macro_tap &kp Z>, <&macro_release &kp LEFT_COMMAND>;
+};
+macro_undo: macro_undo {
+  compatible = "zmk,behavior-macro";
+  label = "macro_undo";
+  #binding-cells = <0>;
+  bindings = <&macro_press &kp LSHIFT &kp LEFT_COMMAND>, <&macro_tap &kp Z>, <&macro_release &kp LSHIFT &kp LEFT_COMMAND>;
+};
+macro_back: macro_back {
+  compatible = "zmk,behavior-macro";
+  label = "macro_back";
+  #binding-cells = <0>;
+  bindings = <&macro_press &kp LEFT_COMMAND>, <&macro_tap &kp LEFT_BRACKET>, <&macro_release &kp LEFT_COMMAND>;
+};
+macro_next: macro_next {
+  compatible = "zmk,behavior-macro";
+  label = "macro_next";
+  #binding-cells = <0>;
+  bindings = <&macro_press &kp LEFT_COMMAND>, <&macro_tap &kp RIGHT_BRACKET>, <&macro_release &kp LEFT_COMMAND>;
+};
+macro_hyper: macro_hyper {
+  compatible = "zmk,behavior-macro";
+  label = "macro_hyper";
+  #binding-cells = <0>;
+  bindings = <&macro_press &kp LCMD>, <&macro_press &kp LCTRL>, <&macro_press &kp LSHFT>, <&macro_press &kp LALT>;
+};
+macro_meh: macro_meh {
+  compatible = "zmk,behavior-macro";
+  label = "macro_meh";
+  #binding-cells = <0>;
+  bindings = <&macro_press &kp LCTRL>, <&macro_press &kp LSHFT>, <&macro_press &kp LALT>;
+};
+macro_quotes: macro_quotes {
+  compatible = "zmk,behavior-macro";
+  label = "macro_quotes";
+  #binding-cells = <0>;
+  bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>;
+};
 
+m_kana: m_kana {
+  compatible = "zmk,behavior-macro-two-param";
+  label = "m_kana";
+  #binding-cells = <2>; // Must be 2
+  bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
+};
 
-/* THIS FILE WAS GENERATED!
- *
- * This file was generated automatically. You may or may not want to
- * edit it directly.
- */
+macro_ku: macro_ku {
+  compatible = "zmk,behavior-macro";
+  label = "macro_ku";
+  #binding-cells = <0>;
+  bindings = <&kp K>, <&kp U>;
+};
 
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/backlight.h>
-
-#define DEFAULT  0
-#define KANA     1
-#define QWERTY   2
-#define NUMBER   3
-#define ARROW    4
-#define FUNCTION 5
-#define FIRMWARE 6
-
-/ {
-  behaviors {
-    #include "macros.dtsi"
-
-    hm: homerow_mods {
-        compatible = "zmk,behavior-hold-tap";
-        label = "HOMEROW_MODS"; 
-        #binding-cells = <2>;
-        tapping-term-ms = <160>;
-        quick_tap_ms = <135>;
-        flavor = "tap-preferred";
-        bindings = <&kp>, <&kp>;
-    };
-  };
-
-    keymap {
-        compatible = "zmk,keymap";
-
-
-        default_layer {
-            bindings = <
-              &lt FIRMWARE TAB  &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                                            &none         &none           &hm DLLR PRCNT  &none            &none          &none            &lt FIRMWARE TAB
-              &none             &hm LS(Q) Q     &hm LS(G) G     &hm LS(M) M     &hm LS(L) L     &hm LS(W) W   &macro_hyper                                                                                                     &macro_next   &hm LS(Y) Y     &hm LS(F) F     &hm LS(U) U      &hm LS(B) B    &hm AT UNDER     &none
-              &kp LCTRL         &hm LS(D) D     &hm LS(S) S     &hm LS(T) T     &hm LS(N) N     &hm LS(R) R   &macro_meh                  &kp C_VOL_DN       &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP                          &macro_back   &hm LS(A) A     &hm LS(I) I     &hm LS(E) E      &hm LS(O) O    &hm LS(H) H      &hm DQT SQT
-              &kp LSHIFT        &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(J) J                                                  &kp C_MUTE    &none                                                             &hm LS(N) N     &hm LS(P) P     &hm COMMA DOT    &hm GT LT      &hm GRAVE EQUAL  &hm COLON SEMI
-              &kp LALT          &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt NUMBER SPACE   &kp ESC       &kp RCTRL     &lt  ARROW ENTER   &lt FUNCTION BSPC                                &hm RPAR LPAR   &hm RBRC LBRC    &hm RBKT LBKT  &hm BSLH CARET   &none
-            >;
-        };
-
-        /* 
-         * 日本語かな入力 (薙刀式)
-         * 
-         * refer: https://oookaworks.seesaa.net/article/500180437.html
-         */
-        kana_layer {
-            bindings = <
-              &tog KANA  &none          &none           &none           &none           &none       &none                                                                                                   &none   &none      &none          &none          &none          &none           &none
-              &none      &kp INT1       &kp INT2        &kp INT3        &kp INT4        &kp INT5    &none                                                                                                   &none   &none      &none          &none          &none          &none           &none
-              &kp LCTRL  &kp UNDER      &kp LANG2       &kp LANG3       &kp LANG4       &kp LANG5   &kp LANG6                 &none              &none    &none      &none                                  &none   &macro_ku  &none          &none          &none          &none           &none
-              &kp LSHIFT &kp MINUS      &none           &none           &none           &none                                                    &none    &none                                                     &m_kana k u      &none          &none          &none          &none           &none
-              &kp LALT   &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                          &hm LGUI TAB  &lt NUMBER SPACE   &kp ESC  &kp RCTRL  &lt  ARROW ENTER   &lt FUNCTION BSPC                      &hm RPAR LPAR  &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
-            >;
-        };
-
-        /* 
-         * qwerty配列
-         * 
-         * refer: https://trap.jp/post/1293/
-         */
-        qwerty_layer {
-            bindings = <
-              &lt FIRMWARE TAB  &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                                            &none         &none           &hm DLLR PRCNT  &none          &none            &none            &lt FIRMWARE TAB
-              &none             &hm LS(Q) Q     &hm LS(W) W     &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &macro_hyper                                                                                                     &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I    &hm LS(O) O      &hm LS(P) P      &none
-              &kp LCTRL         &hm LS(A) A     &hm LS(S) S     &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &macro_meh                       &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP                          &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K    &hm LS(L) L      &hm AT UNDER     &hm DQT SQT
-              &kp LSHIFT        &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(B) B                                                  &kp C_MUTE    &none                                                             &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT  &hm GT LT        &hm GRAVE EQUAL  &hm COLON SEMI
-              &kp LALT          &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt NUMBER SPACE   &kp ESC       &kp RCTRL     &lt  ARROW ENTER   &lt FUNCTION BSPC                                &hm RPAR LPAR   &hm RBRC LBRC  &hm RBKT LBKT    &hm BSLH CARET   &none
-            >;
-        };
-
-        number_layer {
-            bindings = <
-              &none        &none   &none   &none   &none   &none   &none                                                          &none   &none   &none         &kp KP_SLASH  &kp KP_ASTERISK  &none         &none
-              &none        &none   &none   &none   &none   &none   &none                                                          &none   &none   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9     &kp KP_MINUS  &none
-              &kp LCTRL    &none   &none   &none   &none   &none   &none              &none   &none   &none       &none           &none   &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6     &kp KP_PLUS   &none
-              &kp LSHIFT   &none   &none   &none   &none   &none                              &none   &none                               &none   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3     &kp KP_EQUAL  &none
-              &kp LALT     &none   &none   &none   &none                   &kp LGUI   &trans  &none   &kp RCTRL   &none   &none                   &kp NUMBER_0  &kp KP_DOT    &kp KP_COMMA     &none         &none
-            >;
-        };
-
-        arrow_layer {
-            bindings = <
-              &none      &none   &none   &none   &none   &none   &none                                                      &none   &none      &none     &none     &none       &none  &none
-              &none      &none   &none   &none   &none   &none   &none                                                      &none   &kp PG_UP  &kp HOME  &kp UP    &kp END     &none  &none
-              &kp LCTRL  &none   &none   &none   &none   &none   &none              &none   &none   &none   &none           &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT   &none  &none
-              &kp LSHIFT &none   &none   &none   &none   &none                              &none   &none                           &none      &none     &none     &none       &none  &none
-              &kp LALT   &none   &none   &none   &none                   &kp LGUI   &none   &none   &none   &trans  &none                      &none     &none     &none       &none  &none
-            >;
-        };
-
-        function_layer {
-            bindings = <
-              &none      &none   &none   &none        &none        &none   &none                                                      &none   &none    &none   &none   &none   &none  &none
-              &none      &none   &none   &to QWERTY   &tog QWERTY  &none   &none                                                      &none   &kp F12  &kp F7  &kp F8  &kp F9  &none  &none
-              &kp LCTRL  &none   &none   &to KANA     &tog KANA    &none   &none              &none   &none   &none   &none           &none   &kp F11  &kp F4  &kp F5  &kp F6  &none  &none
-              &kp LSHIFT &none   &none   &none        &to DEFAULT  &none                              &none   &none                           &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
-              &kp LALT   &none   &none   &none        &none                        &kp LGUI   &none   &none   &none   &none   &trans                   &none   &none   &none   &none  &none
-            >;
-        };
-
-        bootloader_layer {
-            bindings = <
-              &trans  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                     &none       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
-              &none   &none        &none        &none        &none        &none        &bootloader                                                                               &bootloader &none         &none         &none         &none         &none         &none
-              &none   &none        &none        &none        &none        &none        &none                        &bt BT_CLR &bt BT_CLR &bt BT_CLR &bt BT_CLR                  &none       &none         &none         &none         &none         &none         &none
-              &none   &none        &none        &none        &none        &none                                                &bt BT_CLR &bt BT_CLR                                         &none         &none         &none         &none         &none         &none
-              &none   &none        &none        &bl BL_INC   &bl BL_DEC                             &rgb_ug RGB_TOG &bl BL_TOG &none      &none      &bl BL_TOG &rgb_ug RGB_TOG                            &bl BL_INC    &bl BL_DEC    &none         &none         &none
-            >;
-        };
-  
-        /* 
-         * qgmlwy配列
-         * 
-         * refer: https://trap.jp/post/1293/
-         */
-        qgmlwy_layer {
-            bindings = <
-              &lt FIRMWARE TAB  &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                                            &none         &none           &hm DLLR PRCNT  &none            &none          &none            &lt FIRMWARE TAB
-              &none             &hm LS(Q) Q     &hm LS(G) G     &hm LS(M) M     &hm LS(L) L     &hm LS(W) W   &macro_hyper                                                                                                     &macro_next   &hm LS(Y) Y     &hm LS(F) F     &hm LS(U) U      &hm LS(B) B    &hm AT UNDER     &none
-              &kp LCTRL         &hm LS(D) D     &hm LS(S) S     &hm LS(T) T     &hm LS(N) N     &hm LS(R) R   &macro_meh                  &kp C_VOL_DN       &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP                          &macro_back   &hm LS(H) H     &hm LS(I) I     &hm LS(E) E      &hm LS(O) O    &hm LS(H) H         &hm DQT SQT
-              &kp LSHIFT        &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(J) J                                                  &kp C_MUTE    &none                                                             &hm LS(N) N     &hm LS(P) P     &hm COMMA DOT    &hm GT LT      &hm GRAVE EQUAL  &hm COLON SEMI
-              &kp LALT          &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt NUMBER SPACE   &kp ESC       &kp RCTRL     &lt  ARROW ENTER   &lt FUNCTION BSPC                                &hm RPAR LPAR   &hm RBRC LBRC    &hm RBKT LBKT  &hm BSLH CARET   &none
-            >;
-        };
-    };
+macro_switch_japanese: macro_switch_japanese {
+  compatible = "zmk,behavior-macro";
+  label = "macro_switch_japanese";
+  #binding-cells = <0>;
+  bindings = <&tog 5>, <&kp INT2>;
+};
+macro_switch_english: macro_switch_english {
+  compatible = "zmk,behavior-macro";
+  label = "macro_switch_english";
+  #binding-cells = <0>;
+  bindings = <&tog 5>, <&kp INT5>;
+};
+macro_dquotes: macro_dquotes{
+compatible = "zmk,behavior-macro";
+label = "macro_dquotes";
+#binding-cells = <0>;
+bindings = <&kp DQT>, <&kp DQT>, <&kp LEFT>;
+};
+macro_braces: macro_braces{
+compatible = "zmk,behavior-macro";
+label = "macro_braces";
+#binding-cells = <0>;
+bindings = <&kp LBRC>, <&kp RBRC>, <&kp LEFT>;
+};
+macro_parens: macro_parens{
+compatible = "zmk,behavior-macro";
+label = "macro_parens";
+#binding-cells = <0>;
+bindings = <&kp LPAR>, <&kp RPAR>, <&kp LEFT>;
+};
+macro_brackets: macro_brackets{
+compatible = "zmk,behavior-macro";
+label = "macro_brackets";
+#binding-cells = <0>;
+bindings = <&kp LBKT>, <&kp RBKT>, <&kp LEFT>;
+};
+macro_kinesis: macro_kinesis{
+compatible = "zmk,behavior-macro";
+label = "macro_kinesis";
+#binding-cells = <0>;
+bindings = <&kp LS(K)>, <&kp I>, <&kp N>, <&kp E>, <&kp S>, <&kp I>, <&kp S>;
 };

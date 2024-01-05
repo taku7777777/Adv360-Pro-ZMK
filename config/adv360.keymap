@@ -22,12 +22,13 @@
 #define KANA_2    2
 #define KANA_3    3
 #define KANA_4    4
-#define QWERTY    5
-#define NUMBER    6
-#define ARROW     7
-#define FUNCTION  8
-#define FIRMWARE  9
-#define QGMLWY   10
+#define KANA_5    5
+#define QWERTY    6
+#define NUMBER    7
+#define ARROW     8
+#define FUNCTION  9
+#define FIRMWARE 10
+#define QGMLWY   11
 
 #define COMBO_TIMEOUT 30
 
@@ -66,7 +67,7 @@
     mh_ma: ma_mo_on_hold {
         compatible = "zmk,behavior-hold-tap";
         label = "ma_mo_on_hold"; 
-        #binding-cells = <2>;
+        #binding-cells = <2>;1
         tapping-term-ms = <160>;
         quick_tap_ms = <135>;
         flavor = "hold-preferred";
@@ -109,7 +110,7 @@
 
         default_layer {
             bindings = <
-              &lt FIRMWARE TAB  &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                                            &none         &none           &hm DLLR PRCNT  &none            &none          &none            &lt FIRMWARE TAB
+              &lt FIRMWARE TAB  &lt QGMLWY TAB  &none           &hm TILDE HASH  &none           &none         &none                                                                                                            &none         &none           &hm DLLR PRCNT  &none            &none          &lt QGMLWY TAB   &lt FIRMWARE TAB
               &none             &hm LS(Q) Q     &hm LS(G) G     &hm LS(M) M     &hm LS(L) L     &hm LS(W) W   &macro_hyper                                                                                                     &macro_next   &hm LS(Y) Y     &hm LS(F) F     &hm LS(U) U      &hm LS(B) B    &hm AT UNDER     &none
               &kp LCTRL         &hm LS(D) D     &hm LS(S) S     &hm LS(T) T     &hm LS(N) N     &hm LS(R) R   &macro_meh                  &kp C_VOL_DN       &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP                          &macro_back   &hm LS(A) A     &hm LS(I) I     &hm LS(E) E      &hm LS(O) O    &hm LS(H) H      &hm DQT SQT
               &kp LSHIFT        &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(J) J                                                  &kp C_MUTE    &none                                                             &hm LS(K) K     &hm LS(P) P     &hm COMMA DOT    &hm GT LT      &hm GRAVE EQUAL  &hm SEMI COLON

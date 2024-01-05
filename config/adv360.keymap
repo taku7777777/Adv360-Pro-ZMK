@@ -91,7 +91,7 @@
         flavor = "hold-preferred";
         bindings = <&mo>, <&macro_kana_na>;
     };
-    ko_ko: ko_mo_on_hold {
+    mh_ko: ko_mo_on_hold {
         compatible = "zmk,behavior-hold-tap";
         label = "ko_mo_on_hold"; 
         #binding-cells = <2>;

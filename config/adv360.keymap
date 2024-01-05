@@ -46,14 +46,14 @@
         bindings = <&kp>, <&kp>;
     };
 
-    mh_a: a_mo_on_hold {
+    mh: mo_on_hold {
         compatible = "zmk,behavior-hold-tap";
-        label = "a_mo_on_hold"; 
+        label = "mo_on_hold"; 
         #binding-cells = <2>;
         tapping-term-ms = <160>;
         quick_tap_ms = <135>;
         flavor = "hold-preferred";
-        bindings = <&mo KANA_3>, <&kp A>;
+        bindings = <&mo>, <&kp>;
     };
     mh_ka: ka_mo_on_hold {
         compatible = "zmk,behavior-hold-tap";
@@ -127,7 +127,7 @@
             bindings = <
               &none       &none          &none           &none          &none        &none         &none                                                                                                            &none   &none        &none          &none          &none          &none           &none
               &none       &none          &m_kana K I     &m_kana T E    &m_kana S I  &none         &none                                                                                                            &none   &none        &none          &m_kana R U    &m_kana S U    &m_kana H E     &none
-              &kp LCTRL   &m_kana R O    &m_kana K E     &m_kana T O    &mh_ka K A   &m_small_tsu  &none                   &none              &none           &none            &none                                &none   &m_kana K U  &mh_a A A      &kp I          &kp U          &kp KP_MINUS    &none
+              &kp LCTRL   &m_kana R O    &m_kana K E     &m_kana T O    &mh_ka K A   &m_small_tsu  &none                   &none              &none           &none            &none                                &none   &m_kana K U  &mh KANA_3 A   &kp I          &kp U          &kp KP_MINUS    &none
               &kp LSHIFT  &m_kana H O    &m_kana H I     &m_kana H A    &m_kana K O  &m_kana S O                                              &none           &none                                                         &m_kana T A  &m_kana N A    &m_kana N N    &m_kana R A    &m_kana R A     &none
               &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                 &m_def_cmd   &lt NUMBER SPACE   &lt KANA_2 ESC  &lt KANA_2 RCTRL  &lt ARROW ENTER  &lt FUNCTION BSPC                       &hm RPAR LPAR  &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
             >;
@@ -164,6 +164,18 @@
               &none  &none  &none  &none  &none  &none  &none         &none  &none  &none  &none         &none  &m_kana G U  &m_kana G A  &none  &m_kana D U  &m_kana B U  &none
               &none  &none  &none  &none  &none  &none                       &none  &none                       &m_kana D A  &none        &none  &none        &none        &none
               &none  &none  &none  &none  &none                &none  &none  &none  &none  &none  &none                      &none        &none  &none        &none        &none
+            >;
+        };
+        /* 
+         * 日本語かな入力 (薙刀式 - 半濁音1)
+         */
+        kana_layer_5 {
+            bindings = <
+              &none   &none        &none        &none        &none  &none   &none                                            &none   &none  &none  &none  &none  &none  &none
+              &none   &none        &none        &none        &none  &none   &none                                            &none   &none  &none  &none  &none  &none  &none
+              &none   &none        &none        &none        &none  &none   &none         &none  &none  &none  &none         &none   &none  &none  &none  &none  &none  &none
+              &none   &m_kana P O  &m_kana P I  &m_kana P A  &none  &none                        &none  &none                        &none  &none  &none  &none  &none  &none
+              &none   &none        &none        &none        &none                 &none  &none  &none  &none  &none  &none                 &none  &none  &none  &none  &none
             >;
         };
 

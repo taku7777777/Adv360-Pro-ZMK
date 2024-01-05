@@ -17,17 +17,17 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/backlight.h>
 
-#define DEFAULT  0
-#define KANA     1
-#define KANA_2   2
-#define KANA_3   2
-#define KANA_4   2
-#define QWERTY   3
-#define NUMBER   4
-#define ARROW    5
-#define FUNCTION 6
-#define FIRMWARE 7
-#define QGMLWY   8
+#define DEFAULT   0
+#define KANA      1
+#define KANA_2    2
+#define KANA_3    3
+#define KANA_4    4
+#define QWERTY    5
+#define NUMBER    6
+#define ARROW     7
+#define FUNCTION  8
+#define FIRMWARE  9
+#define QGMLWY   10
 
 #define COMBO_TIMEOUT 30
 
@@ -157,7 +157,7 @@
         /* 
          * 日本語かな入力 (薙刀式 - 濁音2)
          */
-        kana_layer_3 {
+        kana_layer_4 {
             bindings = <
               &none  &none  &none  &none  &none  &none  &none                                            &none  &none        &none        &none  &none        &none        &none
               &none  &none  &none  &none  &none  &none  &none                                            &none  &none        &m_kana Z A  &none  &m_kana Z U  &m_kana B E  &none

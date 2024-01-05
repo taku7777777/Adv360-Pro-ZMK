@@ -58,9 +58,17 @@ m_def_cmd: m_def_cmd {
 m_kana: m_kana {
   compatible = "zmk,behavior-macro-two-param";
   label = "m_kana";
-  #binding-cells = <2>; // Must be 2
+  #binding-cells = <2>;
   bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
 };
+
+m_kana_y: m_kana_y {
+  compatible = "zmk,behavior-macro-two-param";
+  label = "m_kana_y";
+  #binding-cells = <2>;
+  bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&kp Y>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
+};
+
 
 macro_kana_ka: macro_kana_ka {
   compatible = "zmk,behavior-macro";
@@ -72,7 +80,7 @@ macro_kana_no: macro_kana_no {
   compatible = "zmk,behavior-macro";
   label = "ko_mo_on_hold";
   #binding-cells = <0>;
-  bindings = <&kp M>, <&kp O>;
+  bindings = <&kp N>, <&kp O>;
 };
 macro_kana_ma: macro_kana_ma {
   compatible = "zmk,behavior-macro";

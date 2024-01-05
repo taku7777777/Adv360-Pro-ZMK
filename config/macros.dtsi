@@ -41,6 +41,13 @@ macro_quotes: macro_quotes {
   bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>;
 };
 
+m_small_tsu: m_small_tsu {
+  compatible = "zmk,behavior-macro";
+  label = "macro_ku";
+  #binding-cells = <0>;
+  bindings = <&kp L>, <&kp T>, <&kp U>;
+};
+
 m_kana_cmd: m_kana_cmd {
   compatible = "zmk,behavior-macro";
   label = "macro_meh";

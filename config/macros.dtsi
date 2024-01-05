@@ -45,7 +45,7 @@ m_kana_cmd: m_kana_cmd {
   compatible = "zmk,behavior-macro";
   label = "macro_meh";
   #binding-cells = <0>;
-  bindings = <&macro_press &mo DEFAULT>, <&macro_press &kp LCMD>;
+  bindings = = <&macro_press &mo DEFAULT &kp LCMD>, <&macro_pause_for_release>, <&macro_release &mo DEFAULT &kp LCMD>;
 };
 
 m_kana: m_kana {

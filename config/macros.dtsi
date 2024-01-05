@@ -62,7 +62,7 @@ m_kana: m_kana {
   bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
 };
 
-macro_kana: macro_kana {
+macro_kana_ka: macro_kana_ka {
   compatible = "zmk,behavior-macro";
   label = "macro_kana";
   #binding-cells = <0>;

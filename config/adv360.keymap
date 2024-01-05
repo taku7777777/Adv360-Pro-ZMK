@@ -118,7 +118,7 @@
     combo_kana_sya {
       timeout-ms = <2000>;
       key-positions = <19 40>;
-      bindings = <&kp m_kana_y S A>;
+      bindings = <&m_kana_y S A>;
       layers = <KANA>;
     };
   };

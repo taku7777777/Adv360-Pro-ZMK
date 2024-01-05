@@ -45,7 +45,7 @@
         tapping-term-ms = <160>;
         quick_tap_ms = <135>;
         flavor = "tap-preferred";
-        bindings = <&m_kana_cmd>, <&kp>;
+        bindings = <&kp>, <&m_kana_cmd>;
     };
   };
 

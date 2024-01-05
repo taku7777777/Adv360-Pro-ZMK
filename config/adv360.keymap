@@ -25,6 +25,9 @@
 #define FUNCTION 5
 #define FIRMWARE 6
 
+#define COMBO_TIMEOUT 30
+
+
 / {
   behaviors {
     #include "macros.dtsi"
@@ -37,6 +40,26 @@
         quick_tap_ms = <135>;
         flavor = "tap-preferred";
         bindings = <&kp>, <&kp>;
+    };
+  };
+
+  /* 
+    * 日本語かな入力 (薙刀式)
+    * 
+    * refer: https://oookaworks.seesaa.net/article/500180437.htm
+    *  0  1  2  3  4  5  6                     7  8  9 10 11 12 13
+    * 14 15 16 17 18 19 20                    21 22 23 24 25 26 27
+    * 28 29 30 31 32 33 34    35 36 37 38     39 40 41 42 43 44 45
+    * 46 47 48 49 50 51          52 53           54 55 56 57 58 59
+    * 60 61 62 63 64       65 66 67 68 69 70        71 72 73 74 75
+    */
+  combos {
+    compatible = "zmk,combos";
+    combo_h_comma {
+      timeout-ms = <COMBO_TIMEOUT>;
+      key-positions = <29 67>;
+      bindings = <&m_kana S E>; //               └─┴──› '
+      layers = <KANA>;
     };
   };
 
@@ -55,10 +78,15 @@
         };
 
         /* 
-         * 日本語かな入力 (薙刀式)
-         * 
-         * refer: https://oookaworks.seesaa.net/article/500180437.html
-         */
+          * 日本語かな入力 (薙刀式)
+          * 
+          * refer: https://oookaworks.seesaa.net/article/500180437.htm
+          *  0  1  2  3  4  5  6                     7  8  9 10 11 12 13
+          * 14 15 16 17 18 19 20                    21 22 23 24 25 26 27
+          * 28 29 30 31 32 33 34    35 36 37 38     39 40 41 42 43 44 45
+          * 46 47 48 49 50 51          52 53           54 55 56 57 58 59
+          * 60 61 62 63 64       65 66 67 68 69 70        71 72 73 74 75
+          */
         kana_layer {
             bindings = <
               &tog KANA   &none          &none           &none          &none        &none         &none                                                                                                   &none   &none        &none          &none          &none          &none           &none

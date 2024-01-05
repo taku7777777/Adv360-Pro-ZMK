@@ -43,16 +43,28 @@ macro_quotes: macro_quotes {
 
 m_small_tsu: m_small_tsu {
   compatible = "zmk,behavior-macro";
-  label = "macro_ku";
+  label = "m_small_tsu";
   #binding-cells = <0>;
   bindings = <&kp L>, <&kp T>, <&kp U>;
 };
 
+m_def_cmd: m_def_cmd {
+  compatible = "zmk,behavior-macro";
+  label = "m_def_cmd";
+  #binding-cells = <0>;
+  bindings = <&macro_press &mo 0>, <&macro_press &kp LCMD>, <&macro_pause_for_release>, <&macro_release &kp LCMD>, <&macro_release &mo 0>;
+};
 m_kana_cmd: m_kana_cmd {
   compatible = "zmk,behavior-macro";
-  label = "macro_meh";
+  label = "m_kana_cmd";
   #binding-cells = <0>;
-  bindings = <&macro_press &mo DEFAULT &kp LCMD>, <&macro_pause_for_release>, <&macro_release &mo DEFAULT &kp LCMD>;
+  bindings = <&macro_press &mo 3>, <&macro_press &kp LCMD>, <&macro_pause_for_release>, <&macro_release &kp LCMD>, <&macro_release &mo 3>;
+};
+m_def_cmd2: m_def_cmd2 {
+  compatible = "zmk,behavior-macro";
+  label = "m_def_cmd2";
+  #binding-cells = <0>;
+  bindings = <&tog 0>, <&macro_press &kp LCMD>, <&macro_pause_for_release>, <&macro_release &kp LCMD>, <&tog 1>;
 };
 
 m_kana: m_kana {

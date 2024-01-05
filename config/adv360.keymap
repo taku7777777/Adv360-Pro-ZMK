@@ -55,10 +55,26 @@
     */
   combos {
     compatible = "zmk,combos";
-    combo_h_comma {
+    combo_kana_se_sample1 {
+      timeout-ms = <COMBO_TIMEOUT>;
+      key-positions = <0 1>;
+      bindings = <&m_kana S E>;
+      layers = <KANA>;
+    };
+    combo_kana_se_sample2 {
+      timeout-ms = <COMBO_TIMEOUT>;
+      key-positions = <0 1>;
+      bindings = <&kp W>;
+      layers = <KANA>;
+    };
+    combo_kana_se_sample3 {
+      key-positions = <0 1>;
+      bindings = <&kp W>;
+    };
+    combo_kana_se {
       timeout-ms = <COMBO_TIMEOUT>;
       key-positions = <29 67>;
-      bindings = <&m_kana S E>; //               └─┴──› '
+      bindings = <&m_kana S E>;
       layers = <KANA>;
     };
   };

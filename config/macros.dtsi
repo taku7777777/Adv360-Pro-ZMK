@@ -68,9 +68,9 @@ macro_kana_ka: macro_kana_ka {
   #binding-cells = <0>;
   bindings = <&kp K>, <&kp A>;
 };
-macro_kana_mo: macro_kana_mo {
+macro_kana_no: macro_kana_no {
   compatible = "zmk,behavior-macro";
-  label = "macro_kana_mo";
+  label = "ko_mo_on_hold";
   #binding-cells = <0>;
   bindings = <&kp M>, <&kp O>;
 };
@@ -79,6 +79,18 @@ macro_kana_ma: macro_kana_ma {
   label = "macro_kana_ma";
   #binding-cells = <0>;
   bindings = <&kp M>, <&kp A>;
+};
+macro_kana_na: macro_kana_na {
+  compatible = "zmk,behavior-macro";
+  label = "macro_kana_na";
+  #binding-cells = <0>;
+  bindings = <&kp N>, <&kp A>;
+};
+macro_kana_ko: macro_kana_ko {
+  compatible = "zmk,behavior-macro";
+  label = "macro_kana_ko";
+  #binding-cells = <0>;
+  bindings = <&kp K>, <&kp O>;
 };
 
 macro_switch_japanese: macro_switch_japanese {

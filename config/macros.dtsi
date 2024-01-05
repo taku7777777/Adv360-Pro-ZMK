@@ -54,18 +54,6 @@ m_def_cmd: m_def_cmd {
   #binding-cells = <0>;
   bindings = <&macro_press &mo QGMLWY &kp LCMD>, <&macro_pause_for_release>, <&macro_release &mo QGMLWY &kp LCMD>;
 };
-m_kana_cmd: m_kana_cmd {
-  compatible = "zmk,behavior-macro";
-  label = "m_kana_cmd";
-  #binding-cells = <0>;
-  bindings = <&macro_press &mo 3>, <&macro_press &kp LCMD>, <&macro_pause_for_release>, <&macro_release &kp LCMD>, <&macro_release &mo 3>;
-};
-m_def_cmd2: m_def_cmd2 {
-  compatible = "zmk,behavior-macro";
-  label = "m_def_cmd2";
-  #binding-cells = <0>;
-  bindings = <&tog 0>, <&macro_press &kp LCMD>, <&macro_pause_for_release>, <&macro_release &kp LCMD>, <&tog 1>;
-};
 
 m_kana: m_kana {
   compatible = "zmk,behavior-macro-two-param";

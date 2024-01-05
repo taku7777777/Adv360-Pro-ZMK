@@ -115,10 +115,132 @@
     */
   combos {
     compatible = "zmk,combos";
+
+    // 清音
+    combo_kana_kya {
+      timeout-ms = <2000>;
+      key-positions = <16 40>;
+      bindings = <&m_kana_y K A>;
+      layers = <KANA>;
+    };
+    combo_kana_kyu {
+      timeout-ms = <2000>;
+      key-positions = <16 26>;
+      bindings = <&m_kana_y K U>;
+      layers = <KANA>;
+    };
+    combo_kana_kyo {
+      timeout-ms = <2000>;
+      key-positions = <16 24>;
+      bindings = <&m_kana_y K O>;
+      layers = <KANA>;
+    };
     combo_kana_sya {
       timeout-ms = <2000>;
-      key-positions = <19 40>;
+      key-positions = <18 40>;
       bindings = <&m_kana_y S A>;
+      layers = <KANA>;
+    };
+    combo_kana_syu {
+      timeout-ms = <2000>;
+      key-positions = <18 26>;
+      bindings = <&m_kana_y S U>;
+      layers = <KANA>;
+    };
+    combo_kana_syo {
+      timeout-ms = <2000>;
+      key-positions = <18 24>;
+      bindings = <&m_kana_y S O>;
+      layers = <KANA>;
+    };
+    combo_kana_tya {
+      timeout-ms = <2000>;
+      key-positions = <33 40>;
+      bindings = <&m_kana_y T A>;
+      layers = <KANA>;
+    };
+    combo_kana_tyu {
+      timeout-ms = <2000>;
+      key-positions = <33 26>;
+      bindings = <&m_kana_y T U>;
+      layers = <KANA>;
+    };
+    combo_kana_tyo {
+      timeout-ms = <2000>;
+      key-positions = <33 24>;
+      bindings = <&m_kana_y T O>;
+      layers = <KANA>;
+    };
+    combo_kana_nya {
+      timeout-ms = <2000>;
+      key-positions = <31 40>;
+      bindings = <&m_kana_y N A>;
+      layers = <KANA>;
+    };
+    combo_kana_nyu {
+      timeout-ms = <2000>;
+      key-positions = <31 26>;
+      bindings = <&m_kana_y N U>;
+      layers = <KANA>;
+    };
+    combo_kana_nyo {
+      timeout-ms = <2000>;
+      key-positions = <31 24>;
+      bindings = <&m_kana_y N O>;
+      layers = <KANA>;
+    };
+    combo_kana_hya {
+      timeout-ms = <2000>;
+      key-positions = <49 40>;
+      bindings = <&m_kana_y H A>;
+      layers = <KANA>;
+    };
+    combo_kana_hyu {
+      timeout-ms = <2000>;
+      key-positions = <49 26>;
+      bindings = <&m_kana_y H U>;
+      layers = <KANA>;
+    };
+    combo_kana_hyo {
+      timeout-ms = <2000>;
+      key-positions = <49 24>;
+      bindings = <&m_kana_y H O>;
+      layers = <KANA>;
+    };
+    combo_kana_mya {
+      timeout-ms = <2000>;
+      key-positions = <51 40>;
+      bindings = <&m_kana_y M A>;
+      layers = <KANA>;
+    };
+    combo_kana_myu {
+      timeout-ms = <2000>;
+      key-positions = <51 26>;
+      bindings = <&m_kana_y M U>;
+      layers = <KANA>;
+    };
+    combo_kana_myo {
+      timeout-ms = <2000>;
+      key-positions = <51 24>;
+      bindings = <&m_kana_y M O>;
+      layers = <KANA>;
+    };
+    combo_kana_rya {
+      timeout-ms = <2000>;
+      key-positions = <17 40>;
+      bindings = <&m_kana_y R A>;
+      layers = <KANA>;
+    };
+    combo_kana_ryu {
+      timeout-ms = <2000>;
+      key-positions = <17 26>;
+      bindings = <&m_kana_y M U>;
+      layers = <KANA>;
+    };
+    combo_kana_ryo {
+      timeout-ms = <2000>;
+      key-positions = <17 24>;
+      bindings = <&m_kana_y R O>;
       layers = <KANA>;
     };
   };

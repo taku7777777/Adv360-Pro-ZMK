@@ -90,20 +90,20 @@
           */
         kana_layer_1 {
             bindings = <
-              &tog KANA   &none          &none           &none          &none        &none         &none                                                                                                            &none   &none        &none          &none          &none          &none           &none
+              &none       &none          &m_kana_cmd     &m_def_cmd2    &none        &none         &none                                                                                                            &none   &none        &none          &none          &none          &none           &none
               &none       &none          &m_kana K I     &m_kana T E    &m_kana S I  &none         &none                                                                                                            &none   &none        &none          &m_kana R U    &m_kana S U    &m_kana H E     &none
               &kp LCTRL   &m_kana R O    &m_kana K E     &m_kana T O    &m_kana K A  &m_small_tsu  &none                   &none              &none           &none            &none                                &none   &m_kana K U  &kp A          &kp I          &kp U          &kp KP_MINUS    &none
               &kp LSHIFT  &m_kana H O    &m_kana H I     &m_kana H A    &m_kana K O  &m_kana S O                                              &none           &none                                                         &m_kana T A  &m_kana N A    &m_kana N N    &m_kana R A    &m_kana R A     &none
-              &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                 &m_kana_cmd  &lt NUMBER SPACE   &lt KANA_2 ESC  &lt KANA_2 RCTRL  &lt ARROW ENTER  &lt FUNCTION BSPC                       &hm RPAR LPAR  &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
+              &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                 &m_def_cmd   &lt NUMBER SPACE   &lt KANA_2 ESC  &lt KANA_2 RCTRL  &lt ARROW ENTER  &lt FUNCTION BSPC                       &hm RPAR LPAR  &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
             >;
         };
         kana_layer_2 {
             bindings = <
               &tog KANA   &none          &none           &none          &none        &none         &none                                                                                          &none   &none        &none          &none          &none          &none           &none
-              &none       &none          &m_kana K I     &m_kana T E    &m_kana S I  &none         &none                                                                                          &none   &none        &none          &m_kana R U    &m_kana S U    &m_kana H E     &none
-              &kp LCTRL   &m_kana S E    &m_kana K E     &m_kana T O    &m_kana K A  &m_small_tsu  &none                   &none              &none   &none   &none                               &none   &m_kana K U  &kp A          &kp I          &kp U          &kp KP_MINUS    &none
-              &kp LSHIFT  &m_kana H O    &m_kana H I     &m_kana H A    &m_kana K O  &m_kana S O                                              &none   &none                                               &m_kana T A  &m_kana N A    &m_kana N N    &m_kana R A    &m_kana R A     &none
-              &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                 &m_kana_cmd  &lt NUMBER SPACE   &trans  &trans  &lt ARROW ENTER  &lt FUNCTION BSPC                       &hm RPAR LPAR  &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
+              &none       &none          &m_kana N U     &m_kana R I    &m_kana N E  &none         &none                                                                                          &none   &none        &none          &m_kana R U    &m_kana S U    &m_kana H E     &none
+              &kp LCTRL   &m_kana S E    &m_kana M E     &m_kana N I    &m_kana M A  &m_small_tsu  &none                   &none              &none   &none   &none                               &none   &m_kana K U  &kp A          &kp I          &kp U          &kp KP_MINUS    &none
+              &kp LSHIFT  &trans         &trans          &m_kana W O    &kp COMMA    &m_kana S O                                              &none   &none                                               &m_kana T A  &m_kana N A    &m_kana N N    &m_kana R A    &m_kana R A     &none
+              &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                 &m_def_cmd   &lt NUMBER SPACE   &trans  &trans  &lt ARROW ENTER  &lt FUNCTION BSPC                       &hm RPAR LPAR  &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
             >;
         };
 

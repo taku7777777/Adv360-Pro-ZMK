@@ -62,11 +62,11 @@ m_kana: m_kana {
   bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
 };
 
-macro_ku: macro_ku {
+macro_kana: macro_kana {
   compatible = "zmk,behavior-macro";
-  label = "macro_ku";
+  label = "macro_kana";
   #binding-cells = <0>;
-  bindings = <&kp K>, <&kp U>;
+  bindings = <&kp K>, <&kp A>;
 };
 
 macro_switch_japanese: macro_switch_japanese {

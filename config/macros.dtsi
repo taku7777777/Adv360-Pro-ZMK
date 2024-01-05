@@ -41,7 +41,7 @@ macro_quotes: macro_quotes {
   bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>;
 };
 
-m_kana_cmd:{
+m_kana_cmd: m_kana_cmd {
   compatible = "zmk,behavior-macro";
   label = "macro_meh";
   #binding-cells = <0>;

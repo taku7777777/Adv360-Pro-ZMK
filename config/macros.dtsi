@@ -41,10 +41,17 @@ macro_quotes: macro_quotes {
   bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>;
 };
 
+m_kana_cmd:{
+  compatible = "zmk,behavior-macro";
+  label = "macro_meh";
+  #binding-cells = <0>;
+  bindings = <&macro_press &mo DEFAULT>, <&macro_press &kp LCMD>;
+}
+
 m_kana: m_kana {
   compatible = "zmk,behavior-macro-two-param";
   label = "m_kana";
-  #binding-cells = <2>;
+  #binding-cells = <2>; // Must be 2
   bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
 };
 

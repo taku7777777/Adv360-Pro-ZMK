@@ -119,31 +119,31 @@
     combo_kana_small_a {
       timeout-ms = <2000>;
       key-positions = <15 41>;
-      bindings = <&m_kana_y X A>;
+      bindings = <&m_kana X A>;
       layers = <KANA>;
     };
     combo_kana_small_i {
       timeout-ms = <2000>;
-      key-positions = <16 42>;
-      bindings = <&m_kana_y X I>;
+      key-positions = <15 42>;
+      bindings = <&m_kana X I>;
       layers = <KANA>;
     };
     combo_kana_small_u {
       timeout-ms = <2000>;
-      key-positions = <16 43>;
-      bindings = <&m_kana_y X U>;
+      key-positions = <15 43>;
+      bindings = <&m_kana X U>;
       layers = <KANA>;
     };
     combo_kana_small_e {
       timeout-ms = <2000>;
-      key-positions = <16 25>;
-      bindings = <&m_kana_y X E>;
+      key-positions = <15 25>;
+      bindings = <&m_kana X E>;
       layers = <KANA>;
     };
     combo_kana_small_o {
       timeout-ms = <2000>;
-      key-positions = <16 54>;
-      bindings = <&m_kana_y X O>;
+      key-positions = <15 54>;
+      bindings = <&m_kana X O>;
       layers = <KANA>;
     };
 

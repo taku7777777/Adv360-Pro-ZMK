@@ -244,7 +244,6 @@
       layers = <KANA>;
     };
 
-　　 // 濁音
     combo_kana_jya {
       timeout-ms = <2000>;
       key-positions = <18 40>;
@@ -318,7 +317,6 @@
       layers = <KANA_3>;
     };
 
-    // 半濁音
     combo_kana_pya {
       timeout-ms = <2000>;
       key-positions = <48 40>;
@@ -338,7 +336,6 @@
       layers = <KANA_5>;
     };
 
-    // 外来音
     combo_kana_thi {
       timeout-ms = <2000>;
       key-positions = <17 42>;
@@ -376,7 +373,6 @@
       layers = <KANA_5>;
     };
 
-    // つぉ tso
     combo_kana_tso {
       timeout-ms = <2000>;
       key-positions = <33 54>;
@@ -384,7 +380,6 @@
       layers = <KANA_6>;
     };
 
-    // うぉ who
     combo_kana_wha {
       timeout-ms = <2000>;
       key-positions = <43 41>;
@@ -410,7 +405,6 @@
       layers = <KANA_6>;
     };
 
-    // ふゃ ふゅ ふょ  ふぁ ふぃ ふ ふぇ ふぉ
     combo_kana_fya {
       timeout-ms = <1000>;
       key-positions = <44 40>;

@@ -116,7 +116,6 @@
   combos {
     compatible = "zmk,combos";
 
-    // 清音
     combo_kana_kya {
       timeout-ms = <2000>;
       key-positions = <16 40>;
@@ -352,12 +351,6 @@
       timeout-ms = <2000>;
       key-positions = <31 43>;
       bindings = <&m_kana_w T O>;
-      layers = <KANA_5>;
-    };
-    combo_kana_sye {
-      timeout-ms = <2000>;
-      key-positions = <18 25>;
-      bindings = <&m_kana_y S E>;
       layers = <KANA_5>;
     };
     combo_kana_sye {

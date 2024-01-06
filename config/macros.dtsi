@@ -68,6 +68,24 @@ m_kana_y: m_kana_y {
   #binding-cells = <2>;
   bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&kp Y>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
 };
+m_kana_h: m_kana_h {
+  compatible = "zmk,behavior-macro-two-param";
+  label = "m_kana_h";
+  #binding-cells = <2>;
+  bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&kp H>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
+};
+m_kana_w: m_kana_w {
+  compatible = "zmk,behavior-macro-two-param";
+  label = "m_kana_w";
+  #binding-cells = <2>;
+  bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&kp W>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
+};
+m_kana_s: m_kana_s {
+  compatible = "zmk,behavior-macro-two-param";
+  label = "m_kana_s";
+  #binding-cells = <2>;
+  bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&kp S>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
+};
 
 
 macro_kana_ka: macro_kana_ka {

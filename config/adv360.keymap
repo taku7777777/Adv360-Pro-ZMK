@@ -116,6 +116,37 @@
   combos {
     compatible = "zmk,combos";
 
+    combo_kana_small_a {
+      timeout-ms = <2000>;
+      key-positions = <15 41>;
+      bindings = <&m_kana_y X A>;
+      layers = <KANA>;
+    };
+    combo_kana_small_i {
+      timeout-ms = <2000>;
+      key-positions = <16 42>;
+      bindings = <&m_kana_y X I>;
+      layers = <KANA>;
+    };
+    combo_kana_small_u {
+      timeout-ms = <2000>;
+      key-positions = <16 43>;
+      bindings = <&m_kana_y X U>;
+      layers = <KANA>;
+    };
+    combo_kana_small_e {
+      timeout-ms = <2000>;
+      key-positions = <16 25>;
+      bindings = <&m_kana_y X E>;
+      layers = <KANA>;
+    };
+    combo_kana_small_o {
+      timeout-ms = <2000>;
+      key-positions = <16 54>;
+      bindings = <&m_kana_y X O>;
+      layers = <KANA>;
+    };
+
     combo_kana_kya {
       timeout-ms = <2000>;
       key-positions = <16 40>;
@@ -487,7 +518,7 @@
         kana_layer_3 {
             bindings = <
               &none   &none        &none        &none        &none        &none         &none                                                &none   &none  &none  &none  &none  &none  &none
-              &none   &none        &m_kana G I  &m_kana D E  &m_kana J I  &none         &none                                                &none   &none  &none  &none  &none  &none  &none
+              &none   &m_kana X A  &m_kana G I  &m_kana D E  &m_kana J I  &none         &none                                                &none   &none  &none  &none  &none  &none  &none
               &none   &m_kana Z E  &m_kana G E  &m_kana D O  &m_kana G A  &m_kana D I   &none             &none  &none  &none  &none         &none   &none  &none  &none  &none  &none  &none
               &none   &m_kana B O  &m_kana B I  &m_kana B A  &m_kana G O  &m_kana Z O                            &none  &none                        &none  &none  &none  &none  &none  &none
               &none   &none        &none        &none        &none                                 &none  &none  &none  &none  &none  &none                 &none  &none  &none  &none  &none

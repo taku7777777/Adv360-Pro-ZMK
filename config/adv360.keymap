@@ -152,25 +152,25 @@
     combo_kana_small_ya {
       timeout-ms = <2000>;
       key-positions = <15 40>;
-      bindings = <&m_kana X I>;
+      bindings = <&m_kana_l Y A>;
       layers = <KANA>;
     };
     combo_kana_small_yu {
       timeout-ms = <2000>;
       key-positions = <15 26>;
-      bindings = <&m_kana X U>;
+      bindings = <&m_kana_l Y U>;
       layers = <KANA>;
     };
     combo_kana_small_yo {
       timeout-ms = <2000>;
       key-positions = <15 24>;
-      bindings = <&m_kana X E>;
+      bindings = <&m_kana_l Y O>;
       layers = <KANA>;
     };
     combo_kana_small_wa {
       timeout-ms = <2000>;
       key-positions = <15 57>;
-      bindings = <&m_kana X O>;
+      bindings = <&m_kana_l W A>;
       layers = <KANA>;
     };
 

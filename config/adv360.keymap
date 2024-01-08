@@ -149,6 +149,31 @@
       layers = <KANA>;
     };
 
+    combo_kana_small_ya {
+      timeout-ms = <2000>;
+      key-positions = <15 40>;
+      bindings = <&m_kana X I>;
+      layers = <KANA>;
+    };
+    combo_kana_small_yu {
+      timeout-ms = <2000>;
+      key-positions = <15 26>;
+      bindings = <&m_kana X U>;
+      layers = <KANA>;
+    };
+    combo_kana_small_yo {
+      timeout-ms = <2000>;
+      key-positions = <15 24>;
+      bindings = <&m_kana X E>;
+      layers = <KANA>;
+    };
+    combo_kana_small_wa {
+      timeout-ms = <2000>;
+      key-positions = <15 57>;
+      bindings = <&m_kana X O>;
+      layers = <KANA>;
+    };
+
     combo_kana_kya {
       timeout-ms = <2000>;
       key-positions = <16 40>;

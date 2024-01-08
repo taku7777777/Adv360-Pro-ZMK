@@ -114,6 +114,14 @@ m_kana_s: m_kana_s {
   #binding-cells = <2>;
   bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&kp S>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
 };
+m_kana_l: m_kana_l {
+  compatible = "zmk,behavior-macro-two-param";
+  label = "m_kana_l";
+  wait-ms = <0>;
+  tap-ms = <0>;
+  #binding-cells = <2>;
+  bindings = <&kp L>, <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
+};
 
 
 macro_kana_ka: macro_kana_ka {

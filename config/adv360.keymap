@@ -103,6 +103,15 @@
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_ko>;
     };
+    kana_cmd: kana_cmd {
+        compatible = "zmk,behavior-hold-tap";
+        label = "kana_cmd"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <160>;
+        quick_tap_ms = <135>;
+        flavor = "balanced";
+        bindings = <&m_def_cmd>, <&kp>;
+    };
   };
 
   /* 
@@ -526,7 +535,7 @@
               &none       &m_kana V U    &m_kana K I     &m_kana T E    &m_kana S I        &none         &none                                                                                                            &none   &none        &none              &m_kana R U    &m_kana S U    &m_kana H E     &none
               &kp LCTRL   &m_kana R O    &m_kana K E     &m_kana T O    &mh_ka VOICED K    &m_small_tsu  &none                   &none              &none           &none             &none                               &none   &m_kana K U  &mh VOICED A       &kp I          &kp U          &kp MINUS    &none
               &kp LSHIFT  &m_kana H O    &m_kana H I     &m_kana H A    &mh_ko DEVOICED K  &m_kana S O                                              &none           &none                                                         &m_kana T A  &mh_na DEVOICED N  &m_kana N N    &m_kana R A    &m_kana R E     &none
-              &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                       &m_def_cmd   &lt KANA_3 SPACE   &lt NUMBER ESC  &lt NUMBER RCTRL  &lt KANA_2 ENTER  &lt FUNCTION BSPC                      &hm RPAR LPAR      &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
+              &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &none                                 &kana_cmd TAB TAB  &lt KANA_3 SPACE   &lt NUMBER ESC  &lt NUMBER RCTRL  &lt KANA_2 ENTER  &lt FUNCTION BSPC                      &hm RPAR LPAR      &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
             >;
         };
 

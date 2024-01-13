@@ -402,6 +402,9 @@
       layers = <DEVOICED>;
     };
 
+    /*
+     * てぃ, てゅ、でぃ、でゅ
+     */
     combo_kana_thi {
       timeout-ms = <2000>;
       key-positions = <17 42>;
@@ -414,32 +417,80 @@
       bindings = <&m_kana_h T U>;
       layers = <DEVOICED>;
     };
-    combo_kana_two {
+    combo_kana_dhi {
+      timeout-ms = <2000>;
+      key-positions = <17 42>;
+      bindings = <&m_kana_h D I>;
+      layers = <VOICED>;
+    };
+    combo_kana_dhu {
+      timeout-ms = <2000>;
+      key-positions = <17 43>;
+      bindings = <&m_kana_h D U>;
+      layers = <VOICED>;
+    };
+
+    /*
+     * とぅ、どぅ
+     */
+    combo_kana_twu {
       timeout-ms = <2000>;
       key-positions = <31 43>;
-      bindings = <&m_kana_w T O>;
+      bindings = <&m_kana_w T U>;
       layers = <DEVOICED>;
     };
+    combo_kana_dwu {
+      timeout-ms = <2000>;
+      key-positions = <31 43>;
+      bindings = <&m_kana_w D U>;
+      layers = <VOICED>;
+    };
+    
+    /*
+     * しぇ、じぇ
+     */
     combo_kana_sye {
       timeout-ms = <2000>;
       key-positions = <18 25>;
       bindings = <&m_kana_y S E>;
       layers = <DEVOICED>;
     };
+    combo_kana_je {
+      timeout-ms = <2000>;
+      key-positions = <18 25>;
+      bindings = <&m_kana J E>;
+      layers = <VOICED>;
+    };
+    
+    /*
+     * ちぇ、ぢぇ
+     */
     combo_kana_che {
       timeout-ms = <2000>;
       key-positions = <33 25>;
       bindings = <&m_kana_h C E>;
       layers = <DEVOICED>;
     };
+    combo_kana_dye {
+      timeout-ms = <2000>;
+      key-positions = <33 25>;
+      bindings = <&m_kana_y D E>;
+      layers = <VOICED>;
+    };
 
+    /*
+     * つぁ
+     */
     combo_kana_tso {
       timeout-ms = <2000>;
-      key-positions = <33 54>;
-      bindings = <&m_kana_s T O>;
+      key-positions = <41 43>;
+      bindings = <&m_kana_s T A>;
       layers = <DEVOICED>;
     };
 
+    /*
+     * うぁ、うぃ、うぇ、うぉ
+     */
     combo_kana_wha {
       timeout-ms = <2000>;
       key-positions = <43 41>;
@@ -455,7 +506,7 @@
     combo_kana_whe {
       timeout-ms = <2000>;
       key-positions = <43 25>;
-      bindings = <&m_kana_h W I>;
+      bindings = <&m_kana_h W E>;
       layers = <DEVOICED>;
     };
     combo_kana_who {
@@ -465,47 +516,121 @@
       layers = <DEVOICED>;
     };
 
-    combo_kana_fya {
+    /*
+     * ふぁ、
+     */
+    combo_kana_fa {
       timeout-ms = <1000>;
-      key-positions = <44 40>;
-      bindings = <&m_kana_y F A>;
+      key-positions = <44 41>;
+      bindings = <&m_kana F A>;
+      layers = <DEVOICED>;
+    };
+    combo_kana_fi {
+      timeout-ms = <1000>;
+      key-positions = <44 42>;
+      bindings = <&m_kana F I>;
+      layers = <DEVOICED>;
+    };
+    combo_kana_fe {
+      timeout-ms = <1000>;
+      key-positions = <44 25>;
+      bindings = <&m_kana F E>;
+      layers = <DEVOICED>;
+    };
+    combo_kana_fo {
+      timeout-ms = <1000>;
+      key-positions = <44 54>;
+      bindings = <&m_kana F O>;
       layers = <DEVOICED>;
     };
     combo_kana_fyu {
-      timeout-ms = <1000>;
+      timeout-ms = <2000>;
       key-positions = <44 26>;
       bindings = <&m_kana_y F U>;
       layers = <DEVOICED>;
     };
-    combo_kana_fyo {
-      timeout-ms = <1000>;
-      key-positions = <44 24>;
-      bindings = <&m_kana_y F O>;
+
+    combo_kana_va {
+      timeout-ms = <2000>;
+      key-positions = <15 41>;
+      bindings = <&m_kana V A>;
       layers = <DEVOICED>;
     };
-    combo_kana_fwa {
+    combo_kana_vi {
       timeout-ms = <2000>;
-      key-positions = <31 41>;
-      bindings = <&m_kana_w F A>;
+      key-positions = <15 42>;
+      bindings = <&m_kana V I>;
       layers = <DEVOICED>;
     };
-    combo_kana_fwi {
+    combo_kana_ve {
       timeout-ms = <2000>;
-      key-positions = <31 42>;
-      bindings = <&m_kana_w F I>;
+      key-positions = <15 25>;
+      bindings = <&m_kana V E>;
       layers = <DEVOICED>;
     };
-    combo_kana_fwe {
+    combo_kana_vo {
       timeout-ms = <2000>;
-      key-positions = <31 25>;
-      bindings = <&m_kana_w F E>;
+      key-positions = <15 54>;
+      bindings = <&m_kana V O>;
       layers = <DEVOICED>;
     };
-    combo_kana_fwo {
+    combo_kana_vyu {
       timeout-ms = <2000>;
-      key-positions = <31 54>;
-      bindings = <&m_kana_w F O>;
+      key-positions = <15 26>;
+      bindings = <&m_kana_y V U>;
       layers = <DEVOICED>;
+    };
+
+    /*
+     * くぁ、くぃ、くぇ、くぉ
+     */
+    combo_kana_qa {
+      timeout-ms = <2000>;
+      key-positions = <40 41>;
+      bindings = <&m_kana Q A>;
+      layers = <DEVOICED>;
+    };
+    combo_kana_qi {
+      timeout-ms = <2000>;
+      key-positions = <40 42>;
+      bindings = <&m_kana Q I>;
+      layers = <DEVOICED>;
+    };
+    combo_kana_qe {
+      timeout-ms = <2000>;
+      key-positions = <40 25>;
+      bindings = <&m_kana Q E>;
+      layers = <DEVOICED>;
+    };
+    combo_kana_qo {
+      timeout-ms = <2000>;
+      key-positions = <40 54>;
+      bindings = <&m_kana Q O>;
+      layers = <DEVOICED>;
+    };
+    combo_kana_gwa {
+      timeout-ms = <2000>;
+      key-positions = <40 41>;
+      bindings = <&m_kana_w Q A>;
+      layers = <VOICED>;
+    };
+    combo_kana_qwi {
+      timeout-ms = <2000>;
+      key-positions = <40 42>;
+      bindings = <&m_kana_w Q I>;
+      layers = <VOICED>;
+    };
+    combo_kana_qwe {
+      timeout-ms = <2000>;
+      key-positions = <40 25>;
+      bindings = <&m_kana_w Q E>;
+      layers = <VOICED>;
+    };
+    combo_kana_qwo {
+      timeout-ms = <2000>;
+      key-positions = <40 54>;
+      bindings = <&m_kana_w Q O>;
+      layers = <VOICED>;
     };
     
   };

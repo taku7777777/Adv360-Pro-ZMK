@@ -413,7 +413,7 @@
     };
     combo_kana_thu {
       timeout-ms = <2000>;
-      key-positions = <17 43>;
+      key-positions = <17 26>;
       bindings = <&m_kana_h T U>;
       layers = <DEVOICED>;
     };
@@ -425,7 +425,7 @@
     };
     combo_kana_dhu {
       timeout-ms = <2000>;
-      key-positions = <17 43>;
+      key-positions = <17 26>;
       bindings = <&m_kana_h D U>;
       layers = <VOICED>;
     };
@@ -489,14 +489,8 @@
     };
 
     /*
-     * うぁ、うぃ、うぇ、うぉ
+     * うぃ、うぇ、うぉ
      */
-    combo_kana_wha {
-      timeout-ms = <2000>;
-      key-positions = <43 41>;
-      bindings = <&m_kana_h W A>;
-      layers = <DEVOICED>;
-    };
     combo_kana_whi {
       timeout-ms = <2000>;
       key-positions = <43 42>;
@@ -517,7 +511,7 @@
     };
 
     /*
-     * ふぁ、
+     * ふぁふぃふぇふぉふゅ
      */
     combo_kana_fa {
       timeout-ms = <1000>;
@@ -550,6 +544,9 @@
       layers = <DEVOICED>;
     };
 
+    /*
+     * ゔぁゔぃゔぇゔぉゔゅ
+     */
     combo_kana_va {
       timeout-ms = <2000>;
       key-positions = <15 41>;

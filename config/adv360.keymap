@@ -638,11 +638,11 @@
 
         default_layer {
             bindings = <
-              &lt FIRMWARE TAB  &lt QGMLWY TAB  &none           &hm TILDE HASH  &none           &none         &none                                                                                                                &none         &none           &hm DLLR PRCNT  &none            &none          &lt QGMLWY TAB   &lt FIRMWARE TAB
-              &none             &hm LS(Q) Q     &hm LS(G) G     &hm LS(M) M     &hm LS(L) L     &hm LS(W) W   &macro_hyper                                                                                                         &macro_next   &hm LS(Y) Y     &hm LS(F) F     &hm LS(U) U      &hm LS(B) B    &hm AT UNDER     &none
-              &kp LCTRL         &hm LS(D) D     &hm LS(S) S     &hm LS(T) T     &hm LS(N) N     &hm LS(R) R   &macro_meh                  &kp C_VOL_DN       &kp C_VOL_UP      &kp C_BRI_DN  &kp C_BRI_UP                          &macro_back   &hm LS(A) A     &hm LS(I) I     &hm LS(E) E      &hm LS(O) O    &hm LS(H) H      &hm DQT SQT
-              &kp LSHIFT        &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(J) J                                                  &kp C_MUTE        &none                                                             &hm LS(K) K     &hm LS(P) P     &hm COMMA DOT    &hm GT LT      &hm GRAVE EQUAL  &hm SEMI COLON
-              &kp LALT          &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt KANA_3 SPACE   &lt NUMBER SPACE  &kp RCTRL     &lt  ARROW ENTER   &lt FUNCTION BSPC                                &hm RPAR LPAR   &hm RBRC LBRC    &hm RBKT LBKT  &hm BSLH CARET   &none
+              &lt FIRMWARE TAB &none         &none          &hm TILDE HASH &none          &none       &none                                                                                                         &none       &none       &none         &hm DLLR PRCNT &none         &lt none        &lt FIRMWARE TAB
+              &none            &hm LS(Q) Q   &hm LS(G) G    &hm LS(M) M    &hm LS(L) L    &hm LS(W) W &macro_hyper                                                                                                  &macro_next &hm LS(Y) Y &hm LS(F) F   &hm LS(U) U    &hm LS(B) B   &hm AT UNDER    &none
+              &kp LCTRL        &hm LS(D) D   &hm LS(S) S    &hm LS(T) T    &hm LS(N) N    &hm LS(R) R &macro_meh                &kp C_VOL_DN     &kp C_VOL_UP    &kp C_BRI_DN     &kp C_BRI_UP                      &macro_back &hm LS(A) A &hm LS(I) I   &hm LS(E) E    &hm LS(O) O   &hm LS(H) H     &hm DQT SQT
+              &kp LSHIFT       &hm LS(Z) Z   &hm LS(X) X    &hm LS(C) C    &hm LS(V) V    &hm LS(J) J                                            &kp C_MUTE      &none                                                          &hm LS(K) K &hm LS(P) P   &hm COMMA DOT  &hm GT LT     &hm GRAVE EQUAL &hm SEMI COLON
+              &kp LALT         &hm PIPE AMPS &hm QMARK EXCL &hm STAR FSLH  &hm PLUS MINUS                          &hm LGUI TAB &lt KANA_3 SPACE &lt NUMBER ESC  &lt NUMBER RCTRL &lt ARROW ENTER &lt FUNCTION BSPC                         &hm RPAR LPAR &hm RBRC LBRC  &hm RBKT LBKT &hm BSLH CARET  &none
             >;
         };
 
@@ -653,11 +653,11 @@
          */
         kana_layer_1 {
             bindings = <
-              &none       &none          &none           &none          &none              &none         &none                                                                                                            &none   &none        &none              &none          &none          &none           &none
-              &none       &m_kana V U    &m_kana K I     &m_kana T E    &m_kana S I        &kp LT        &none                                                                                                            &none   &kp GT       &none              &m_kana R U    &m_kana S U    &m_kana H E     &none
-              &kp LCTRL   &m_kana R O    &m_kana K E     &m_kana T O    &mh_ka VOICED K    &m_small_tsu  &none                   &none              &none           &none             &none                               &none   &m_kana K U  &mh VOICED A       &kp I          &kp U          &kp MINUS       &hm DQT SQT
-              &kp LSHIFT  &m_kana H O    &m_kana H I     &m_kana H A    &mh_ko DEVOICED K  &m_kana S O                                              &none           &none                                                         &m_kana T A  &mh_na DEVOICED N  &m_kana N N    &m_kana R A    &m_kana R E     &hm SEMI COLON
-              &kp LALT    &hm PIPE AMPS  &hm QMARK EXCL  &hm STAR FSLH  &hm PLUS MINUS                        &kana_cmd TAB TAB  &lt KANA_3 SPACE   &lt NUMBER ESC  &lt NUMBER RCTRL  &lt KANA_2 ENTER  &lt FUNCTION BSPC                      &hm RPAR LPAR      &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
+              &none  &none          &none           &trans         &none              &none         &none                                                                      &none  &none       &none              &trans      &none       &none       &none
+              &none  &m_kana V U    &m_kana K I     &m_kana T E    &m_kana S I        &kp LT        &trans                                                                     &trans &kp GT      &none              &m_kana R U &m_kana S U &m_kana H E &none
+              &trans &m_kana R O    &m_kana K E     &m_kana T O    &mh_ka VOICED K    &m_small_tsu  &trans                              &trans &trans &trans &trans            &trans &m_kana K U &mh VOICED A       &kp I       &kp U       &kp MINUS   &hm DQT SQT
+              &trans &m_kana H O    &m_kana H I     &m_kana H A    &mh_ko DEVOICED K  &m_kana S O                                              &trans &trans                          &m_kana T A &mh_na DEVOICED N  &m_kana N N &m_kana R A &m_kana R E &hm SEMI COLON
+              &trans &trans         &trans          &trans         &trans                           &kana_cmd TAB TAB  &lt KANA_3 SPACE &trans &trans &lt KANA_2 ENTER  &trans                    &trans             &trans      &trans      &trans      &none
             >;
         };
 
@@ -668,20 +668,20 @@
          */
         kana_layer_2 {
             bindings = <
-              &none       &none          &none           &none          &none               &none         &none                                                     &none   &none        &none                &none          &none          &none           &none
-              &none       &none          &m_kana N U     &m_kana R I    &m_kana N E         &none         &none                                                     &none   &kp PG_UP    &kp HOME             &kp UP         &kp END        &none           &none
-              &kp LCTRL   &m_kana S E    &m_kana M E     &m_kana N I    &mh_ma VOICED M     &m_kana T I   &none                &none  &none  &none   &none          &none   &kp PG_DN    &kp LEFT             &kp DOWN       &kp RIGHT      &none           &none
-              &kp LSHIFT  &trans         &trans          &m_kana W O    &mh DEVOICED COMMA  &m_kana M I                               &none  &none                          &none        &none                &none          &none          &none           &none
-              &kp LALT    &none          &none           &none          &none                                    &hm LGUI TAB  &none  &none  &none   &trans  &none                       &none                &none          &none          &none           &none
+              &none  &none          &none           &none          &none               &none         &none                                           &none &none     &none    &none    &none     &none &none
+              &none  &none          &m_kana N U     &m_kana R I    &m_kana N E         &none         &none                                           &none &kp PG_UP &kp HOME &kp UP   &kp END   &none &none
+              &trans &m_kana S E    &m_kana M E     &m_kana N I    &mh_ma VOICED M     &m_kana T I   &none        &trans &trans &trans &trans        &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none &none
+              &trans &trans         &trans          &m_kana W O    &mh DEVOICED COMMA  &m_kana M I                       &trans &trans                     &none     &none    &none    &none     &none &none
+              &trans &none          &none           &none          &none                                   &trans &trans &trans &trans &trans &trans                 &none    &none    &none     &none &none
             >;
         };
         kana_layer_3 {
             bindings = <
-              &tog KANA   &none          &none           &none          &none               &none         &none                                                     &none   &none        &none                &none          &none          &none           &none
-              &none       &none          &none           &none          &tog QWERTY         &none         &none                                                     &none   &none        &m_kana S A          &m_kana Y O    &kp E          &m_kana Y U     &none
-              &kp LCTRL   &none          &none           &none          &m_switch_kana      &none         &none                &none  &none  &none   &none          &none   &m_kana Y A  &mh_no VOICED N      &m_kana M O    &m_kana T U    &m_kana H U     &none
-              &kp LSHIFT  &none          &none           &none          &to DEFAULT         &none                                     &none  &none                          &kp O        &mh DEVOICED PERIOD  &m_kana M U    &m_kana W A    &trans          &none
-              &kp LALT    &none          &none           &none          &none                                    &none         &none  &none  &trans  &none  &none                        &hm RPAR LPAR        &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
+              &tog KANA &none          &none           &none          &none               &none         &none                                            &none   &none        &none                &none          &none          &none           &none
+              &none     &none          &none           &none          &tog QWERTY         &none         &none                                            &none   &none        &m_kana S A          &m_kana Y O    &kp E          &m_kana Y U     &none
+              &trans    &none          &none           &none          &m_switch_kana      &none         &none         &trans &trans &trans &trans        &none   &m_kana Y A  &mh_no VOICED N      &m_kana M O    &m_kana T U    &m_kana H U     &none
+              &trans    &none          &none           &none          &to DEFAULT         &none                              &trans &trans                       &kp O        &mh DEVOICED PERIOD  &m_kana M U    &m_kana W A    &trans          &none
+              &trans    &none          &none           &none          &none                                    &trans &trans &trans &trans &trans &trans                      &hm RPAR LPAR        &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
             >;
         };
 
@@ -690,11 +690,11 @@
          */
         kana_voiced {
             bindings = <
-              &none   &none        &none        &none        &none        &none         &none                                            &none  &none        &none        &none  &none        &none        &none
-              &none   &m_kana X A  &m_kana G I  &m_kana D E  &m_kana J I  &none         &none                                            &none  &none        &m_kana Z A  &none  &m_kana Z U  &m_kana B E  &none
-              &none   &m_kana Z E  &m_kana G E  &m_kana D O  &m_kana G A  &m_kana D I   &none         &none  &none  &none  &none         &none  &m_kana G U  &m_kana G A  &none  &m_kana D U  &m_kana B U  &none
-              &none   &m_kana B O  &m_kana B I  &m_kana B A  &m_kana G O  &m_kana Z O                        &none  &none                       &m_kana D A  &none        &none  &none        &none        &none
-              &none   &none        &none        &none        &none                             &none  &none  &none  &none  &none  &none                      &none        &none  &none        &none        &none
+              &none   &none        &none        &none        &none        &none         &none                                           &none  &none        &none        &none  &none        &none        &none
+              &none   &m_kana X A  &m_kana G I  &m_kana D E  &m_kana J I  &none         &none                                           &none  &none        &m_kana Z A  &none  &m_kana Z U  &m_kana B E  &none
+              &none   &m_kana Z E  &m_kana G E  &m_kana D O  &m_kana G A  &m_kana D I   &none        &trans &trans &trans &trans        &none  &m_kana G U  &m_kana G A  &none  &m_kana D U  &m_kana B U  &none
+              &none   &m_kana B O  &m_kana B I  &m_kana B A  &m_kana G O  &m_kana Z O                       &trans &trans                      &m_kana D A  &none        &none  &none        &none        &none
+              &none   &none        &none        &none        &none                            &trans &trans &trans &trans &trans &trans                     &none        &none  &none        &none        &none
             >;
         };
         /* 
@@ -704,9 +704,9 @@
             bindings = <
               &none   &none        &none        &none        &none  &none   &none                                            &none   &none  &none  &none  &none  &none        &none
               &none   &none        &none        &none        &none  &none   &none                                            &none   &none  &none  &none  &none  &m_kana P E  &none
-              &none   &none        &none        &none        &none  &none   &none         &none  &none  &none  &none         &none   &none  &none  &none  &none  &m_kana P U  &none
-              &none   &m_kana P O  &m_kana P I  &m_kana P A  &none  &none                        &none  &none                        &none  &none  &none  &none  &none        &none
-              &none   &none        &none        &none        &none                 &none  &none  &none  &none  &none  &none                 &none  &none  &none  &none        &none
+              &none   &none        &none        &none        &none  &none   &none        &trans &trans &trans &trans         &none   &none  &none  &none  &none  &m_kana P U  &none
+              &none   &m_kana P O  &m_kana P I  &m_kana P A  &none  &none                       &trans &trans                        &none  &none  &none  &none  &none        &none
+              &none   &none        &none        &none        &none                &trans &trans &trans &trans &trans &trans                 &none  &none  &none  &none        &none
             >;
         };
 

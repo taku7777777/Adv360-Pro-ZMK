@@ -30,6 +30,9 @@
 #define FIRMWARE 10
 #define QGMLWY   11
 
+#define DEFAULT_TAPPING_TERM 150
+#define DEFAULT_QUICK_TAP 130
+
 #define COMBO_TIMEOUT 30
 
 / {
@@ -43,9 +46,18 @@
         compatible = "zmk,behavior-hold-tap";
         label = "HOMEROW_MODS"; 
         #binding-cells = <2>;
-        tapping-term-ms = <160>;
-        quick_tap_ms = <135>;
+        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
+    };
+    hmh: homerow_mods_hold {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOMEROW_MODS_HOLD"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <135>;
+        quick_tap_ms = <-1>;
+        flavor = "hold-preferred";
         bindings = <&kp>, <&kp>;
     };
 
@@ -53,8 +65,8 @@
         compatible = "zmk,behavior-hold-tap";
         label = "mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <160>;
-        quick_tap_ms = <135>;
+        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced"; // Must balanced. 「あいあいあい...」が高速で入力した際に認識されない事があるため...
         bindings = <&mo>, <&kp>;
     };
@@ -62,8 +74,8 @@
         compatible = "zmk,behavior-hold-tap";
         label = "ka_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <160>;
-        quick_tap_ms = <135>;
+        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_ka>;
     };
@@ -71,8 +83,8 @@
         compatible = "zmk,behavior-hold-tap";
         label = "ma_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <160>;
-        quick_tap_ms = <135>;
+        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_ma>;
     };
@@ -80,8 +92,8 @@
         compatible = "zmk,behavior-hold-tap";
         label = "no_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <160>;
-        quick_tap_ms = <135>;
+        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_no>;
     };
@@ -89,8 +101,8 @@
         compatible = "zmk,behavior-hold-tap";
         label = "na_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <160>;
-        quick_tap_ms = <135>;
+        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_na>;
     };
@@ -98,8 +110,8 @@
         compatible = "zmk,behavior-hold-tap";
         label = "ko_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <160>;
-        quick_tap_ms = <135>;
+        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_ko>;
     };
@@ -107,9 +119,9 @@
         compatible = "zmk,behavior-hold-tap";
         label = "kana_cmd"; 
         #binding-cells = <2>;
-        tapping-term-ms = <160>;
-        quick_tap_ms = <135>;
-        flavor = "balanced";
+        tapping-term-ms = <135>;
+        quick_tap_ms = <-1>;
+        flavor = "hold-preferred";
         bindings = <&m_def_cmd>, <&kp>;
     };
   };
@@ -629,7 +641,6 @@
       bindings = <&m_kana_w Q O>;
       layers = <VOICED>;
     };
-    
   };
 
     keymap {
@@ -638,7 +649,7 @@
 
         default_layer {
             bindings = <
-              &lt FIRMWARE TAB &none         &none          &hm TILDE HASH &none          &none       &none                                                                                                         &none       &none       &none         &hm DLLR PRCNT &none         &lt none        &lt FIRMWARE TAB
+              &lt FIRMWARE TAB &none         &none          &hm TILDE HASH &none          &none       &none                                                                                                         &none       &none       &none         &hm DLLR PRCNT &none         &none           &lt FIRMWARE TAB
               &none            &hm LS(Q) Q   &hm LS(G) G    &hm LS(M) M    &hm LS(L) L    &hm LS(W) W &macro_hyper                                                                                                  &macro_next &hm LS(Y) Y &hm LS(F) F   &hm LS(U) U    &hm LS(B) B   &hm AT UNDER    &none
               &kp LCTRL        &hm LS(D) D   &hm LS(S) S    &hm LS(T) T    &hm LS(N) N    &hm LS(R) R &macro_meh                &kp C_VOL_DN     &kp C_VOL_UP    &kp C_BRI_DN     &kp C_BRI_UP                      &macro_back &hm LS(A) A &hm LS(I) I   &hm LS(E) E    &hm LS(O) O   &hm LS(H) H     &hm DQT SQT
               &kp LSHIFT       &hm LS(Z) Z   &hm LS(X) X    &hm LS(C) C    &hm LS(V) V    &hm LS(J) J                                            &kp C_MUTE      &none                                                          &hm LS(K) K &hm LS(P) P   &hm COMMA DOT  &hm GT LT     &hm GRAVE EQUAL &hm SEMI COLON

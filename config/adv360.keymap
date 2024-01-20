@@ -56,11 +56,9 @@
         label = "HOMEROW_MODS_HOLD"; 
         #binding-cells = <2>;
         tapping-term-ms = <135>;
-        quick_tap_ms = <-1>;
         flavor = "hold-preferred";
         bindings = <&kp>, <&kp>;
     };
-
     mh: mo_on_hold {
         compatible = "zmk,behavior-hold-tap";
         label = "mo_on_hold"; 
@@ -120,7 +118,6 @@
         label = "kana_cmd"; 
         #binding-cells = <2>;
         tapping-term-ms = <135>;
-        quick_tap_ms = <-1>;
         flavor = "hold-preferred";
         bindings = <&m_def_cmd>, <&kp>;
     };

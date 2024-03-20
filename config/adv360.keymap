@@ -783,20 +783,20 @@
          */
         kana_layer_2 {
             bindings = <
-              &none  &none      &none      &none      &none               &none         &none                                           &none &none     &none    &none    &none     &none &none
-              &none  &none      KANA(N,U)  KANA(R,I)  KANA(N,E)         &none         &none                                           &none &kp PG_UP &kp HOME &kp UP   &kp END   &none &none
-              &trans KANA(S,E)  KANA(M,E)  KANA(N,I)  KANA(M,A)     &m_kana T I   &none        &trans &trans &trans &trans        &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none &none
-              &trans &trans     &trans     KANA(W,O)  &kp COMMA  &m_kana M I                       &trans &trans                     &none     &none    &none    &none     &none &none
-              &trans &none      &none      &none      &none                                   &trans &trans &trans &trans &trans &trans                 &none    &none    &none     &none &none
+              &none   &none      &none      &none      &none      &none       &none                                           &none &none     &none    &none    &none     &none &none
+              &none   &none      KANA(N,U)  KANA(R,I)  KANA(N,E)  &none       &none                                           &none &kp PG_UP &kp HOME &kp UP   &kp END   &none &none
+              &trans  KANA(S,E)  KANA(M,E)  KANA(N,I)  KANA(M,A)  KANA(T,I)   &none        &trans &trans &trans &trans        &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none &none
+              &trans  &trans     &trans     KANA(W,O)  &kp COMMA  KANA(M,I)                       &trans &trans                     &none     &none    &none    &none     &none &none
+              &trans  &none      &none      &none      &none                        &trans &trans &trans &trans &trans &trans                 &none    &none    &none     &none &none
             >;
         };
         kana_layer_3 {
             bindings = <
-              &tog LAYER_KANA &none          &none           &none          &none               &none         &none                                            &none   &none        &none                &none          &none          &none           &none
-              &none     &none          &none           &none          &tog LAYER_QWERTY         &none         &none                                            &none   &none        &m_kana S A          &m_kana Y O    &kp E          &m_kana Y U     &none
-              &trans    &none          &none           &none          &m_switch_kana      &none         &none         &trans &trans &trans &trans        &none   &m_kana Y A  &mh_no LAYER_VOICED N      &m_kana M O    &m_kana T U    &m_kana H U     &none
-              &trans    &none          &none           &none          &to LAYER_DEFAULT         &none                              &trans &trans                       &kp O        &mh LAYER_DEVOICED PERIOD  &m_kana M U    &m_kana W A    &trans          &none
-              &trans    &none          &none           &none          &none                                    &trans &trans &trans &trans &trans &trans                      &hm RPAR LPAR        &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
+              &none   &none       &none      &none      &none               &none     &none                                            &none   &none      &none       &none        &none        &none         &none
+              &none   &none       &none      &none      &tog LAYER_QWERTY   &none     &none                                            &none   KANA(Y,U)  KANA(S,A)   KANA(Y,O)    &kp E        &none         &none
+              &trans  &none       &none      &none      &m_switch_kana      &none     &none         &trans &trans &trans &trans        &none   KANA(Y,A)  KANA(N,O)   KANA(M,O)    KANA(T,U)    KANA(H,U)     &none
+              &trans  &none       &none      &none      &to LAYER_DEFAULT   &none                          &trans &trans                       &kp O      &kp PERIOD  KANA(M,U)    KANA(W,A)    &trans        &none
+              &trans  &none       &none      &none      &none                                &trans &trans &trans &trans &trans &trans                    &trans      &trans       &trans       &trans        &none
             >;
         };
 
@@ -812,7 +812,7 @@
               &none   &none        &none        &none        &none                            &trans &trans &trans &trans &trans &trans                     &none        &none  &none        &none        &none
             >;
         };
-        /* 
+        /*
          * 日本語かな入力 (薙刀式 - 半濁音)
          */
         kana_devoiced {

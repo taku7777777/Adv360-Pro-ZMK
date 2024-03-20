@@ -33,8 +33,7 @@
 
 /* オートシフトの関数 */
 #define AS(keycode) &auto_shift LS(keycode) keycode
-
-
+#define PAR() RPAR LPAR
 
 
 /*
@@ -710,7 +709,7 @@
               &none            AS(Q)         AS(G)          AS(M)          AS(L)          AS(W)       &macro_hyper                                                                                                  &macro_next AS(Y)       AS(F)         AS(U)          AS(B)         &hm AT UNDER    &none
               &kp LCTRL        AS(D)         AS(S)          AS(T)          AS(N)          AS(R)       &macro_meh                &kp C_VOL_DN     &kp C_VOL_UP    &kp C_BRI_DN     &kp C_BRI_UP                      &macro_back AS(A)       AS(I)         AS(E)          AS(O)         AS(H)           &hm DQT SQT
               &kp LSHIFT       AS(Z)         AS(X)          AS(C)          AS(V)          AS(J)                                                  &kp C_MUTE      &none                                                          AS(K)       AS(P)         &hm COMMA DOT  &hm GT LT     &hm GRAVE EQUAL &hm SEMI COLON
-              &kp LALT         &hm PIPE AMPS &hm QMARK EXCL &hm STAR FSLH  &hm PLUS MINUS                          &hm LGUI TAB &lt KANA_3 SPACE &lt NUMBER ESC  &lt NUMBER RCTRL &lt ARROW ENTER &lt FUNCTION BSPC                         &hm RPAR LPAR &hm RBRC LBRC  &hm RBKT LBKT &hm BSLH CARET  &none
+              &kp LALT         &hm PIPE AMPS &hm QMARK EXCL &hm STAR FSLH  &hm PLUS MINUS                          &hm LGUI TAB &lt KANA_3 SPACE &lt NUMBER ESC  &lt NUMBER RCTRL &lt ARROW ENTER &lt FUNCTION BSPC                         PAR()         &hm RBRC LBRC  &hm RBKT LBKT &hm BSLH CARET  &none
             >;
         };
 

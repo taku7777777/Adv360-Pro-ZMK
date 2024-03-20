@@ -33,8 +33,42 @@
 
 /* オートシフトの関数 */
 #define AS(keycode) &auto_shift LS(keycode) keycode
+/* 「(」「)」 */
 #define PAR() &auto_shift RPAR LPAR
+/* 「{」「}」 */
+#define BRC() &auto_shift RBRC LBRC
+/* 「[」「]」 */
+#define BKT() &auto_shift RBKT LBKT
+/* 「<」「>」 */
+#define LT() &auto_shift GT LT
 
+/* 「'」「"」 */
+#define QT() &auto_shift DQT SQT
+/* 「.」「,」 */
+#define DOT() &auto_shift COMMA DOT
+
+
+/* 「-」「+」 */
+#define MINUS() &auto_shift PLUS MINUS
+/* 「/」「*」 */
+#define FSLH() &auto_shift STAR FSLH
+/* 「!」「?」 */
+#define EXCL() &auto_shift QMARK EXCL
+/* 「&」「|」 */
+#define AMPS() &auto_shift PIPE AMPS
+
+/* 「%」「$」 */
+#define PRCNT() &auto_shift DLLR PRCNT
+/* 「=」「`」 */
+#define EQUAL() &auto_shift GRAVE EQUAL
+/* 「:」「;」 */
+#define COLON() &auto_shift SEMI COLON
+/* 「^」「\」 */
+#define CARET() &auto_shift BSLH CARET
+/* 「_」「@」 */
+#define UNDER() &auto_shift AT UNDER
+/* 「#」「~」 */
+#define HASH() &auto_shift TILDE HASH
 
 /*
  * ホールド時に使えそうなオプション
@@ -705,11 +739,11 @@
 
         default_layer {
             bindings = <
-              &lt FIRMWARE TAB &none         &none          &hm TILDE HASH &none          &none       &none                                                                                                         &none       &none       &none         &hm DLLR PRCNT &none         &none           &lt FIRMWARE TAB
-              &none            AS(Q)         AS(G)          AS(M)          AS(L)          AS(W)       &macro_hyper                                                                                                  &macro_next AS(Y)       AS(F)         AS(U)          AS(B)         &hm AT UNDER    &none
-              &kp LCTRL        AS(D)         AS(S)          AS(T)          AS(N)          AS(R)       &macro_meh                &kp C_VOL_DN     &kp C_VOL_UP    &kp C_BRI_DN     &kp C_BRI_UP                      &macro_back AS(A)       AS(I)         AS(E)          AS(O)         AS(H)           &hm DQT SQT
-              &kp LSHIFT       AS(Z)         AS(X)          AS(C)          AS(V)          AS(J)                                                  &kp C_MUTE      &none                                                          AS(K)       AS(P)         &hm COMMA DOT  &hm GT LT     &hm GRAVE EQUAL &hm SEMI COLON
-              &kp LALT         &hm PIPE AMPS &hm QMARK EXCL &hm STAR FSLH  &hm PLUS MINUS                          &hm LGUI TAB &lt KANA_3 SPACE &lt NUMBER ESC  &lt NUMBER RCTRL &lt ARROW ENTER &lt FUNCTION BSPC                         PAR()         &hm RBRC LBRC  &hm RBKT LBKT &hm BSLH CARET  &none
+              &lt FIRMWARE TAB &none   &none   HASH()  &none   &none   &none                                                                                                         &none       &none   &none   PRCNT() &none   &none   &lt FIRMWARE TAB
+              &none            AS(Q)   AS(G)   AS(M)   AS(L)   AS(W)   &macro_hyper                                                                                                  &macro_next AS(Y)   AS(F)   AS(U)   AS(B)   UNDER() &none
+              &kp LCTRL        AS(D)   AS(S)   AS(T)   AS(N)   AS(R)   &macro_meh                &kp C_VOL_DN     &kp C_VOL_UP    &kp C_BRI_DN     &kp C_BRI_UP                      &macro_back AS(A)   AS(I)   AS(E)   AS(O)   AS(H)   QT()
+              &kp LSHIFT       AS(Z)   AS(X)   AS(C)   AS(V)   AS(J)                                              &kp C_MUTE      &none                                                          AS(K)   AS(P)   DOT()   LT()    EQUAL() COLON()
+              &kp LALT         AMPS()  EXCL()  FSLH()  MINUS()                      &hm LGUI TAB &lt KANA_3 SPACE &lt NUMBER ESC  &lt NUMBER RCTRL &lt ARROW ENTER &lt FUNCTION BSPC                     PAR()   BRC()   BKT()   CARET() &none
             >;
         };
 

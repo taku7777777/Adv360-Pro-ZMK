@@ -34,41 +34,41 @@
 /* オートシフトの関数 */
 #define AS(keycode) &auto_shift LS(keycode) keycode
 /* 「(」「)」 */
-#define PAR() &auto_shift RPAR LPAR
+#define AS_PAR() &auto_shift RPAR LPAR
 /* 「{」「}」 */
-#define BRC() &auto_shift RBRC LBRC
+#define AS_BRC() &auto_shift RBRC LBRC
 /* 「[」「]」 */
-#define BKT() &auto_shift RBKT LBKT
+#define AS_BKT() &auto_shift RBKT LBKT
 /* 「<」「>」 */
-#define LT() &auto_shift GT LT
+#define AS_LT() &auto_shift GT LT
 
 /* 「'」「"」 */
-#define QT() &auto_shift DQT SQT
+#define AS_QT() &auto_shift DQT SQT
 /* 「.」「,」 */
-#define DOT() &auto_shift COMMA DOT
+#define AS_DOT() &auto_shift COMMA DOT
 
 
 /* 「-」「+」 */
-#define MINUS() &auto_shift PLUS MINUS
+#define AS_MINUS() &auto_shift PLUS MINUS
 /* 「/」「*」 */
-#define FSLH() &auto_shift STAR FSLH
+#define AS_FSLH() &auto_shift STAR FSLH
 /* 「!」「?」 */
-#define EXCL() &auto_shift QMARK EXCL
+#define AS_EXCL() &auto_shift QMARK EXCL
 /* 「&」「|」 */
-#define AMPS() &auto_shift PIPE AMPS
+#define AS_AMPS() &auto_shift PIPE AMPS
 
 /* 「%」「$」 */
-#define PRCNT() &auto_shift DLLR PRCNT
+#define AS_PRCNT() &auto_shift DLLR PRCNT
 /* 「=」「`」 */
-#define EQUAL() &auto_shift GRAVE EQUAL
+#define AS_EQUAL() &auto_shift GRAVE EQUAL
 /* 「:」「;」 */
-#define COLON() &auto_shift SEMI COLON
+#define AS_COLON() &auto_shift SEMI COLON
 /* 「^」「\」 */
-#define CARET() &auto_shift BSLH CARET
+#define AS_CARET() &auto_shift BSLH CARET
 /* 「_」「@」 */
-#define UNDER() &auto_shift AT UNDER
+#define AS_UNDER() &auto_shift AT UNDER
 /* 「#」「~」 */
-#define HASH() &auto_shift TILDE HASH
+#define AS_HASH() &auto_shift TILDE HASH
 
 /*
  * ホールド時に使えそうなオプション
@@ -739,11 +739,11 @@
 
         default_layer {
             bindings = <
-              &lt FIRMWARE TAB &none   &none   HASH()  &none   &none   &none                                                                                                         &none       &none   &none   PRCNT() &none   &none   &lt FIRMWARE TAB
-              &none            AS(Q)   AS(G)   AS(M)   AS(L)   AS(W)   &macro_hyper                                                                                                  &macro_next AS(Y)   AS(F)   AS(U)   AS(B)   UNDER() &none
-              &kp LCTRL        AS(D)   AS(S)   AS(T)   AS(N)   AS(R)   &macro_meh                &kp C_VOL_DN     &kp C_VOL_UP    &kp C_BRI_DN     &kp C_BRI_UP                      &macro_back AS(A)   AS(I)   AS(E)   AS(O)   AS(H)   QT()
-              &kp LSHIFT       AS(Z)   AS(X)   AS(C)   AS(V)   AS(J)                                              &kp C_MUTE      &none                                                          AS(K)   AS(P)   DOT()   LT()    EQUAL() COLON()
-              &kp LALT         AMPS()  EXCL()  FSLH()  MINUS()                      &hm LGUI TAB &lt KANA_3 SPACE &lt NUMBER ESC  &lt NUMBER RCTRL &lt ARROW ENTER &lt FUNCTION BSPC                     PAR()   BRC()   BKT()   CARET() &none
+              &lt FIRMWARE TAB &none      &none      AS_HASH()  &none   &none   &none                                                                                                         &none       &none   &none      AS_PRCNT() &none      &none      &lt FIRMWARE TAB
+              &none            AS(Q)      AS(G)      AS(M)      AS(L)   AS(W)   &macro_hyper                                                                                                  &macro_next AS(Y)   AS(F)      AS(U)      AS(B)      AS_UNDER() &none
+              &kp LCTRL        AS(D)      AS(S)      AS(T)      AS(N)   AS(R)   &macro_meh                &kp C_VOL_DN     &kp C_VOL_UP    &kp C_BRI_DN     &kp C_BRI_UP                      &macro_back AS(A)   AS(I)      AS(E)      AS(O)      AS(H)      AS_QT()
+              &kp LSHIFT       AS(Z)      AS(X)      AS(C)      AS(V)   AS(J)                                              &kp C_MUTE      &none                                                          AS(K)   AS(P)      DOT()      AS_LT()    AS_EQUAL() AS_COLON()
+              &kp LALT         AS_AMPS()  AS_EXCL()  AS_FSLH()  AS_MINUS()                   &hm LGUI TAB &lt KANA_3 SPACE &lt NUMBER ESC  &lt NUMBER RCTRL &lt ARROW ENTER &lt FUNCTION BSPC                     AS_PAR()   AS_BRC()   AS_BKT()   AS_CARET() &none
             >;
         };
 

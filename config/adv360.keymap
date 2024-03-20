@@ -83,6 +83,7 @@
 #define KANA(keycode1, keycode2) &m_kana keycode1 keycode2
 #define TSU_S() &m_small_tsu
 
+#define KANA_INDEX_A   41
 
 /*
  * ホールド時に使えそうなオプション
@@ -245,8 +246,8 @@
 
     combo_kana_small_a {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <15 41>;
-      bindings = <&m_kana X A>;
+      key-positions = <19 KANA_INDEX_A>;
+      bindings = <KANA(X,A)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_small_i {

@@ -806,9 +806,9 @@
         kana_voiced {
             bindings = <
               &none   &none        &none        &none        &none        &none         &none                                           &none  &none        &none        &none  &none        &none        &none
-              &none   &m_kana X A  &m_kana G I  &m_kana D E  &m_kana J I  &none         &none                                           &none  &none        &m_kana Z A  &none  &m_kana Z U  &m_kana B E  &none
-              &none   &m_kana Z E  &m_kana G E  &m_kana D O  &m_kana G A  &m_kana D I   &none        &trans &trans &trans &trans        &none  &m_kana G U  &m_kana G A  &none  &m_kana D U  &m_kana B U  &none
-              &none   &m_kana B O  &m_kana B I  &m_kana B A  &m_kana G O  &m_kana Z O                       &trans &trans                      &m_kana D A  &none        &none  &none        &none        &none
+              &none   KANA(X,A)    KANA(G,I)    KANA(D,E)    KANA(J,I)    &none         &none                                           &none  KANA(B,E)    KANA(Z,A)    &none  KANA(Z,U)    &none        &none
+              &none   KANA(Z,E)    KANA(G,E)    KANA(D,O)    KANA(G,A)    KANA(D,I)     &none        &trans &trans &trans &trans        &none  KANA(G,U)    KANA(G,A)    &none  KANA(D,U)    KANA(B,U)    &none
+              &none   KANA(B,O)    KANA(B,I)    KANA(B,A)    KANA(G,O)    KANA(Z,O)                         &trans &trans                      KANA(D,A)    &none        &none  &none        &none        &none
               &none   &none        &none        &none        &none                            &trans &trans &trans &trans &trans &trans                     &none        &none  &none        &none        &none
             >;
         };
@@ -817,11 +817,11 @@
          */
         kana_devoiced {
             bindings = <
-              &none   &none        &none        &none        &none  &none   &none                                            &none   &none  &none  &none  &none  &none        &none
-              &none   &none        &none        &none        &none  &none   &none                                            &none   &none  &none  &none  &none  &m_kana P E  &none
-              &none   &none        &none        &none        &none  &none   &none        &trans &trans &trans &trans         &none   &none  &none  &none  &none  &m_kana P U  &none
-              &none   &m_kana P O  &m_kana P I  &m_kana P A  &none  &none                       &trans &trans                        &none  &none  &none  &none  &none        &none
-              &none   &none        &none        &none        &none                &trans &trans &trans &trans &trans &trans                 &none  &none  &none  &none        &none
+              &none   &none        &none        &none        &none  &none   &none                                            &none   &none      &none  &none  &none  &none        &none
+              &none   &none        &none        &none        &none  &none   &none                                            &none   KANA(P,E)  &none  &none  &none  &none        &none
+              &none   &none        &none        &none        &none  &none   &none        &trans &trans &trans &trans         &none   &none      &none  &none  &none  KANA(P,U)    &none
+              &none   KANA(P,O)    KANA(P,I)    KANA(P,A)    &none  &none                       &trans &trans                        &none      &none  &none  &none  &none        &none
+              &none   &none        &none        &none        &none                &trans &trans &trans &trans &trans &trans                     &none  &none  &none  &none        &none
             >;
         };
 

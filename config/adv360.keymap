@@ -33,7 +33,7 @@
 
 /* オートシフトの関数 */
 #define AS(keycode) &auto_shift LS(keycode) keycode
-#define PAR() RPAR LPAR
+#define PAR() &auto_shift RPAR LPAR
 
 
 /*

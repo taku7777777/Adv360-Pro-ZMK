@@ -84,6 +84,16 @@
 #define TSU_S() &m_small_tsu
 
 #define KANA_INDEX_A   41
+#define KANA_INDEX_I   42
+#define KANA_INDEX_U   43
+#define KANA_INDEX_E   25
+#define KANA_INDEX_O   54
+
+#define KANA_INDEX_YA   40
+#define KANA_INDEX_YU   22
+#define KANA_INDEX_YO   24
+
+#define KANA_INDEX_V   19
 
 /*
  * ホールド時に使えそうなオプション
@@ -232,64 +242,69 @@
   };
 
   /* 
-    * 日本語かな入力 (薙刀式)
-    * 
-    * refer: https://oookaworks.seesaa.net/article/500180437.htm
-    *  0  1  2  3  4  5  6                     7  8  9 10 11 12 13
-    * 14 15 16 17 18 19 20                    21 22 23 24 25 26 27
-    * 28 29 30 31 32 33 34    35 36 37 38     39 40 41 42 43 44 45
-    * 46 47 48 49 50 51          52 53           54 55 56 57 58 59
-    * 60 61 62 63 64       65 66 67 68 69 70        71 72 73 74 75
-    */
+   * 日本語かな入力 (薙刀式)
+   * 
+   * refer: https://oookaworks.seesaa.net/article/500180437.htm
+   *  0  1  2  3  4  5  6                     7  8  9 10 11 12 13
+   * 14 15 16 17 18 19 20                    21 22 23 24 25 26 27
+   * 28 29 30 31 32 33 34    35 36 37 38     39 40 41 42 43 44 45
+   * 46 47 48 49 50 51          52 53           54 55 56 57 58 59
+   * 60 61 62 63 64       65 66 67 68 69 70        71 72 73 74 75
+   */
   combos {
     compatible = "zmk,combos";
 
+    /* 「ぁ」 */
     combo_kana_small_a {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <19 KANA_INDEX_A>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_A>;
       bindings = <KANA(X,A)>;
       layers = <LAYER_KANA>;
     };
+    /* 「ぃ」 */
     combo_kana_small_i {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <15 42>;
-      bindings = <&m_kana X I>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_I>;
+      bindings = <KANA(X,I)>;
       layers = <LAYER_KANA>;
     };
+    /* 「ぅ」 */
     combo_kana_small_u {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <15 43>;
-      bindings = <&m_kana X U>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_U>;
+      bindings = <KANA(X,U)>;
       layers = <LAYER_KANA>;
     };
+    /* 「ぇ」 */
     combo_kana_small_e {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <15 25>;
-      bindings = <&m_kana X E>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_E>;
+      bindings = <KANA(X,E)>;
       layers = <LAYER_KANA>;
     };
+    /* 「ぉ」 */
     combo_kana_small_o {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <15 54>;
-      bindings = <&m_kana X O>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_O>;
+      bindings = <KANA(X,O)>;
       layers = <LAYER_KANA>;
     };
 
     combo_kana_small_ya {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <15 40>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_YA>;
       bindings = <&m_kana_l Y A>;
       layers = <LAYER_KANA>;
     };
     combo_kana_small_yu {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <15 26>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_YU>;
       bindings = <&m_kana_l Y U>;
       layers = <LAYER_KANA>;
     };
     combo_kana_small_yo {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <15 24>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_YO>;
       bindings = <&m_kana_l Y O>;
       layers = <LAYER_KANA>;
     };

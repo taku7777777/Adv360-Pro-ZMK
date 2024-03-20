@@ -84,8 +84,6 @@
 #define TSU_S() &m_small_tsu
 
 
-&m_small_tsu
-
 /*
  * ホールド時に使えそうなオプション
  * 
@@ -785,11 +783,11 @@
          */
         kana_layer_2 {
             bindings = <
-              &none  &none          &none           &none          &none               &none         &none                                           &none &none     &none    &none    &none     &none &none
-              &none  &none          &m_kana N U     &m_kana R I    &m_kana N E         &none         &none                                           &none &kp PG_UP &kp HOME &kp UP   &kp END   &none &none
-              &trans &m_kana S E    &m_kana M E     &m_kana N I    &mh_ma LAYER_VOICED M     &m_kana T I   &none        &trans &trans &trans &trans        &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none &none
-              &trans &trans         &trans          &m_kana W O    &mh LAYER_DEVOICED COMMA  &m_kana M I                       &trans &trans                     &none     &none    &none    &none     &none &none
-              &trans &none          &none           &none          &none                                   &trans &trans &trans &trans &trans &trans                 &none    &none    &none     &none &none
+              &none  &none      &none      &none      &none               &none         &none                                           &none &none     &none    &none    &none     &none &none
+              &none  &none      KANA(N,U)  KANA(R,I)  KANA(N,E)         &none         &none                                           &none &kp PG_UP &kp HOME &kp UP   &kp END   &none &none
+              &trans KANA(S,E)  KANA(M,E)  KANA(N,I)  KANA(M,A)     &m_kana T I   &none        &trans &trans &trans &trans        &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none &none
+              &trans &trans     &trans     KANA(W,O)  &kp COMMA  &m_kana M I                       &trans &trans                     &none     &none    &none    &none     &none &none
+              &trans &none      &none      &none      &none                                   &trans &trans &trans &trans &trans &trans                 &none    &none    &none     &none &none
             >;
         };
         kana_layer_3 {

@@ -742,7 +742,7 @@
               &lt FIRMWARE TAB &none      &none      AS_HASH()  &none   &none   &none                                                                                                         &none       &none   &none      AS_PRCNT() &none      &none      &lt FIRMWARE TAB
               &none            AS(Q)      AS(G)      AS(M)      AS(L)   AS(W)   &macro_hyper                                                                                                  &macro_next AS(Y)   AS(F)      AS(U)      AS(B)      AS_UNDER() &none
               &kp LCTRL        AS(D)      AS(S)      AS(T)      AS(N)   AS(R)   &macro_meh                &kp C_VOL_DN     &kp C_VOL_UP    &kp C_BRI_DN     &kp C_BRI_UP                      &macro_back AS(A)   AS(I)      AS(E)      AS(O)      AS(H)      AS_QT()
-              &kp LSHIFT       AS(Z)      AS(X)      AS(C)      AS(V)   AS(J)                                              &kp C_MUTE      &none                                                          AS(K)   AS(P)      DOT()      AS_LT()    AS_EQUAL() AS_COLON()
+              &kp LSHIFT       AS(Z)      AS(X)      AS(C)      AS(V)   AS(J)                                              &kp C_MUTE      &none                                                          AS(K)   AS(P)      AS_DOT()   AS_LT()    AS_EQUAL() AS_COLON()
               &kp LALT         AS_AMPS()  AS_EXCL()  AS_FSLH()  AS_MINUS()                   &hm LGUI TAB &lt KANA_3 SPACE &lt NUMBER ESC  &lt NUMBER RCTRL &lt ARROW ENTER &lt FUNCTION BSPC                     AS_PAR()   AS_BRC()   AS_BKT()   AS_CARET() &none
             >;
         };

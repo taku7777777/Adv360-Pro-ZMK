@@ -81,6 +81,8 @@
  * かな関連の関数
  */
 #define KANA(keycode1, keycode2) &m_kana keycode1 keycode2
+#define KANA_S(keycode1, keycode2) &m_kana_l keycode1 keycode2
+#define KANA_Y(keycode1, keycode2) &m_kana_y keycode1 keycode2
 #define TSU_S() &m_small_tsu
 
 #define KANA_INDEX_A   41
@@ -92,6 +94,7 @@
 #define KANA_INDEX_YA   40
 #define KANA_INDEX_YU   22
 #define KANA_INDEX_YO   24
+#define KANA_INDEX_WA   57
 
 #define KANA_INDEX_V   19
 
@@ -293,25 +296,25 @@
     combo_kana_small_ya {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
       key-positions = <KANA_INDEX_V KANA_INDEX_YA>;
-      bindings = <&m_kana_l Y A>;
+      bindings = <KANA_S(Y,A)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_small_yu {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
       key-positions = <KANA_INDEX_V KANA_INDEX_YU>;
-      bindings = <&m_kana_l Y U>;
+      bindings = <KANA_S(Y,U)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_small_yo {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
       key-positions = <KANA_INDEX_V KANA_INDEX_YO>;
-      bindings = <&m_kana_l Y O>;
+      bindings = <KANA_S(Y,O)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_small_wa {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <15 57>;
-      bindings = <&m_kana_l W A>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_WA>;
+      bindings = <KANA_S(W,A)>;
       layers = <LAYER_KANA>;
     };
 

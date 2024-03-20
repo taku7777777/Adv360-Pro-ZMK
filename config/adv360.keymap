@@ -91,6 +91,14 @@
 #define KANA_INDEX_E   25
 #define KANA_INDEX_O   54
 
+#define KANA_INDEX_KI   16
+#define KANA_INDEX_SHI  18
+#define KANA_INDEX_CHI  33
+#define KANA_INDEX_NI   31
+#define KANA_INDEX_HI   48
+#define KANA_INDEX_MI   51
+#define KANA_INDEX_RI   17
+
 #define KANA_INDEX_YA   40
 #define KANA_INDEX_YU   22
 #define KANA_INDEX_YO   24
@@ -320,128 +328,128 @@
 
     combo_kana_kya {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <16 40>;
-      bindings = <&m_kana_y K A>;
+      key-positions = <KANA_INDEX_KI KANA_INDEX_YA>;
+      bindings = <KANA_Y(K,A)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_kyu {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <16 26>;
-      bindings = <&m_kana_y K U>;
+      key-positions = <KANA_INDEX_KI KANA_INDEX_YU>;
+      bindings = <KANA_Y(K,U)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_kyo {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <16 24>;
-      bindings = <&m_kana_y K O>;
+      key-positions = <KANA_INDEX_KI KANA_INDEX_YO>;
+      bindings = <KANA_Y(K,O)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_sya {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <18 40>;
-      bindings = <&m_kana_y S A>;
+      key-positions = <KANA_INDEX_SHI KANA_INDEX_YA>;
+      bindings = <KANA_Y(S,A)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_syu {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <18 26>;
-      bindings = <&m_kana_y S U>;
+      key-positions = <KANA_INDEX_SHI KANA_INDEX_YU>;
+      bindings = <KANA_Y(S,U)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_syo {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <18 24>;
-      bindings = <&m_kana_y S O>;
+      key-positions = <KANA_INDEX_SHI KANA_INDEX_YO>;
+      bindings = <KANA_Y(S,O)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_tya {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <33 40>;
-      bindings = <&m_kana_y T A>;
+      key-positions = <KANA_INDEX_CHI KANA_INDEX_YA>;
+      bindings = <KANA_Y(T,A)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_tyu {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <33 26>;
-      bindings = <&m_kana_y T U>;
+      key-positions = <KANA_INDEX_CHI KANA_INDEX_YU>;
+      bindings = <KANA_Y(T,U)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_tyo {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <33 24>;
-      bindings = <&m_kana_y T O>;
+      key-positions = <KANA_INDEX_CHI KANA_INDEX_YO>;
+      bindings = <KANA_Y(T,O)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_nya {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <31 40>;
-      bindings = <&m_kana_y N A>;
+      key-positions = <KANA_INDEX_NI KANA_INDEX_YA>;
+      bindings = <KANA_Y(N,A)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_nyu {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <31 26>;
-      bindings = <&m_kana_y N U>;
+      key-positions = <KANA_INDEX_NI KANA_INDEX_YU>;
+      bindings = <KANA_Y(N,U)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_nyo {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <31 24>;
-      bindings = <&m_kana_y N O>;
+      key-positions = <KANA_INDEX_NI KANA_INDEX_YO>;
+      bindings = <KANA_Y(N,O)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_hya {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <48 40>;
-      bindings = <&m_kana_y H A>;
+      key-positions = <KANA_INDEX_HI KANA_INDEX_YA>;
+      bindings = <KANA_Y(H,A)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_hyu {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <48 26>;
-      bindings = <&m_kana_y H U>;
+      key-positions = <KANA_INDEX_HI KANA_INDEX_YU>;
+      bindings = <KANA_Y(H,U)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_hyo {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <48 24>;
-      bindings = <&m_kana_y H O>;
+      key-positions = <KANA_INDEX_HI KANA_INDEX_YO>;
+      bindings = <KANA_Y(H,O)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_mya {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <51 40>;
-      bindings = <&m_kana_y M A>;
+      key-positions = <KANA_INDEX_MI KANA_INDEX_YA>;
+      bindings = <KANA_Y(M,A)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_myu {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <51 26>;
-      bindings = <&m_kana_y M U>;
+      key-positions = <KANA_INDEX_MI KANA_INDEX_YU>;
+      bindings = <KANA_Y(M,U)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_myo {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <51 24>;
-      bindings = <&m_kana_y M O>;
+      key-positions = <KANA_INDEX_MI KANA_INDEX_YO>;
+      bindings = <KANA_Y(M,O)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_rya {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <17 40>;
-      bindings = <&m_kana_y R A>;
+      key-positions = <KANA_INDEX_RI KANA_INDEX_YA>;
+      bindings = <KANA_Y(R,A)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_ryu {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <17 26>;
-      bindings = <&m_kana_y R U>;
+      key-positions = <KANA_INDEX_RI KANA_INDEX_YU>;
+      bindings = <KANA_Y(R,U)>;
       layers = <LAYER_KANA>;
     };
     combo_kana_ryo {
       timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
-      key-positions = <17 24>;
-      bindings = <&m_kana_y R O>;
+      key-positions = <KANA_INDEX_RI KANA_INDEX_YO>;
+      bindings = <KANA_Y(R,O)>;
       layers = <LAYER_KANA>;
     };
 

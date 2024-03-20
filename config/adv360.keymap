@@ -76,7 +76,7 @@
 /* 
  * かな関連の関数
  */
-#define KANA(keycode1, keycode2) &m_kana keycode1 keycode2
+#define KANA_F(keycode1, keycode2) &m_kana keycode1 keycode2
 
 /*
  * ホールド時に使えそうなオプション
@@ -763,7 +763,7 @@
         kana_layer_1 {
             bindings = <
               &none  &none          &none           &trans         &none              &none         &none                                                                      &none  &none       &none              &trans      &none       &none       &none
-              &none  KANA(V,U)      &m_kana K I     &m_kana T E    &m_kana S I        &kp LT        &trans                                                                     &trans &kp GT      &none              &m_kana R U &m_kana S U &m_kana H E &none
+              &none  KANA_F(V,U)      &m_kana K I     &m_kana T E    &m_kana S I        &kp LT        &trans                                                                     &trans &kp GT      &none              &m_kana R U &m_kana S U &m_kana H E &none
               &trans &m_kana R O    &m_kana K E     &m_kana T O    &mh_ka VOICED K    &m_small_tsu  &trans                              &trans &trans &trans &trans            &trans &m_kana K U &mh VOICED A       &kp I       &kp U       &kp MINUS   &hm DQT SQT
               &trans &m_kana H O    &m_kana H I     &m_kana H A    &mh_ko DEVOICED K  &m_kana S O                                              &trans &trans                          &m_kana T A &mh_na DEVOICED N  &m_kana N N &m_kana R A &m_kana R E &hm SEMI COLON
               &trans &trans         &trans          &trans         &trans                           &kana_cmd TAB TAB  &lt KANA_3 SPACE &trans &trans &lt KANA_2 ENTER  &trans                    &trans             &trans      &trans      &trans      &none

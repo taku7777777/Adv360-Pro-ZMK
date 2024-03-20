@@ -17,7 +17,7 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/backlight.h>
 
-#define DEFAULT   0
+#define LAYER_DEFAULT   0
 #define LAYER_KANA      1
 #define LAYER_L_KANA    2
 #define LAYER_R_KANA    3
@@ -789,7 +789,7 @@
               &tog LAYER_KANA &none          &none           &none          &none               &none         &none                                            &none   &none        &none                &none          &none          &none           &none
               &none     &none          &none           &none          &tog QWERTY         &none         &none                                            &none   &none        &m_kana S A          &m_kana Y O    &kp E          &m_kana Y U     &none
               &trans    &none          &none           &none          &m_switch_kana      &none         &none         &trans &trans &trans &trans        &none   &m_kana Y A  &mh_no LAYER_VOICED N      &m_kana M O    &m_kana T U    &m_kana H U     &none
-              &trans    &none          &none           &none          &to DEFAULT         &none                              &trans &trans                       &kp O        &mh LAYER_DEVOICED PERIOD  &m_kana M U    &m_kana W A    &trans          &none
+              &trans    &none          &none           &none          &to LAYER_DEFAULT         &none                              &trans &trans                       &kp O        &mh LAYER_DEVOICED PERIOD  &m_kana M U    &m_kana W A    &trans          &none
               &trans    &none          &none           &none          &none                                    &trans &trans &trans &trans &trans &trans                      &hm RPAR LPAR        &hm RBRC LBRC  &hm RBKT LBKT  &hm BSLH CARET  &none
             >;
         };
@@ -859,7 +859,7 @@
               &none      &none   &none   &none        &none        &none   &none                                                      &none   &none    &none   &none   &none   &none  &none
               &none      &none   &none   &to QWERTY   &tog QWERTY  &none   &none                                                      &none   &kp F12  &kp F7  &kp F8  &kp F9  &none  &none
               &kp LCTRL  &none   &none   &to LAYER_KANA     &tog LAYER_KANA    &none   &none              &none   &none   &none   &none           &none   &kp F11  &kp F4  &kp F5  &kp F6  &none  &none
-              &kp LSHIFT &none   &none   &none        &to DEFAULT  &none                              &none   &none                           &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
+              &kp LSHIFT &none   &none   &none        &to LAYER_DEFAULT  &none                              &none   &none                           &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
               &kp LALT   &none   &none   &none        &none                        &kp LGUI   &none   &none   &none   &none   &trans                   &none   &none   &none   &none  &none
             >;
         };

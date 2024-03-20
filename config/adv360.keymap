@@ -30,11 +30,54 @@
 #define FIRMWARE 10
 #define QGMLWY   11
 
-#define DEFAULT_TAPPING_TERM 150
-#define DEFAULT_QUICK_TAP 130
-#define DEFAULT_COMBO_TIMEOUT 50
 
-#define COMBO_TIMEOUT 30
+
+/*
+ * ホールド時に使えそうなオプション
+ * 
+ * ■「hold-while-undecided」
+ * hold-while-undecidedは、ZMKファームウェアのホールドタップ機能（hold-tap behavior）に関連する設定の一つです。この設定は、キーがホールドかタップかをシステムが決定するまでの間、ホールド動作を仮に適用するかどうかを制御します。
+ * 具体的には、ユーザーがキーを押下したとき、そのキーがホールド動作（例えば、修飾キーとしての機能）か、タップ動作（例えば、文字を入力）かをシステムがすぐに判断できない場合があります。hold-while-undecidedが有効（true）に設定されていると、そのような状況でシステムはキーをホールド動作として扱います。その後、ユーザーがキーを早期に離すと、システムはタップ動作として認識を変更します。
+ * この設定は、特に修飾キーと文字キーが同じキーに割り当てられている場合に有用です。hold-while-undecidedを有効にすることで、ユーザーが修飾キーを意図して使用している場合に、その修飾キーの機能がすぐに適用されるようになります。これにより、例えばショートカットキーの操作などで、よりスムーズな入力体験を提供できます。
+ * ただし、この設定はタイピングの誤認識を引き起こす可能性もあるため、ユーザーのタイピングスタイルや具体的な使用シナリオに応じて慎重に設定する必要があります。
+ * => Space / Enter に適用できそう！
+ * 
+ * ■「hold-trigger-key-positions」
+ * hold-trigger-key-positionsは、ZMKファームウェアのホールドタップ機能（hold-tap behavior）に関連する設定の一つで、特定のキーがホールド動作をトリガーするために必要なキーポジション（キーの位置）を指定するために使用されます。この設定は、ホールドタップ機能が有効なキーの中で、どのキーがホールド動作を引き起こすかを細かく制御したい場合に便利です。
+ * 具体的には、hold-trigger-key-positionsを使用することで、キーボード上の特定のキー位置を指定し、その位置のキーが押されたときにのみホールド動作をトリガーするように設定できます。これにより、ユーザーは特定のキーに対してホールド動作をより細かくカスタマイズすることが可能になります。
+ * 例えば、修飾キーとしての機能と文字入力の両方に使用されるキーがある場合、hold-trigger-key-positionsを使用して、修飾キーとしての機能を持つ特定のキーポジションのみがホールド動作をトリガーするように設定することができます。これにより、誤操作を減らし、タイピングの効率を向上させることができます。
+ * この設定は、ユーザーが特定のキー操作に対してより細かい制御を求める場合に特に有用ですが、設定には慎重さが求められます。不適切な設定は、予期しないキー動作を引き起こす可能性があるため、実際の使用感に基づいて慎重に調整する必要があります。
+ * => 薙刀式の修飾キー全般に使えそう！
+ * 
+ * ■「hold-trigger-on-release」
+ * デフォルトでは、hold-trigger-key-positionsは、ホールドタップキーの後に最初に押されたキーに基づいて評価されます。ホームロー修飾キー（homerow mods）の場合、これは常に理想的ではありません。なぜなら、hold-trigger-key-positionsに含まれていない複数の修飾キーを組み合わせることができなくなるからです。この挙動を上書きするために、hold-trigger-on-releaseを設定することができます。これをtrueに設定すると、hold-trigger-key-positionsの評価がキーのリリース（離す動作）まで遅延されます。これにより、次に押されるキーをホールドしている間は複数の修飾キーを組み合わせることができるようになり、次に押されるキーがタップされた場合は、ホールドタップをタップ動作として判断することができます。
+ * 簡単に言うと、hold-trigger-on-releaseを使うことで、修飾キーをより柔軟に組み合わせることが可能になります。キーを押してすぐに離す（タップ）場合は通常通りタップ動作として扱われ、キーを押し続ける（ホールド）場合は、キーを離すまで修飾キーの組み合わせが保持されます。これにより、ユーザーはより直感的に、複数の修飾キーを組み合わせた操作を行うことができるようになります。
+ */
+
+
+/*
+ * ホールドキーとして利用するために必要な長押し期間
+ * 「スペース」を押下しながら「あ」を入力した際に「の」を入力させる場合
+ * 「スペース」を押下している期間が指定の数値以上の場合に、「の」が入力されます
+ * 
+ * この時間が短いと「の」が素早く入力できますが、素早く「スペース」「あ」を入力した際に「の」と認識されやすくなります
+ * この時間が長いと、素早く「スペース」「あ」を入力しても「の」と認識されにくくなりますが、「の」を入力するための一定時間押下した状態を維持する必要があり素早く入力することが困難になります
+ * 
+ * TODO: Spaceキーか否かで扱い変わってくるので要精査
+ */
+#define DEFAULT_HOLD_TAPPING_TERM 150
+
+#define DEFAULT_QUICK_TAP 130
+
+
+/*
+ * コンボが発火する猶予期間
+ * 「し」「く」を入力すると「しゃ」になる場合に、
+ * 「し」が押下されてから、「く」が押下されるまでの時間が指定の数値以内であれば、「しゃ」で入力される
+ * 
+ * この時間が長いと「しゃ」の入力が容易になるが、「し」「く」と高速で入力した際に意図せず「しゃ」で入力されてしまいます
+ */
+#define DEFAULT_COMBO_TIMEOUT 30
 
 / {
   behaviors {
@@ -47,7 +90,7 @@
         compatible = "zmk,behavior-hold-tap";
         label = "HOMEROW_MODS"; 
         #binding-cells = <2>;
-        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
         quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "tap-preferred";
         bindings = <&kp>, <&kp>;
@@ -64,7 +107,7 @@
         compatible = "zmk,behavior-hold-tap";
         label = "mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
         quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced"; // Must balanced. 「あいあいあい...」が高速で入力した際に認識されない事があるため...
         bindings = <&mo>, <&kp>;
@@ -73,7 +116,7 @@
         compatible = "zmk,behavior-hold-tap";
         label = "ka_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
         quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_ka>;
@@ -82,7 +125,7 @@
         compatible = "zmk,behavior-hold-tap";
         label = "ma_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
         quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_ma>;
@@ -91,7 +134,7 @@
         compatible = "zmk,behavior-hold-tap";
         label = "no_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
         quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_no>;
@@ -100,7 +143,7 @@
         compatible = "zmk,behavior-hold-tap";
         label = "na_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
         quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_na>;
@@ -109,7 +152,7 @@
         compatible = "zmk,behavior-hold-tap";
         label = "ko_mo_on_hold"; 
         #binding-cells = <2>;
-        tapping-term-ms = <DEFAULT_TAPPING_TERM>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
         quick_tap_ms = <DEFAULT_QUICK_TAP>;
         flavor = "balanced";
         bindings = <&mo>, <&macro_kana_ko>;

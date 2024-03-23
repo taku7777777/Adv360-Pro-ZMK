@@ -2,6 +2,14 @@
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
+ * 
+ * TODO: 英字入力時の左手親指でスペース相当のキーを長押しした際には、右手で数字入力を可能とする
+ * TODO: ターミナルには操作を簡易化するツールをいれる
+ * TODO: かな入力時に⌘+矢印の移動を実現する
+ * TODO: かな入力時に⌥+矢印の移動を実現する
+ * TODO: 定義ファイルの分割
+ * TODO: 不要なマクロの整備
+ * TODO: マクロの命名の整備
  */
 
 

@@ -10,6 +10,8 @@
  * TODO: 定義ファイルの分割
  * TODO: 不要なマクロの整備
  * TODO: マクロの命名の整備
+ * TODO: FWのレイヤを1にする
+ * TODO: 不必要なレイヤの削除
  */
 
 
@@ -30,16 +32,16 @@
  * LAYERの定義
  */
 #define LAYER_DEFAULT   0
-#define LAYER_KANA      1
-#define LAYER_L_KANA    2
-#define LAYER_R_KANA    3
-#define LAYER_VOICED    4
-#define LAYER_DEVOICED  5
-#define LAYER_QWERTY    6
-#define LAYER_NUMBER    7
-#define LAYER_ARROW     8
-#define LAYER_FUNCTION  9
-#define LAYER_FIRMWARE 10
+#define LAYER_FIRMWARE  1
+#define LAYER_KANA      2
+#define LAYER_L_KANA    3
+#define LAYER_R_KANA    4
+#define LAYER_VOICED    5
+#define LAYER_DEVOICED  6
+#define LAYER_QWERTY    7
+#define LAYER_NUMBER    8
+#define LAYER_ARROW     9
+#define LAYER_FUNCTION 10
 #define LAYER_QGMLWY   11
 
 
@@ -796,6 +798,21 @@
             >;
         };
 
+
+        /*
+         * 新たなキーマップの書き込みや、Bluetooth接続の解除/再接続なFirmware関連のコマンドを集約しています
+         * 他のキーマップの統廃合の影響を受けIndexがずれて、新たなキーマップの書き込みができなくなるリスクを極小化するために、Layer1に指定しています
+         */
+        firmware_layer {
+            bindings = <
+              &trans  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                     &none       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
+              &none   &none        &none        &none        &none        &none        &bootloader                                                                               &bootloader &none         &none         &none         &none         &none         &none
+              &none   &none        &none        &none        &none        &none        &none                        &bt BT_CLR &bt BT_CLR &bt BT_CLR &bt BT_CLR                  &none       &none         &none         &none         &none         &none         &none
+              &none   &none        &none        &none        &none        &none                                                &bt BT_CLR &bt BT_CLR                                         &none         &none         &none         &none         &none         &none
+              &none   &none        &none        &bl B L_INC   &bl BL_DEC                             &rgb_ug RGB_TOG &bl BL_TOG &none      &none      &bl BL_TOG &rgb_ug RGB_TOG                            &bl BL_INC    &bl BL_DEC    &none         &none         &none
+            >;
+        };
+
         /* 
          * 日本語かな入力 (薙刀式)
          * 
@@ -902,16 +919,6 @@
               &kp LCTRL  &none   &none   &to LAYER_KANA     &tog LAYER_KANA    &none   &none              &none   &none   &none   &none           &none   &kp F11  &kp F4  &kp F5  &kp F6  &none  &none
               &kp LSHIFT &none   &none   &none        &to LAYER_DEFAULT  &none                              &none   &none                           &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
               &kp LALT   &none   &none   &none        &none                        &kp LGUI   &none   &none   &none   &none   &trans                   &none   &none   &none   &none  &none
-            >;
-        };
-
-        bootloader_layer {
-            bindings = <
-              &trans  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                     &none       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
-              &none   &none        &none        &none        &none        &none        &bootloader                                                                               &bootloader &none         &none         &none         &none         &none         &none
-              &none   &none        &none        &none        &none        &none        &none                        &bt BT_CLR &bt BT_CLR &bt BT_CLR &bt BT_CLR                  &none       &none         &none         &none         &none         &none         &none
-              &none   &none        &none        &none        &none        &none                                                &bt BT_CLR &bt BT_CLR                                         &none         &none         &none         &none         &none         &none
-              &none   &none        &none        &bl BL_INC   &bl BL_DEC                             &rgb_ug RGB_TOG &bl BL_TOG &none      &none      &bl BL_TOG &rgb_ug RGB_TOG                            &bl BL_INC    &bl BL_DEC    &none         &none         &none
             >;
         };
   

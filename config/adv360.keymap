@@ -835,11 +835,11 @@
          */
         kana_layer_2 {
             bindings = <
-              &none   &none      &none      &none      &none      &none       &none                                           &none &none     &none    &none    &none     &none &none
-              &none   &none      KANA(N,U)  KANA(R,I)  KANA(N,E)  &none       &none                                           &none &kp PG_UP &kp HOME &kp UP   &kp END   &none &none
-              &trans  KANA(S,E)  KANA(M,E)  KANA(N,I)  KANA(M,A)  KANA(T,I)   &none        &trans &trans &trans &trans        &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none &none
-              &trans  &trans     &trans     KANA(W,O)  &kp COMMA  KANA(M,I)                       &trans &trans                     &none     &none    &none    &none     &none &none
-              &trans  &none      &none      &none      &none                        &trans &trans &trans &trans &trans &trans                 &none    &none    &none     &none &none
+              &none   &none      &none      &none      &none      &none       &none                                             &none &none     &none    &none    &none     &none &none
+              &none   &none      KANA(N,U)  KANA(R,I)  KANA(N,E)  &none       &none                                             &none &kp PG_UP &kp HOME &kp UP   &kp END   &none &none
+              &trans  KANA(S,E)  KANA(M,E)  KANA(N,I)  KANA(M,A)  KANA(T,I)   &none          &trans &trans &trans &trans        &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none &none
+              &trans  &trans     &trans     KANA(W,O)  &kp COMMA  KANA(M,I)                         &trans &trans                     &none     &none    &none    &none     &none &none
+              &trans  &none      &none      &none      &none                        &kp LGUI &trans &trans &trans &trans &trans                 &none    &none    &none     &none &none
             >;
         };
         kana_layer_3 {

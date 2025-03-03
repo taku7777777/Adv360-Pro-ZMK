@@ -1,88 +1,940 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ * 
+ * TODO: 英字入力時の左手親指でスペース相当のキーを長押しした際には、右手で数字入力を可能とする
+ * TODO: ターミナルには操作を簡易化するツールをいれる
+ * TODO: かな入力時に⌘+矢印の移動を実現する
+ * TODO: かな入力時に⌥+矢印の移動を実現する
+ * TODO: 定義ファイルの分割
+ * TODO: 不要なマクロの整備
+ * TODO: マクロの命名の整備
+ * TODO: FWのレイヤを1にする
+ * TODO: 不必要なレイヤの削除
+ */
+
+
+/* THIS FILE WAS GENERATED!
+ *
+ * This file was generated automatically. You may or may not want to
+ * edit it directly.
+ */
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/stp.h>
 #include <dt-bindings/zmk/backlight.h>
-#include <dt-bindings/zmk/pointing.h>
+
+
+/* 
+ * LAYERの定義
+ */
+#define LAYER_DEFAULT   0
+#define LAYER_FIRMWARE  1
+#define LAYER_KANA      2
+#define LAYER_L_KANA    3
+#define LAYER_R_KANA    4
+#define LAYER_VOICED    5
+#define LAYER_DEVOICED  6
+#define LAYER_QWERTY    7
+#define LAYER_NUMBER    8
+#define LAYER_ARROW     9
+#define LAYER_FUNCTION 10
+#define LAYER_QGMLWY   11
+
+
+/* 
+ * オートシフト関連の関数 
+ */
+#define AS(keycode) &auto_shift LS(keycode) keycode
+/* 「(」「)」 */
+#define AS_PAR() &auto_shift RPAR LPAR
+/* 「{」「}」 */
+#define AS_BRC() &auto_shift RBRC LBRC
+/* 「[」「]」 */
+#define AS_BKT() &auto_shift RBKT LBKT
+/* 「<」「>」 */
+#define AS_LT() &auto_shift GT LT
+
+/* 「'」「"」 */
+#define AS_QT() &auto_shift DQT SQT
+/* 「.」「,」 */
+#define AS_DOT() &auto_shift COMMA DOT
+
+
+/* 「-」「+」 */
+#define AS_MINUS() &auto_shift PLUS MINUS
+/* 「/」「*」 */
+#define AS_FSLH() &auto_shift STAR FSLH
+/* 「!」「?」 */
+#define AS_EXCL() &auto_shift QMARK EXCL
+/* 「&」「|」 */
+#define AS_AMPS() &auto_shift PIPE AMPS
+
+/* 「%」「$」 */
+#define AS_PRCNT() &auto_shift DLLR PRCNT
+/* 「=」「`」 */
+#define AS_EQUAL() &auto_shift GRAVE EQUAL
+/* 「:」「;」 */
+#define AS_COLON() &auto_shift SEMI COLON
+/* 「^」「\」 */
+#define AS_CARET() &auto_shift BSLH CARET
+/* 「_」「@」 */
+#define AS_UNDER() &auto_shift AT UNDER
+/* 「#」「~」 */
+#define AS_HASH() &auto_shift TILDE HASH
+
+
+/* 
+ * かな関連の関数
+ */
+#define KANA(keycode1, keycode2) &m_kana keycode1 keycode2
+#define KANA_S(keycode1, keycode2) &m_kana_l keycode1 keycode2
+#define KANA_Y(keycode1, keycode2) &m_kana_y keycode1 keycode2
+#define TSU_S() &m_small_tsu
+
+#define KANA_INDEX_A   41
+#define KANA_INDEX_I   42
+#define KANA_INDEX_U   43
+#define KANA_INDEX_E   25
+#define KANA_INDEX_O   54
+
+#define KANA_INDEX_KI   16
+#define KANA_INDEX_SHI  18
+#define KANA_INDEX_CHI  33
+#define KANA_INDEX_NI   31
+#define KANA_INDEX_HI   48
+#define KANA_INDEX_MI   51
+#define KANA_INDEX_RI   17
+
+#define KANA_INDEX_YA   40
+#define KANA_INDEX_YU   22
+#define KANA_INDEX_YO   24
+#define KANA_INDEX_WA   57
+
+#define KANA_INDEX_V   19
+
+/*
+ * ホールド時に使えそうなオプション
+ * 
+ * ■「hold-while-undecided」
+ * hold-while-undecidedは、ZMKファームウェアのホールドタップ機能（hold-tap behavior）に関連する設定の一つです。この設定は、キーがホールドかタップかをシステムが決定するまでの間、ホールド動作を仮に適用するかどうかを制御します。
+ * 具体的には、ユーザーがキーを押下したとき、そのキーがホールド動作（例えば、修飾キーとしての機能）か、タップ動作（例えば、文字を入力）かをシステムがすぐに判断できない場合があります。hold-while-undecidedが有効（true）に設定されていると、そのような状況でシステムはキーをホールド動作として扱います。その後、ユーザーがキーを早期に離すと、システムはタップ動作として認識を変更します。
+ * この設定は、特に修飾キーと文字キーが同じキーに割り当てられている場合に有用です。hold-while-undecidedを有効にすることで、ユーザーが修飾キーを意図して使用している場合に、その修飾キーの機能がすぐに適用されるようになります。これにより、例えばショートカットキーの操作などで、よりスムーズな入力体験を提供できます。
+ * ただし、この設定はタイピングの誤認識を引き起こす可能性もあるため、ユーザーのタイピングスタイルや具体的な使用シナリオに応じて慎重に設定する必要があります。
+ * => Space / Enter に適用できそう！
+ * 
+ * ■「hold-trigger-key-positions」
+ * hold-trigger-key-positionsは、ZMKファームウェアのホールドタップ機能（hold-tap behavior）に関連する設定の一つで、特定のキーがホールド動作をトリガーするために必要なキーポジション（キーの位置）を指定するために使用されます。この設定は、ホールドタップ機能が有効なキーの中で、どのキーがホールド動作を引き起こすかを細かく制御したい場合に便利です。
+ * 具体的には、hold-trigger-key-positionsを使用することで、キーボード上の特定のキー位置を指定し、その位置のキーが押されたときにのみホールド動作をトリガーするように設定できます。これにより、ユーザーは特定のキーに対してホールド動作をより細かくカスタマイズすることが可能になります。
+ * 例えば、修飾キーとしての機能と文字入力の両方に使用されるキーがある場合、hold-trigger-key-positionsを使用して、修飾キーとしての機能を持つ特定のキーポジションのみがホールド動作をトリガーするように設定することができます。これにより、誤操作を減らし、タイピングの効率を向上させることができます。
+ * この設定は、ユーザーが特定のキー操作に対してより細かい制御を求める場合に特に有用ですが、設定には慎重さが求められます。不適切な設定は、予期しないキー動作を引き起こす可能性があるため、実際の使用感に基づいて慎重に調整する必要があります。
+ * => 薙刀式の修飾キー全般に使えそう！
+ * 
+ * ■「hold-trigger-on-release」
+ * デフォルトでは、hold-trigger-key-positionsは、ホールドタップキーの後に最初に押されたキーに基づいて評価されます。ホームロー修飾キー（homerow mods）の場合、これは常に理想的ではありません。なぜなら、hold-trigger-key-positionsに含まれていない複数の修飾キーを組み合わせることができなくなるからです。この挙動を上書きするために、hold-trigger-on-releaseを設定することができます。これをtrueに設定すると、hold-trigger-key-positionsの評価がキーのリリース（離す動作）まで遅延されます。これにより、次に押されるキーをホールドしている間は複数の修飾キーを組み合わせることができるようになり、次に押されるキーがタップされた場合は、ホールドタップをタップ動作として判断することができます。
+ * 簡単に言うと、hold-trigger-on-releaseを使うことで、修飾キーをより柔軟に組み合わせることが可能になります。キーを押してすぐに離す（タップ）場合は通常通りタップ動作として扱われ、キーを押し続ける（ホールド）場合は、キーを離すまで修飾キーの組み合わせが保持されます。これにより、ユーザーはより直感的に、複数の修飾キーを組み合わせた操作を行うことができるようになります。
+ */
+
+
+/*
+ * ホールドキーとして利用するために必要な長押し期間
+ * 「スペース」を押下しながら「あ」を入力した際に「の」を入力させる場合
+ * 「スペース」を押下している期間が指定の数値以上の場合に、「の」が入力されます
+ * 
+ * この時間が短いと「の」が素早く入力できますが、素早く「スペース」「あ」を入力した際に「の」と認識されやすくなります
+ * この時間が長いと、素早く「スペース」「あ」を入力しても「の」と認識されにくくなりますが、「の」を入力するための一定時間押下した状態を維持する必要があり素早く入力することが困難になります
+ * 
+ * TODO: Spaceキーか否かで扱い変わってくるので要精査
+ */
+#define DEFAULT_HOLD_TAPPING_TERM 150
+
+#define DEFAULT_QUICK_TAP 130
+
+
+/*
+ * コンボが発火する猶予期間
+ * 「し」「く」を入力すると「しゃ」になる場合に、
+ * 「し」が押下されてから、「く」が押下されるまでの時間が指定の数値以内であれば、「しゃ」で入力される
+ * 
+ * この時間が長いと「しゃ」の入力が容易になるが、「し」「く」と高速で入力した際に意図せず「しゃ」で入力されてしまいます
+ */
+#define DEFAULT_COMBO_TIMEOUT 30
 
 / {
-    behaviors {
-      #include "macros.dtsi"
-      #include "version.dtsi"
+  behaviors {
+    #include "macros.dtsi"
 
-      hm: homerow_mods {
-          compatible = "zmk,behavior-hold-tap";
-          label = "HOMEROW_MODS";
-          #binding-cells = <2>;
-          tapping-term-ms = <200>;
-          quick_tap_ms = <175>;
-          flavor = "tap-preferred";
-          bindings = <&kp>, <&kp>;
-      };
-    };
-
-  keymap {
-    compatible = "zmk,keymap";
-
-    default_layer {
-      display-name = "Base";
-      bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                           &mo 3 &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
-        &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &none &kp Y  &kp U  &kp I     &kp O    &kp P    &kp BSLH
-        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none           &kp LCTRL &kp LALT &kp LGUI  &kp RCTRL           &none &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp SQT
-        &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                            &kp HOME &kp PG_UP                           &kp N  &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp SPACE              &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
-      >;
-    };
-    keypad {
-      display-name = "Kp";
-      bindings = <
-        &kp EQUAL &kp N1    &kp N2   &kp N3   &kp N4     &kp N5 &trans                                                           &mo 3 &kp N6 &kp KP_NUM &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp MINUS
-        &kp TAB   &kp Q     &kp W    &kp E    &kp R      &kp T  &none                                                            &none &kp Y  &kp KP_N7  &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &kp BSLH
-        &kp ESC   &kp A     &kp S    &kp D    &kp F      &kp G  &none           &kp LCTRL &kp LALT &kp LGUI  &kp RCTRL           &none &kp H  &kp KP_N4  &kp KP_N5    &kp KP_N6     &kp KP_PLUS     &kp SQT
-        &kp LSHFT &kp Z     &kp X    &kp C    &kp V      &kp B                            &kp HOME &kp PG_UP                           &kp N  &kp KP_N1  &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &kp RSHFT
-        &mo 2     &kp GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &kp DEL   &kp END  &kp PG_DN &kp ENTER &kp KP_N0              &kp UP     &kp DOWN     &kp KP_DOT    &kp RBKT        &mo 2
-      >;
-    };
-    fn {
-      display-name = "Fn";
-      bindings = <
-        &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &tog 1                                           &mo 3 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-        &trans &trans &trans &trans &trans &trans  &none                                           &none &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans &trans  &none        &trans &trans &trans &trans        &none &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans &trans                      &trans &trans                     &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans              &trans &trans &trans  &trans  &trans
-      >;
-    };
-    mod {
-      display-name = "Mod";
-      bindings = <
-        &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                     &trans                 &none        &none        &none        &none &none &none
-        &none &none        &none        &none        &none        &none        &bootloader                                                               &bootloader            &none        &none        &none        &none &none &none
-        &studio_unlock &none        &none        &none        &none        &none        &none                   &none &none &bt BT_CLR &none                      &stp STP_BAT &none        &none        &none        &none &none &none
-        &none &none        &none        &none        &macro_ver   &none                                      &none &none                                                        &none        &none        &none        &none &none &none
-        &none &none        &none        &none        &none                                       &none &none &none &none      &bl BL_TOG &rgb_ug RGB_TOG                                     &bl BL_INC   &bl BL_DEC   &none &none &none
-      >;
-    };
-    extra1 { 
-      display-name = "Red";    
-      status = "reserved";
+    /* For Auto Shift */
+    auto_shift: auto_shift {
+        compatible = "zmk,behavior-hold-tap";
+        label = "AUTO_SHIFT"; 
+        #binding-cells = <2>;
+        tapping_term_ms = <DEFAULT_HOLD_TAPPING_TERM>;
+        quick_tap_ms = <0>;
+        flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
     };
 
-    extra2 { 
-      display-name = "Purple";    
-      status = "reserved";
+    /*
+     * hold or tap
+     */
+    hm: homerow_mods {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOMEROW_MODS"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
+        flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
     };
-
-    extra3 { 
-      display-name = "Cyan";    
-      status = "reserved";
+    hmh: homerow_mods_hold {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOMEROW_MODS_HOLD"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <135>;
+        flavor = "hold-preferred";
+        bindings = <&kp>, <&kp>;
     };
-
-    extra4 { 
-      display-name = "Yellow";    
-      status = "reserved";
+    mh: mo_on_hold {
+        compatible = "zmk,behavior-hold-tap";
+        label = "mo_on_hold"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
+        flavor = "balanced"; // Must balanced. 「あいあいあい...」が高速で入力した際に認識されない事があるため...
+        bindings = <&mo>, <&kp>;
+    };
+    mh_ka: ka_mo_on_hold {
+        compatible = "zmk,behavior-hold-tap";
+        label = "ka_mo_on_hold"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
+        flavor = "balanced";
+        bindings = <&mo>, <&macro_kana_ka>;
+    };
+    mh_ma: ma_mo_on_hold {
+        compatible = "zmk,behavior-hold-tap";
+        label = "ma_mo_on_hold"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
+        flavor = "balanced";
+        bindings = <&mo>, <&macro_kana_ma>;
+    };
+    mh_no: no_mo_on_hold {
+        compatible = "zmk,behavior-hold-tap";
+        label = "no_mo_on_hold"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
+        flavor = "balanced";
+        bindings = <&mo>, <&macro_kana_no>;
+    };
+    mh_na: na_mo_on_hold {
+        compatible = "zmk,behavior-hold-tap";
+        label = "na_mo_on_hold"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
+        flavor = "balanced";
+        bindings = <&mo>, <&macro_kana_na>;
+    };
+    mh_ko: ko_mo_on_hold {
+        compatible = "zmk,behavior-hold-tap";
+        label = "ko_mo_on_hold"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <DEFAULT_HOLD_TAPPING_TERM>;
+        quick_tap_ms = <DEFAULT_QUICK_TAP>;
+        flavor = "balanced";
+        bindings = <&mo>, <&macro_kana_ko>;
+    };
+    kana_cmd: kana_cmd {
+        compatible = "zmk,behavior-hold-tap";
+        label = "kana_cmd"; 
+        #binding-cells = <2>;
+        tapping-term-ms = <135>;
+        flavor = "hold-preferred";
+        bindings = <&m_def_cmd>, <&kp>;
     };
   };
+
+  /* 
+   * 日本語かな入力 (薙刀式)
+   * 
+   * refer: https://oookaworks.seesaa.net/article/500180437.htm
+   *  0  1  2  3  4  5  6                     7  8  9 10 11 12 13
+   * 14 15 16 17 18 19 20                    21 22 23 24 25 26 27
+   * 28 29 30 31 32 33 34    35 36 37 38     39 40 41 42 43 44 45
+   * 46 47 48 49 50 51          52 53           54 55 56 57 58 59
+   * 60 61 62 63 64       65 66 67 68 69 70        71 72 73 74 75
+   */
+  combos {
+    compatible = "zmk,combos";
+
+    /* 「ぁ」 */
+    combo_kana_small_a {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_A>;
+      bindings = <KANA(X,A)>;
+      layers = <LAYER_KANA>;
+    };
+    /* 「ぃ」 */
+    combo_kana_small_i {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_I>;
+      bindings = <KANA(X,I)>;
+      layers = <LAYER_KANA>;
+    };
+    /* 「ぅ」 */
+    combo_kana_small_u {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_U>;
+      bindings = <KANA(X,U)>;
+      layers = <LAYER_KANA>;
+    };
+    /* 「ぇ」 */
+    combo_kana_small_e {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_E>;
+      bindings = <KANA(X,E)>;
+      layers = <LAYER_KANA>;
+    };
+    /* 「ぉ」 */
+    combo_kana_small_o {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_O>;
+      bindings = <KANA(X,O)>;
+      layers = <LAYER_KANA>;
+    };
+
+    combo_kana_small_ya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_YA>;
+      bindings = <KANA_S(Y,A)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_small_yu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_YU>;
+      bindings = <KANA_S(Y,U)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_small_yo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_YO>;
+      bindings = <KANA_S(Y,O)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_small_wa {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_V KANA_INDEX_WA>;
+      bindings = <KANA_S(W,A)>;
+      layers = <LAYER_KANA>;
+    };
+
+    combo_kana_kya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_KI KANA_INDEX_YA>;
+      bindings = <KANA_Y(K,A)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_kyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_KI KANA_INDEX_YU>;
+      bindings = <KANA_Y(K,U)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_kyo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_KI KANA_INDEX_YO>;
+      bindings = <KANA_Y(K,O)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_sya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_SHI KANA_INDEX_YA>;
+      bindings = <KANA_Y(S,A)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_syu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_SHI KANA_INDEX_YU>;
+      bindings = <KANA_Y(S,U)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_syo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_SHI KANA_INDEX_YO>;
+      bindings = <KANA_Y(S,O)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_tya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_CHI KANA_INDEX_YA>;
+      bindings = <KANA_Y(T,A)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_tyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_CHI KANA_INDEX_YU>;
+      bindings = <KANA_Y(T,U)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_tyo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_CHI KANA_INDEX_YO>;
+      bindings = <KANA_Y(T,O)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_nya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_NI KANA_INDEX_YA>;
+      bindings = <KANA_Y(N,A)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_nyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_NI KANA_INDEX_YU>;
+      bindings = <KANA_Y(N,U)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_nyo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_NI KANA_INDEX_YO>;
+      bindings = <KANA_Y(N,O)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_hya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_HI KANA_INDEX_YA>;
+      bindings = <KANA_Y(H,A)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_hyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_HI KANA_INDEX_YU>;
+      bindings = <KANA_Y(H,U)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_hyo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_HI KANA_INDEX_YO>;
+      bindings = <KANA_Y(H,O)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_mya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_MI KANA_INDEX_YA>;
+      bindings = <KANA_Y(M,A)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_myu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_MI KANA_INDEX_YU>;
+      bindings = <KANA_Y(M,U)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_myo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_MI KANA_INDEX_YO>;
+      bindings = <KANA_Y(M,O)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_rya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_RI KANA_INDEX_YA>;
+      bindings = <KANA_Y(R,A)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_ryu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_RI KANA_INDEX_YU>;
+      bindings = <KANA_Y(R,U)>;
+      layers = <LAYER_KANA>;
+    };
+    combo_kana_ryo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <KANA_INDEX_RI KANA_INDEX_YO>;
+      bindings = <KANA_Y(R,O)>;
+      layers = <LAYER_KANA>;
+    };
+
+    combo_kana_jya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <18 40>;
+      bindings = <&m_kana_y J A>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_jyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <18 26>;
+      bindings = <&m_kana_y J U>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_jyo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <18 24>;
+      bindings = <&m_kana_y J O>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_gya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <16 40>;
+      bindings = <&m_kana_y G A>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_gyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <16 26>;
+      bindings = <&m_kana_y G U>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_gyo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <16 24>;
+      bindings = <&m_kana_y G O>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_dya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <33 40>;
+      bindings = <&m_kana_y D A>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_dyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <33 26>;
+      bindings = <&m_kana_y D U>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_dyo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <33 24>;
+      bindings = <&m_kana_y D O>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_bya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <48 40>;
+      bindings = <&m_kana_y B A>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_byu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <48 26>;
+      bindings = <&m_kana_y B U>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_byo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <48 24>;
+      bindings = <&m_kana_y B O>;
+      layers = <LAYER_VOICED>;
+    };
+
+    combo_kana_pya {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <48 40>;
+      bindings = <&m_kana_y P A>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_pyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <48 26>;
+      bindings = <&m_kana_y P U>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_pyo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <48 24>;
+      bindings = <&m_kana_y P O>;
+      layers = <LAYER_DEVOICED>;
+    };
+
+    /*
+     * てぃ, てゅ、でぃ、でゅ
+     */
+    combo_kana_thi {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <17 42>;
+      bindings = <&m_kana_h T I>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_thu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <17 26>;
+      bindings = <&m_kana_h T U>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_dhi {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <17 42>;
+      bindings = <&m_kana_h D I>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_dhu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <17 26>;
+      bindings = <&m_kana_h D U>;
+      layers = <LAYER_VOICED>;
+    };
+
+    /*
+     * とぅ、どぅ
+     */
+    combo_kana_twu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <31 43>;
+      bindings = <&m_kana_w T U>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_dwu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <31 43>;
+      bindings = <&m_kana_w D U>;
+      layers = <LAYER_VOICED>;
+    };
+    
+    /*
+     * しぇ、じぇ
+     */
+    combo_kana_sye {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <18 25>;
+      bindings = <&m_kana_y S E>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_je {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <18 25>;
+      bindings = <&m_kana J E>;
+      layers = <LAYER_VOICED>;
+    };
+    
+    /*
+     * ちぇ、ぢぇ
+     */
+    combo_kana_che {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <33 25>;
+      bindings = <&m_kana_h C E>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_dye {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <33 25>;
+      bindings = <&m_kana_y D E>;
+      layers = <LAYER_VOICED>;
+    };
+
+    /*
+     * つぁ
+     */
+    combo_kana_tso {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <41 43>;
+      bindings = <&m_kana_s T A>;
+      layers = <LAYER_DEVOICED>;
+    };
+
+    /*
+     * うぃ、うぇ、うぉ
+     */
+    combo_kana_whi {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <43 42>;
+      bindings = <&m_kana_h W I>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_whe {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <43 25>;
+      bindings = <&m_kana_h W E>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_who {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <43 54>;
+      bindings = <&m_kana_h W O>;
+      layers = <LAYER_DEVOICED>;
+    };
+
+    /*
+     * ふぁふぃふぇふぉふゅ
+     */
+    combo_kana_fa {
+      timeout-ms = <1000>;
+      key-positions = <44 41>;
+      bindings = <&m_kana F A>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_fi {
+      timeout-ms = <1000>;
+      key-positions = <44 42>;
+      bindings = <&m_kana F I>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_fe {
+      timeout-ms = <1000>;
+      key-positions = <44 25>;
+      bindings = <&m_kana F E>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_fo {
+      timeout-ms = <1000>;
+      key-positions = <44 54>;
+      bindings = <&m_kana F O>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_fyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <44 26>;
+      bindings = <&m_kana_y F U>;
+      layers = <LAYER_DEVOICED>;
+    };
+
+    /*
+     * ゔぁゔぃゔぇゔぉゔゅ
+     */
+    combo_kana_va {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <15 41>;
+      bindings = <&m_kana V A>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_vi {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <15 42>;
+      bindings = <&m_kana V I>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_ve {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <15 25>;
+      bindings = <&m_kana V E>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_vo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <15 54>;
+      bindings = <&m_kana V O>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_vyu {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <15 26>;
+      bindings = <&m_kana_y V U>;
+      layers = <LAYER_DEVOICED>;
+    };
+
+    /*
+     * くぁ、くぃ、くぇ、くぉ
+     */
+    combo_kana_qa {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <40 41>;
+      bindings = <&m_kana Q A>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_qi {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <40 42>;
+      bindings = <&m_kana Q I>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_qe {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <40 25>;
+      bindings = <&m_kana Q E>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_qo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <40 54>;
+      bindings = <&m_kana Q O>;
+      layers = <LAYER_DEVOICED>;
+    };
+    combo_kana_gwa {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <40 41>;
+      bindings = <&m_kana_w Q A>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_qwi {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <40 42>;
+      bindings = <&m_kana_w Q I>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_qwe {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <40 25>;
+      bindings = <&m_kana_w Q E>;
+      layers = <LAYER_VOICED>;
+    };
+    combo_kana_qwo {
+      timeout-ms = <DEFAULT_COMBO_TIMEOUT>;
+      key-positions = <40 54>;
+      bindings = <&m_kana_w Q O>;
+      layers = <LAYER_VOICED>;
+    };
+  };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+
+        default_layer {
+            bindings = <
+              &lt LAYER_FIRMWARE TAB &none      &none      AS_HASH()  &none   &none   &none                                                                                                                                       &none       &none   &none      AS_PRCNT() &none      &none      &lt LAYER_FIRMWARE TAB
+              &none                  AS(Q)      AS(G)      AS(M)      AS(L)   AS(W)   &macro_hyper                                                                                                                                &macro_next AS(Y)   AS(F)      AS(U)      AS(B)      AS_UNDER() &none
+              &kp LCTRL              AS(D)      AS(S)      AS(T)      AS(N)   AS(R)   &macro_meh                &kp C_VOL_DN           &kp C_VOL_UP          &kp C_BRI_DN           &kp C_BRI_UP                                  &macro_back AS(A)   AS(I)      AS(E)      AS(O)      AS(H)      AS_QT()
+              &kp LSHIFT             AS(Z)      AS(X)      AS(C)      AS(V)   AS(J)                                                    &kp C_MUTE            &none                                                                            AS(K)   AS(P)      AS_DOT()   AS_LT()    AS_EQUAL() AS_COLON()
+              &kp LALT               AS_AMPS()  AS_EXCL()  AS_FSLH()  AS_MINUS()                   &hm LGUI TAB &lt LAYER_R_KANA SPACE &lt LAYER_NUMBER ESC  &lt LAYER_NUMBER RCTRL &lt LAYER_ARROW ENTER &lt LAYER_FUNCTION BSPC                     AS_PAR()   AS_BRC()   AS_BKT()   AS_CARET() &none
+            >;
+        };
+
+
+        /*
+         * 新たなキーマップの書き込みや、Bluetooth接続の解除/再接続なFirmware関連のコマンドを集約しています
+         * 他のキーマップの統廃合の影響を受けIndexがずれて、新たなキーマップの書き込みができなくなるリスクを極小化するために、Layer1に指定しています
+         */
+        firmware_layer {
+            bindings = <
+              &trans  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none                                                                                     &none       &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
+              &none   &none        &none        &none        &none        &none        &bootloader                                                                               &bootloader &none         &none         &none         &none         &none         &none
+              &none   &none        &none        &none        &none        &none        &none                        &bt BT_CLR &bt BT_CLR &bt BT_CLR &bt BT_CLR                  &none       &none         &none         &none         &none         &none         &none
+              &none   &none        &none        &none        &none        &none                                                &bt BT_CLR &bt BT_CLR                                         &none         &none         &none         &none         &none         &none
+              &none   &none        &none        &bl BL_INC   &bl BL_DEC                             &rgb_ug RGB_TOG &bl BL_TOG &none      &none      &bl BL_TOG &rgb_ug RGB_TOG                            &bl BL_INC    &bl BL_DEC    &none         &none         &none
+            >;
+        };
+
+        /* 
+         * 日本語かな入力 (薙刀式)
+         * 
+         * refer: https://oookaworks.seesaa.net/article/500180437.htm
+         */
+        kana_layer_1 {
+            bindings = <
+              &none  &none      &none      &trans     &none                    &none         &none                                                                                         &none  &none       &none                    &trans      &none       &none       &none
+              &none  &none      KANA(K,I)  KANA(T,E)  KANA(S,I)                KANA(V,U)     &trans                                                                                        &trans KANA(H,E)   &none                    KANA(R,U)   KANA(S,U)   &none       &none
+              &trans KANA(R,O)  KANA(K,E)  KANA(T,O)  &mh_ka LAYER_VOICED K    TSU_S()       &trans                                   &trans &trans &trans &trans                          &trans KANA(K,U)   &mh LAYER_VOICED A       &kp I       &kp U       &kp MINUS   &trans
+              &trans KANA(H,O)  KANA(H,I)  KANA(H,A)  &mh_ko LAYER_DEVOICED K  KANA(S,O)                                                      &trans &trans                                       KANA(T,A)   &mh_na LAYER_DEVOICED N  KANA(N,N)   KANA(R,A)   KANA(R,E)   &trans
+              &trans &trans     &trans     &trans     &trans                                        &kana_cmd TAB TAB  &lt LAYER_R_KANA SPACE &trans &trans &lt LAYER_L_KANA ENTER  &trans                    &trans                   &trans      &trans      &trans      &none
+            >;
+        };
+
+        /* 
+         * 日本語かな入力 (薙刀式2 - みぎてしふと)
+         * 
+         * refer: https://oookaworks.seesaa.net/article/500180437.htm
+         */
+        kana_layer_2 {
+            bindings = <
+              &none   &none      &none      &none      &none      &none       &none                                             &none &none     &none    &none    &none     &none &none
+              &none   &none      KANA(N,U)  KANA(R,I)  KANA(N,E)  &none       &none                                             &none &kp PG_UP &kp HOME &kp UP   &kp END   &none &none
+              &trans  KANA(S,E)  KANA(M,E)  KANA(N,I)  KANA(M,A)  KANA(T,I)   &none          &trans &trans &trans &trans        &none &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &none &none
+              &trans  &trans     &trans     KANA(W,O)  &kp COMMA  KANA(M,I)                         &trans &trans                     &none     &none    &none    &none     &none &none
+              &trans  &none      &none      &none      &none                        &kp LGUI &trans &trans &trans &trans &trans                 &none    &none    &none     &none &none
+            >;
+        };
+        kana_layer_3 {
+            bindings = <
+              &none   &none       &none      &none      &none               &none     &none                                            &none   &none      &none       &none        &none        &none         &none
+              &none   &none       &none      &none      &tog LAYER_QWERTY   &none     &none                                            &none   KANA(Y,U)  KANA(S,A)   KANA(Y,O)    &kp E        &none         &none
+              &trans  &none       &none      &none      &m_switch_kana      &none     &none         &trans &trans &trans &trans        &none   KANA(Y,A)  KANA(N,O)   KANA(M,O)    KANA(T,U)    KANA(H,U)     &none
+              &trans  &none       &none      &none      &to LAYER_DEFAULT   &none                          &trans &trans                       &kp O      &kp PERIOD  KANA(M,U)    KANA(W,A)    &trans        &none
+              &trans  &none       &none      &none      &none                                &trans &trans &trans &trans &trans &trans                    &trans      &trans       &trans       &trans        &none
+            >;
+        };
+
+        /* 
+         * 日本語かな入力 (薙刀式 - 濁音)
+         */
+        kana_voiced {
+            bindings = <
+              &none   &none        &none        &none        &none        &none         &none                                           &none  &none        &none        &none  &none        &none        &none
+              &none   KANA(X,A)    KANA(G,I)    KANA(D,E)    KANA(J,I)    &none         &none                                           &none  KANA(B,E)    KANA(Z,A)    &none  KANA(Z,U)    &none        &none
+              &none   KANA(Z,E)    KANA(G,E)    KANA(D,O)    KANA(G,A)    KANA(D,I)     &none        &trans &trans &trans &trans        &none  KANA(G,U)    KANA(G,A)    &none  KANA(D,U)    KANA(B,U)    &none
+              &none   KANA(B,O)    KANA(B,I)    KANA(B,A)    KANA(G,O)    KANA(Z,O)                         &trans &trans                      KANA(D,A)    &none        &none  &none        &none        &none
+              &none   &none        &none        &none        &none                            &trans &trans &trans &trans &trans &trans                     &none        &none  &none        &none        &none
+            >;
+        };
+        /*
+         * 日本語かな入力 (薙刀式 - 半濁音)
+         */
+        kana_devoiced {
+            bindings = <
+              &none   &none        &none        &none        &none  &none   &none                                            &none   &none      &none  &none  &none  &none        &none
+              &none   &none        &none        &none        &none  &none   &none                                            &none   KANA(P,E)  &none  &none  &none  &none        &none
+              &none   &none        &none        &none        &none  &none   &none        &trans &trans &trans &trans         &none   &none      &none  &none  &none  KANA(P,U)    &none
+              &none   KANA(P,O)    KANA(P,I)    KANA(P,A)    &none  &none                       &trans &trans                        &none      &none  &none  &none  &none        &none
+              &none   &none        &none        &none        &none                &trans &trans &trans &trans &trans &trans                     &none  &none  &none  &none        &none
+            >;
+        };
+
+        /* 
+         * qwerty配列
+         * 
+         * refer: https://trap.jp/post/1293/
+         */
+        qwerty_layer {
+            bindings = <
+              &lt LAYER_FIRMWARE TAB  &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                                            &none         &none           &hm DLLR PRCNT  &none          &none            &none            &lt LAYER_FIRMWARE TAB
+              &none             &hm LS(Q) Q     &hm LS(W) W     &hm LS(E) E     &hm LS(R) R     &hm LS(T) T   &macro_hyper                                                                                                     &macro_next   &hm LS(Y) Y     &hm LS(U) U     &hm LS(I) I    &hm LS(O) O      &hm LS(P) P      &none
+              &kp LCTRL         &hm LS(A) A     &hm LS(S) S     &hm LS(D) D     &hm LS(F) F     &hm LS(G) G   &macro_meh                       &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP                          &macro_back   &hm LS(H) H     &hm LS(J) J     &hm LS(K) K    &hm LS(L) L      &hm AT UNDER     &hm DQT SQT
+              &kp LSHIFT        &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(B) B                                                  &kp C_MUTE    &none                                                             &hm LS(N) N     &hm LS(M) M     &hm COMMA DOT  &hm GT LT        &hm GRAVE EQUAL  &hm COLON SEMI
+              &kp LALT          &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt LAYER_NUMBER SPACE   &kp ESC       &kp RCTRL     &lt  LAYER_ARROW ENTER   &lt LAYER_FUNCTION BSPC                                &hm RPAR LPAR   &hm RBRC LBRC  &hm RBKT LBKT    &hm BSLH CARET   &none
+            >;
+        };
+
+        number_layer {
+            bindings = <
+              &none        &none   &none   &none   &none   &none   &none                                                          &none   &none   &none         &kp KP_SLASH  &kp KP_ASTERISK  &none         &none
+              &none        &none   &none   &none   &none   &none   &none                                                          &none   &none   &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9     &kp KP_MINUS  &none
+              &kp LCTRL    &none   &none   &none   &none   &none   &none              &none   &none   &none       &none           &none   &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6     &kp KP_PLUS   &none
+              &kp LSHIFT   &none   &none   &none   &none   &none                              &none   &none                               &none   &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3     &kp KP_EQUAL  &none
+              &kp LALT     &none   &none   &none   &none                   &kp LGUI   &trans  &none   &kp RCTRL   &none   &none                   &kp NUMBER_0  &kp KP_DOT    &kp KP_COMMA     &none         &none
+            >;
+        };
+
+        arrow_layer {
+            bindings = <
+              &none      &none   &none   &none   &none   &none   &none                                                      &none   &none      &none     &none     &none       &none  &none
+              &none      &none   &none   &none   &none   &none   &none                                                      &none   &kp PG_UP  &kp HOME  &kp UP    &kp END     &none  &none
+              &kp LCTRL  &none   &none   &none   &none   &none   &none              &none   &none   &none   &none           &none   &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT   &none  &none
+              &kp LSHIFT &none   &none   &none   &none   &none                              &none   &none                           &none      &none     &none     &none       &none  &none
+              &kp LALT   &none   &none   &none   &none                   &kp LGUI   &none   &none   &none   &trans  &none                      &none     &none     &none       &none  &none
+            >;
+        };
+
+        function_layer {
+            bindings = <
+              &none      &none   &none   &none        &none        &none   &none                                                      &none   &none    &none   &none   &none   &none  &none
+              &none      &none   &none   &to LAYER_QWERTY   &tog LAYER_QWERTY  &none   &none                                                      &none   &kp F12  &kp F7  &kp F8  &kp F9  &none  &none
+              &kp LCTRL  &none   &none   &to LAYER_KANA     &tog LAYER_KANA    &none   &none              &none   &none   &none   &none           &none   &kp F11  &kp F4  &kp F5  &kp F6  &none  &none
+              &kp LSHIFT &none   &none   &none        &to LAYER_DEFAULT  &none                              &none   &none                           &kp F10  &kp F1  &kp F2  &kp F3  &none  &none
+              &kp LALT   &none   &none   &none        &none                        &kp LGUI   &none   &none   &none   &none   &trans                   &none   &none   &none   &none  &none
+            >;
+        };
+  
+        /* 
+         * qgmlwy配列
+         * 
+         * refer: https://trap.jp/post/1293/
+         */
+        qgmlwy_layer {
+            bindings = <
+              &lt LAYER_FIRMWARE TAB  &none           &none           &hm TILDE HASH  &none           &none         &none                                                                                                            &none         &none           &hm DLLR PRCNT  &none            &none          &none            &lt LAYER_FIRMWARE TAB
+              &none             &hm LS(Q) Q     &hm LS(G) G     &hm LS(M) M     &hm LS(L) L     &hm LS(W) W   &macro_hyper                                                                                                     &macro_next   &hm LS(Y) Y     &hm LS(F) F     &hm LS(U) U      &hm LS(B) B    &hm AT UNDER     &none
+              &kp LCTRL         &hm LS(D) D     &hm LS(S) S     &hm LS(T) T     &hm LS(N) N     &hm LS(R) R   &macro_meh                  &kp C_VOL_DN       &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP                          &macro_back   &hm LS(A) A     &hm LS(I) I     &hm LS(E) E      &hm LS(O) O    &hm LS(H) H      &hm DQT SQT
+              &kp LSHIFT        &hm LS(Z) Z     &hm LS(X) X     &hm LS(C) C     &hm LS(V) V     &hm LS(J) J                                                  &kp C_MUTE    &none                                                             &hm LS(K) K     &hm LS(P) P     &hm COMMA DOT    &hm GT LT      &hm GRAVE EQUAL  &hm SEMI COLON
+              &kp LALT          &hm PIPE AMPS   &hm QMARK EXCL  &hm STAR FSLH   &hm PLUS MINUS                              &hm LGUI TAB  &lt LAYER_NUMBER SPACE   &kp ESC       &kp RCTRL     &lt  LAYER_ARROW ENTER   &lt LAYER_FUNCTION BSPC                                &hm RPAR LPAR   &hm RBRC LBRC    &hm RBKT LBKT  &hm BSLH CARET   &none
+            >;
+        };
+    };
 };

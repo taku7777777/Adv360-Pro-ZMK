@@ -171,5 +171,5 @@ m_switch_kana: m_switch_kana {
   wait-ms = <0>;
   tap-ms = <0>;
   #binding-cells = <0>;
-  bindings = <&tog LAYER_KANA>, <&kp LC(SPACE)>;
+  bindings = <&tog LAYER_KANA>, LANG1;
 };

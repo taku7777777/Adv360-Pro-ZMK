@@ -171,7 +171,7 @@ m_switch_kana: m_switch_kana {
   wait-ms = <1>;
   tap-ms = <1>;
   #binding-cells = <0>;
-  bindings = <&to LAYER_KANA>, <&kp &kp LS(LA(LC(F11)))>;
+  bindings = <&to LAYER_KANA>, <&kp LS(LA(LC(F11)))>;
 };
 
 m_switch_eisuu: m_switch_eisuu {
@@ -180,5 +180,5 @@ m_switch_eisuu: m_switch_eisuu {
   wait-ms = <1>;
   tap-ms = <1>;
   #binding-cells = <0>;
-  bindings = <&to LAYER_DEFAULT>, <&kp &kp LS(LA(LC(F12)))>;
+  bindings = <&to LAYER_DEFAULT>, <&kp LS(LA(LC(F12)))>;
 };

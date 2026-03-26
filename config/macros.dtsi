@@ -176,7 +176,7 @@ m_switch_kana: m_switch_kana {
 
 m_switch_eisuu: m_switch_eisuu {
   compatible = "zmk,behavior-macro";
-  label = "m_switch_kana";
+  label = "m_switch_eisuu";
   wait-ms = <1>;
   tap-ms = <1>;
   #binding-cells = <0>;

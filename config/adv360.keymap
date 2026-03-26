@@ -844,11 +844,11 @@
         };
         kana_layer_3 {
             bindings = <
-              &none   &none       &none      &none      &none               &none     &none                                            &none   &none      &none       &none        &none        &none         &none
-              &none   &none       AS(Q)      &kp F12    &tog LAYER_QWERTY   &none     &none                                            &none   KANA(Y,U)  KANA(S,A)   KANA(Y,O)    &kp E        &none         &none
-              &trans  &none       &kp LS(LA(LC(F12)))      &kp F13    &m_switch_kana      &none     &none         &trans &trans &trans &trans        &none   KANA(Y,A)  KANA(N,O)   KANA(M,O)    KANA(T,U)    KANA(H,U)     &none
-              &trans  &none       &kp LS(LA(LC(F11)))      &kp F14    &to LAYER_DEFAULT   &none                          &trans &trans                       &kp O      &kp PERIOD  KANA(M,U)    KANA(W,A)    &trans        &none
-              &trans  &none       &none      &none      &none                                &trans &trans &trans &trans &trans &trans                    &trans      &trans       &trans       &trans        &none
+              &none   &none       &none      &none               &none               &none     &none                                            &none   &none      &none       &none        &none        &none         &none
+              &none   &none       &none      &none               &tog LAYER_QWERTY   &none     &none                                            &none   KANA(Y,U)  KANA(S,A)   KANA(Y,O)    &kp E        &none         &none
+              &trans  &none       &none      &m_switch_eisuu     &m_switch_kana      &none     &none         &trans &trans &trans &trans        &none   KANA(Y,A)  KANA(N,O)   KANA(M,O)    KANA(T,U)    KANA(H,U)     &none
+              &trans  &none       &none      &kp LS(LA(LC(F12))) &kp LS(LA(LC(F11))) &none                          &trans &trans                       &kp O      &kp PERIOD  KANA(M,U)    KANA(W,A)    &trans        &none
+              &trans  &none       &none      &none               &none                                &trans &trans &trans &trans &trans &trans                    &trans      &trans       &trans       &trans        &none
             >;
         };
 
